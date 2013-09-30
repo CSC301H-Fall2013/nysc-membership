@@ -1,0 +1,60 @@
+<h1>Membership Registration</h1>
+
+<%= form_for @member do |m| %>	
+	<p> 
+		<%= m.select :honorific, [['Mr.', 'Mr.'], ['Ms.', 'Ms.'], ['Mrs.', 'Mrs.']] %>
+		
+		<%= m.label :'First Name:' %>
+		<%= m.text_field :fname %>
+
+		<%= m.label :'Last Name:' %>
+		<%= m.text_field :lname %>
+	</p>
+
+	<p>
+		<%= m.label :'Date of Birth:' %>
+		<%= m.number_field :day, :in=>01...31 %>
+		<%= m.number_field :month, :in=>01...12 %>
+		<%= m.number_field :year, :in=>1750...3000 %>
+		<br><small>(DD/MM/YYYY)</small>
+	</p>
+
+	<p>
+		<%= m.label :'Gender:' %>
+		<%= m.select :gender, [['Male', 'Male'], ['Female', 'Female']] %>
+	</p>
+
+	<p>
+		<%= m.label :'Address:' %>
+		<%= m.text_field :address %>
+		&nbsp &nbsp &nbsp
+		<%= m.label :"Apartment #:" %>
+		<%= m.number_field :apt %>
+	</p>
+	<p>
+		<%= m.label :'City:' %>
+		<%= m.text_field :city %>
+	</p>
+	<p>
+		<%= m.label :'Postal Code: ' %> 
+		<%= m.text_field :postalcode %>
+		</br><small>(M1M 1M1)</small>
+	</p>
+	<p>
+		<%= m.label :'Phone Number:' %>
+		<%= m.text_field :phone %> 
+		</br><small>ex: (123) 456-7890</small>
+	</p>
+	<p>
+		<%= m.label :'E-mail Address:' %>
+		<%= m.text_field :email %>
+	</p>
+
+
+	<p> 
+		<br />
+		<%= m.submit "Submit" %>
+	</p>
+<% end %>
+
+	<%= link_to 'Back', members_path %>
