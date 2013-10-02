@@ -1,5 +1,8 @@
+# A page where to create a new course and add it into the database
 <h2>Add A New Course</h2>
 <hr>
+
+# Display each field needed to fill in the database for the course model
 <%= form_for @course do |f| -%>
 	Course Name: <%= f.text_field :courseName %>
 	Instructor: <%= f.text_field :instructor %> <br />
@@ -7,20 +10,27 @@
 	Course Intensity: <%= f.text_field :intensity %> <br />
 	Description: <%= f.text_area :description %> <br />
 	<hr>
+
 	Start Date: <%= f.text_field :startDate %>
 	End Date: <%= f.text_field :endDate %> <br />
 	Start Time: <%= f.text_field :startTime %>
 	End Time: <%= f.text_field :endTime %> <br />
 	Course Duration: <%= f.text_field :duration %> <br />
+	<hr>
 	<h3> Course Fee: </h3> 
 	Early Bird Fee (Members Only): <%= f.text_field :earlybirdPrice %> <br />
 	Members Fee: <%= f.text_field :memberPrice %> <br />
 	Non Members Fee: <%= f.text_field :nonmemberPrice %> <br />
-
+	<hr>
 	Additional Comments: <%= f.text_field :additional %> <br />
 	<hr>
+
+	# Create a button to enable the user to submit the data filled in
 	<%= f.submit "Add Course" %>
+
+	# Create a link to go back to the index page
 	<p><%= link_to "Go Back",  :back%></p>
 <% end -%>
+
 <hr>
 <hr>
