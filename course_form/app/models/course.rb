@@ -7,6 +7,7 @@ class Course < ActiveRecord::Base
 	validates :memberPrice, :nonmemberPrice, :presence => true
 	validates :courseCode, :uniqueness => { :message => ": This course code already exists!"}
 
+	#validates :courseName, :uniqueness => true;
 
 
 end
