@@ -12,9 +12,9 @@ class CreateCourses < ActiveRecord::Migration
       t.time :startTime
       t.time :endTime
       t.string :duration
-      t.decimal :earlybirdPrice
-      t.decimal :memberPrice
-      t.decimal :nonmemberPrice
+      t.integer :earlybirdPrice
+      t.integer :memberPrice
+      t.integer :nonmemberPrice
 
       t.timestamps
     end

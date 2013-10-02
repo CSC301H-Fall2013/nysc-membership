@@ -12,7 +12,9 @@ class CoursesController < ApplicationController
 
 		# If the user entered submit, store the newly created course in the database
 		if @course.save
-			redirect_to new_course_path
+			redirect_to courses_path, :notice => "Your Post was Saved"
+		else
+			render "new"
 		end
 	end
 	

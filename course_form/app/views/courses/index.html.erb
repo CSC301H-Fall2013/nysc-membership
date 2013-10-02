@@ -1,11 +1,11 @@
-# Create a new link to the page where a new course will be created
+<!-- Create a new link to the page where a new course will be created -->
 <p><%= link_to "Create A New Course",  new_course_path%></p>
 
-# Display all the courses currently available(added)
+<!-- Display all the courses currently available(added) -->
 <h1>Courses Available</h1>
 <hr>
 
-# Loop through each course in the database and display its main contents
+<!-- Loop through each course in the database and display its main contents -->
 <% @courses.each do |course| %>
 	<h2><%= course.courseName %></h2>
 	<p><%= course.instructor%></p>
