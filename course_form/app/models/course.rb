@@ -6,6 +6,7 @@ class Course < ActiveRecord::Base
 	validates :startTime, :endTime, :presence => { :message => "Time must be in HH:MM"}
 	#validates :memberPrice, :nonmemberPrice, :presence => true
 
+	#validates :courseName, :uniqueness => true;
 
 
 end
