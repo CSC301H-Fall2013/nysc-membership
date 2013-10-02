@@ -2,19 +2,19 @@ require 'test_helper'
 
 class CoursesControllerTest < ActionController::TestCase
 
-  #called before every test
+  ## Setup to be called before every test
   def setup
     @course = courses(:one)
     @nilCourse = courses(:nil)
   end
 
-  #called after every test
+  ## Teardown to be Called after every test
   def teardown
     @course = nil
   end
 
 
-  #Test case for index method
+  ## Test case for index method
 
   def test_index_var
     get(:index)
@@ -22,7 +22,7 @@ class CoursesControllerTest < ActionController::TestCase
   end
 
 
-  #Test cases for new method
+  ## Test cases for new method
 
   def test_new_nilCourse_var
     post(:new)
@@ -35,48 +35,48 @@ class CoursesControllerTest < ActionController::TestCase
   end
 
 
-  #Test cases for create method
+  ## Test cases for create method
 
   def test_create_course
     post(:create, course: {courseName: @course.courseName, courseCode: @course.courseCode, instructor: @course.instructor, description: @course.description, intensity: @course.intensity, additional: @course.additional, startDate: @course.startDate, endDate: @course.endDate, startTime: @course.startTime, endTime: @course.endTime, duration: @course.duration, earlybirdPrice: @course.earlybirdPrice, memberPrice: @course.memberPrice, nonmemberPrice: @course.nonmemberPrice })
-    assert_response :found
     assert_not_nil Course.find_by(courseName: "Running")
-    assert_redirected_to courses_path
   end
 
   def test_create_nilCourse
     post(:create, course: {courseName: @nilCourse.courseName, courseCode: @nilCourse.courseCode, instructor: @nilCourse.instructor, description: @nilCourse.description, intensity: @nilCourse.intensity, additional: @nilCourse.additional, startDate: @nilCourse.startDate, endDate: @nilCourse.endDate, startTime: @nilCourse.startTime, endTime: @nilCourse.endTime, duration: @nilCourse.duration, earlybirdPrice: @nilCourse.earlybirdPrice, memberPrice: @nilCourse.memberPrice, nonmemberPrice: @nilCourse.nonmemberPrice })
     assert_nil Course.find_by(courseName: "")
-    #assert_redirected_to :controller => "courses", :action => "new"
   end
 
 
-  #Test cases for show method
+  ## Test cases for show method
 
-  def test_show_course
-  #   get(:show, :id => @course.id)
-  #   assert_response(:success)
-  end
+  #For later user stories, not for User Story 17
+  #def test_show_course
+    # get(:show, :id => @course.id)
+    # assert_response(:success)
+  #end
 
 
-  #Test cases for routing
+  ## Test cases for routing
 
   def test_route_index_to_courseForm
     assert_routing('courses/new', {:controller => "courses", :action => "new"})
   end
 
-  def test_route_courseForm_to_index
+  #For later user stories, not for User Story 17
+  #def test_route_courseForm_to_index
     #assert_routing('courses', {:controller => "courses", :action => "index"})
-  end
+  #end
 
 
-  #Test case for search method
+  ## Test case for search method
 
-  def test_search_course
+  #For later user stories, not for User Story 17
+  #def test_search_course
     #   get(:search, :courseName => "Running")
     #   assert_not_nil assigns(:course)
     #   assert_equal courses(:running).courseName, assigns(:course).courseName
     #   assert_valid assigns(:course)
     #   assert_redirected_to(:action => "show")
-  end
+  #end
 end
