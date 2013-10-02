@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
 		@course = Course.new
 
 		# Create a new instance variable to hold on all the coures currently in the database
-		@courses = Course.find(:all)
+		# @courses = Course.find(:all)
 	end
 	
 	def create
