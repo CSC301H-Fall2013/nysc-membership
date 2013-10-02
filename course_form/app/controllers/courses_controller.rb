@@ -32,6 +32,6 @@ class CoursesController < ApplicationController
 	
 	# Create a local varibale to store all the parameters passed by in the user when inputting data to create a new course
 	def user_params
-		params.require(:course).permit(:courseName, :courseCode, :instructor, :description, :intensity, :startDate, :endDate, :startTime, :endTime, :duration, :earlybirdPrice, :membersPrice, :nonmembersPrice, :additional)
+		params.require(:course).permit(:courseName, :courseCode, :instructor, :description, :intensity, :startDate, :endDate, :startTime, :endTime, :duration, :earlybirdPrice, :memberPrice, :nonmemberPrice, :additional)
 	end
 end
