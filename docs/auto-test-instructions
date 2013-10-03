@@ -1,0 +1,18 @@
+Instructions to run Test Files (assumes you are using cdf computers)
+
+1. “ssh superior@nysc.cloudapp.net” in terminal window with:
+      a. Password: Super1or
+      
+2. cd into nysc-membership/course_form
+
+3. To set up the test DB
+      a. $rake db:migrate  #To update the schema and pending migrations onto the development environment
+      b. $rake db:test:load #Recreates the test database from the current
+      c. $rake db:test:prepare #check for pending migrations and load the test schema
+
+4. To run tests, use:
+      a. $rake test #To run all tests
+
+If want to run a specific test file, use:
+
+rake test [path to the file] ie. rake test test/controllers/courses_controller_test.rb
