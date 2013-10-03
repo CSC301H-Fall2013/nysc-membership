@@ -4,11 +4,11 @@ Implemented User Story #17: Create a form interface that can be used to create n
 
 The potential end user who would be accessing the implemented form interface to create courses would be an administrator. 
 Only a user classified to be an administrator has the privileges to create a new course, so no other user roles should
-have the ability to access the page. For the purposes of the implementation and testing only user story #17, we can assume 
-the person accessing the page is already logged in as an administrator. The user will be presented with the interface to 
-create a new course. The form has all the necessary attributes and details required to identify a course and these traits
-were determined through the NYSC seasonal activities guide. The admin user will have to input data into each text field 
-with its appropriate values. 
+have the ability to access the page. For the purposes of the implementation and testing only user story #17, we can 
+assume the person accessing the page is already logged in as an administrator. The user will be presented with the
+interface to create a new course. The form has all the necessary attributes and details required to identify a course
+and these traitswere determined through the NYSC seasonal activities guide. The admin user will have to input data 
+into each text field with its appropriate values. 
 
 The following are the aspects that the positive and negative test cases cover (please note that the manual test only 
 covers the capabilities within the scope of the implementation of user story #17):
@@ -43,61 +43,66 @@ page via “nysc.cloudapp.net/courses” in your browser.
 none of the text fields filled out. The expected result of this test is that the submission is not successful and
 that the class database is not updated with the null values entered in the form. 
 
-          -The first step is to check the contents of the database. In order to check the contents of the database file 
-          on CDF, you use a terminal window to “scp superior@nysc.cloudapp.net:nysc-membership/course_form/db/development.sqlite3 ./”. 
-          The password is Super1or. 
+          -The first step is to check the contents of the database. In order to check the contents of the 
+          database file on CDF, you use a terminal window to
+          “scp superior@nysc.cloudapp.net:nysc-membership/course_form/db/development.sqlite3 ./”. The password is 
+          Super1or. 
           
           -After obtaining the SQLite database file, you can use the command “sqlite3 development.sqlite3” to access 
           the contents of the SQLite.
                       -To view the available tables in the database, you can use “.tables”.
-                      -The table that is relevant to our test is the courses table. You can view the contents of the members 
-                      table with “select * from courses;” and you can see the number of initial entries in the table. Make note
-                      of the number of existent entries. 
+                      -The table that is relevant to our test is the courses table. You can view the contents of 
+                      the members table with “select * from courses;” and you can see the number of initial entries 
+                      in the table. Make note of the number of existent entries. 
                       
-          -Now focus back on your browser window and look at the text fields in the class creation form. All the text fields should
-          initially appear to be empty. 
+          -Now focus back on your browser window and look at the text fields in the class 
+          creation form. All the text fields shouldinitially appear to be empty. 
           
-          -Hit the submit button. You should expect to see a message at the top of the window indicating the text fields that
-          cannot be blank. All of the text fields should be listed except the additional text field. This would classify 
-          as an unsuccessful attempt to create a class. 
+          -Hit the submit button. You should expect to see a message at the top of the window 
+          indicating the text fields thatcannot be blank. All of the text fields should be listed except 
+          the additional text field. This would classify as an unsuccessful attempt to create a class. 
           
-          -Use the method noted above to retrieve and view the development.sqlite3 file again. You need to retrieve the file again 
-          since the file you previously retrieved is not up-to-date. 
+          -Use the method noted above to retrieve and view the development.sqlite3 file
+          again. You need to retrieve the file again since the file you previously retrieved is not up-to-date. 
           
-          -Compare the number of existent entries with the one you previously saw. The expected result of this test is that there 
-          should be no change or addition in entries that were present in the database file prior to the test.
+          -Compare the number of existent entries with the one you previously saw. The 
+          expected result of this test is that there should be no change or addition in entries that
+          were present in the database file prior to the test.
           
 7. The next negative test case will be to attempt submission of a form with all but one required field filled out.
 Choose a field of your choice; any one particular required field should yield the same result. The expected result 
 is for the submission to be unsuccessful, and the class database not updated. Follow the instructions detailed in step
 6 to confirm this expected result.
 
-8. Another negative test case that can be performed is to attempt to create two courses with the same course code. Note that in 
-the course database, the course codes are unique. 
+8. Another negative test case that can be performed is to attempt to create two courses with the 
+same course code. Note that in the course database, the course codes are unique. 
           -Fill out the necessary fields in the course creation form and set the course code to “CSC301”.
           -Hit submit and create the event. 
-          -Grab the development.sqlite3 file with scp and check its contents to verify that the course was actually created. 
-          -Navigate to an empty course creation form and fill out the all the fields again. Ensure that the course code is “CSC301” 
-          and hit submit. The expected result is that there should be an error message indicating that there cannot be 
-          two courses created with the same course code since the course code has to be unique.
+          -Grab the development.sqlite3 file with scp and check its contents to verify that the course was
+          actually created. 
+          -Navigate to an empty course creation form and fill out the all the fields again. 
+          Ensure that the course code is “CSC301” and hit submit. The expected result is that there 
+          should be an error message indicating that there cannot be two courses created with the same 
+          course code since the course code has to be unique.
           -Grab the SQLite file again and verify there is no second course entry created.
           
-9. To perform the final negative test case on the NYSC event creation form, navigate to “nysc.cloudapp.net/courses” again in the browser 
-window. 
+9. To perform the final negative test case on the NYSC event creation form, navigate to 
+“nysc.cloudapp.net/courses” again in the browser window. 
           -Fill out all the text fields in the form accordingly. 
           -After filling out the form, do not hit the submit button. 
-          -Hit the go back button on the form and then hit “Create a new event” again. The expected visual result is the same form
-          with blank fields.
+          -Hit the go back button on the form and then hit “Create a new event” again. The expected 
+          visual result is the same formwith blank fields.
           -Use the scp technique noted above in step 6 to retrieve a recent copy of the development.sqlite3 file.
-          -View the SQLite file and verify the number of entries in the database. The expected result is that there are no additional 
-          entries in comparison to the SQLite file check in the previous test case since the user never hit the submit 
-          button after filling the form out.
+          -View the SQLite file and verify the number of entries in the database. The 
+          expected result is that there are no additional entries in comparison to the SQLite file check 
+          in the previous test case since the user never hit the submit button after filling the form out.
         
 10. Now to perform the positive test case. 
-          -Fill out all of the text fields with the appropriate information and click on submit. The expected result of this 
-          is that the submission should be successful. 
-          -Grab the latest copy of the SQLite database file and use it to verify that the event was actually created by checking the 
-          events database to see that the entered information is present in a new entry. 
+          -Fill out all of the text fields with the appropriate information and click on submit. 
+          The expected result of this is that the submission should be successful. 
+          -Grab the latest copy of the SQLite database file and use it to verify that the event was 
+          actually created by checking the events database to see that the entered information is present 
+          in a new entry. 
 
            
 
