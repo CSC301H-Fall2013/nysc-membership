@@ -1,28 +1,21 @@
 == README
+**********************************************************************************
+*TA Instructions for what source code files were modified for sprint0 for marking*
+**********************************************************************************
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The following source code files implement the user story:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. app/controller/courses_controller.rb
+2. app/views/courses/index.html.erb
+3. app/views/courses/new.html.erb
+4. config/routes.rb
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+The following source code files test the implemented user story:
+
+
+1. test/Courses.yml
+2. test/controller/courses_controller_test.rb
+3. test/integration/courses_test.rb
+4. test/models/course_test.rb
