@@ -1,7 +1,7 @@
 == README
-**********************************************************************************
-*TA Instructions for what source code files were modified for sprint0 for marking*
-**********************************************************************************
+
+TA Instructions for what source code files were modified for sprint0 for marking
+*********************************************************************************
 
 The following source code files implement the user story:
 
