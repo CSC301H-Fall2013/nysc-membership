@@ -99,5 +99,5 @@ window.
           -Grab the latest copy of the SQLite database file and use it to verify that the event was actually created by checking the 
           events database to see that the entered information is present in a new entry. 
 
-          
+           
 
