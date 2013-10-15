@@ -1,8 +1,12 @@
-Meeting 1,Meeting 2,Meeting 3,Meeting 4,Meeting 5
-"Wednesday, Spetember 18th","Monday, September 23rd","Wednesday, September 25th","Thursday, September 26th","Monday, September 30th"
-Cody,Kirien,Kirien ,Cody,Cody
-Michelle,Jessica,Jessica,Jessica,Jessica
-Ealona,Jana,Cody,Jana,Jana
-Jessica,Cody ,Ealona,Ealona,Ealona
-Kirien,Ealona ,,Michelle,Michelle
-,Michelle,,,Kirien
+,"Wed, Sept 18th","Mon, Sept 23rd","Wed, Sept 25th","Thu, Sept 26","Mon, Sept 30","Thu, Oct 03","Thu, Oct 10th"
+,,,,,,,
+Cody,1,1,1,1,1,1,1
+Jessica,1,1,1,1,1,1,1
+Jana,0,1,0,1,1,1,1
+Ealona,1,1,1,1,1,1,1
+Michelle,1,1,0,1,1,1,1
+Kirien,1,1,1,0,1,1,1
+,,,,,,,
+,,,,,,,
+Present  : 1,,,,,,,
+Absent   : 0,,,,,,,
