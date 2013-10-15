@@ -1,0 +1,31 @@
+Basket of Items,,
+1 -Sign up for membership,"17, 18, 19","4, 12"
+2 - Register for class,20,23
+3 - Renew membership,"10, 11, 13, 15, 16",
+4 -View membership expiry date,8,
+5 - Register for classes during regular period,,
+6 - Register for classes in early bird period,22,
+7 - Join waitlist of a full course,"1, 2, 3, 5, 6","21, 26"
+8 - Physical activity readiness questionnaire warning,,
+9a - be notified/emailed if a class is starting,,
+9b - be notified/emailed if a class canceled ,,
+9c - be notified/emailed if a class updated/changed,24,"7, 14"
+10 - Sign up a new member (payment in person),,
+11 - Renew a membership (payment in person),,
+12 - View when a member’s membership will expire,,
+13 - Register a member into a class (payment in person),,
+14 - Add member into waitlist,"9a, 9b, 9c",25
+15 - Register non-member into a class (payment in person),,
+16 - Register a member into a class - early bird (payment in person),,
+17 - Create new classes,,
+18 - Edit event classes,,
+19 - Cancel a class,"27, 28",
+20 - View list of participants in a class,,
+21 - Export data of all members,,
+22 - Find and view details of member,,
+23 - Update details of existing members,,-
+24 - View number of sales/profits made each day,,
+25 - Add a doctor’s note into the system,,
+26 - Remove a member from a class/ waitlist,,
+27 - Edit membership form,,
+28 - Edit class registration form,,
