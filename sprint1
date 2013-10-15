@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="NYSC Membership : Team Superior: Online Membership &amp; Registration System for the NYSC." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>NYSC Membership - Sprint 0</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/CSC301H-Fall2013/nysc-membership">View on GitHub</a>
+
+          <h1 id="project_title">NYSC Membership</h1>
+          <h2 id="project_tagline">Team Superior: Online Membership &amp; Registration System for the NYSC.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/CSC301H-Fall2013/nysc-membership/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/CSC301H-Fall2013/nysc-membership/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+          <a name="title" class="anchor" href="#title"><span class="octicon octicon-link"></span></a>Sprint 0 Deliverables</h3>
+          <br>
+          <h5>Effort Estimation</h5>
+          <p>
+          Effort estimation was done using a modified version of the table stack method, which would normally involve
+          a table and setting user stories relative to each other and the table. We decided to do this over planning
+          poker as we thought it would be more efficient with the large number of stories we had to estimate. This was
+          done online in a skype call and a google excel doc. We first arranged a list of the user stories to be 
+          estimated in a column to the left and assigned numbers to each. Then, we decided on the scale we would use 
+          to place our stories. Row #2 represented the stories requiring the least effort, and row #31 represented the
+          stories requiring the most possible effort. Stories with similar difficulties would be placed in adjacent 
+          columns. We then took turns amongst all members. On each member’s turn, they would either grab a new story 
+          from the basket and place it where they thought it fit on the ‘table’, or move an existing story on the 
+          ‘table’ to another location. Note that all estimations were relative to the first user story that was
+          implemented (we had estimated it to need the least amount of effort, therefore it was placed in row #2).
+          </p>
+          <p>
+          After all the stories were estimated at least once, we agreed that some stories were very similar in 
+          difficulty (ex. registering online for a class, registering online for a membership, registering online 
+          for a class during early bird, etc. All these tasks had the similar function of storing a form into a 
+          database, and a paypal transaction). After going through and grouping all tasks we deemed would have the
+          same difficulty, we continued rearranging and updating the positions of user stories on our turns until 
+          everyone was content with what we had - ie people stopped moving things in their turns. We then quickly 
+          went over every user story as a group to validate why we thought a user story’s difficulty was a good place 
+          relative to the others. Then, each story was assigned its row number minus one (to make things easier user 
+          story in row #2 is assigned 1, not a 2) as its effort required.
+          </p>
+          <ul>
+          <li><a href="https://github.com/CSC301H-Fall2013/nysc-membership/blob/master/docs/estimation.csv">Final Estimation Table</a><br></li>
+          </ul>
+          <h5>Prioritization By Product Owner</h5>
+          <p>
+          After we estimated as a team we set up a meeting with our product champion. Both Stacy and Linda were given
+          a list of the user stories, together we went through each user story. We explained all our user stories and
+          went through each one, asking if each one was mandatory, or optional. After going through this list, they 
+          marked nearly all user stories as mandatory. We then explained to them that we would not be able to complete 
+          all their desired features due to time constraints. We continued to explain which tasks required significantly
+          more effort than others, and what challenges we would have to face. Our product champion was unsure of what 
+          to cut out, so we asked them to prioritize between a membership registration system, or a class registration 
+          system. 
+          </p>
+          <p>
+          After reminding them of what they really wanted this system for, Linda and Stacy agreed that they would want 
+          a registration system - to help cut down on the lineups at the start of the registration period. They 
+          included that they had still wanted to keep features like waitlisting and storing doctor’s notes as high 
+          priority items. We then went through the new list of mandatory user stories and asked them if they had to, 
+          what they would give up. They concluded that the most important feature they would like, is the admin
+          functionality followed by online member class registration functionality. Finally, we also asked them to sort 
+          through the non-mandatory features into a basic and advanced membership registration list - so we would know
+          which features to implement in the case that we are able to fully implement the mandatory features. Therefore,
+          user stories pertaining to class registration are high (admin functionality of this is marked as very high),
+          and user stories relating to membership are low or very low.
+          </p>
+          <h6>Product Backlog</h6>
+          <ul>
+            <li><a href="https://github.com/CSC301H-Fall2013/nysc-membership/blob/master/docs/ProductBacklog.pdf">Product Backlog</a></li>
+          </ul>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">NYSC Membership maintained by <a href="https://github.com/CSC301H-Fall2013">CSC301H-Fall2013</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
