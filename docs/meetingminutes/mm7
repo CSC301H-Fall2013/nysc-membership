@@ -1,6 +1,6 @@
-Team Superior Meeting - October 10th 2013
+Team Superior Meeting - October 7th 2013
  
-Meeting called to order at 11:00 by all members.
+Meeting called to order at 15:00 by all members, and product champions.
  
 Members present:
 Cody Wong
@@ -9,20 +9,21 @@ Jessica Luu
 Janarthenan Rajakumar
 Michelle Liao
 Wen Xi (Kirien) Chen
+Stacy Chung (PC)
+Linda Rataj (PC)
  
 Members not present:
 (none)
  
 Decisions Made:
-Users stories turned into to tasks, and distributed between pairs.
-All tasks are to be estimated in terms of hours.
-Testing of all tasks to be completed for preliminary sprint 1. 
-Scrum board to be created on Trello, and must be maintained by all members.
+Product Champions decided they only want a registration system for classes.
+Prioritized User Stories so that administration stories have the highest priority, and member class registration next, 
+and all the other user stories about membership registration online taking lowest priority.
 
+Decided the team will only attempt the membership registration if time permits, focusing on class registration.
  
 Action Items:
-1. Estimation of tasks due by Saturday October 12th at 12:00 by all members.
-2. Testing for all tasks being implemented for sprint 1 due October 15th at 22:00 by all members.
-3. Scrum board to be made on trello by October 15th at 22:00 by all members.
-
-Meeting adjourned by all members at 12:00.
+1. All user stories pertaining to administrator are to be completed for sprint 1, October 23rd at 22:00.
+2. Prioritization to be added in format of Product Backlog, complete Product Backlog Tuesday October 15th at 22:00.
+ 
+Meeting adjourned by Stacy at 16:00.
