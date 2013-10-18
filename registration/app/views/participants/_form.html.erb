@@ -1,0 +1,57 @@
+<%= form_for(@participant) do |f| %>
+  <% if @participant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@participant.errors.count, "error") %> prohibited this participant from being saved:</h2>
+
+      <ul>
+      <% @participant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :participantID %><br>
+    <%= f.text_field :participantID %>
+  </div>
+  <div class="field">
+    <%= f.label :fname %><br>
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    <%= f.label :lname %><br>
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.number_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :expirydate %><br>
+    <%= f.date_select :expirydate %>
+  </div>
+  <div class="field">
+    <%= f.label :dr_note_date %><br>
+    <%= f.date_select :dr_note_date %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :birthday %><br>
+    <%= f.date_select :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :is_member %><br>
+    <%= f.check_box :is_member %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

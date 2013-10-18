@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  courseID: MyString
+  startDate: 2013-10-18
+  title: MyString
+  instructor: MyString
+  description: MyString
+  intesity: 1
+  additional: MyString
+  duration: MyString
+  startTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 15:27:06
+  dayOfWeek: MyString
+  earlybirdPrice: 1
+  memberPrice: 1
+  nonmemberPrice: 1
+  size: 1
+
+two:
+  courseID: MyString
+  startDate: 2013-10-18
+  title: MyString
+  instructor: MyString
+  description: MyString
+  intesity: 1
+  additional: MyString
+  duration: MyString
+  startTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 15:27:06
+  dayOfWeek: MyString
+  earlybirdPrice: 1
+  memberPrice: 1
+  nonmemberPrice: 1
+  size: 1

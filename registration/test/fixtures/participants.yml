@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  participantID: MyString
+  fname: MyString
+  lname: MyString
+  phone: 1
+  expirydate: 2013-10-18
+  dr_note_date: 2013-10-18
+  password: MyString
+  email: MyString
+  birthday: 2013-10-18
+  is_member: false
+
+two:
+  participantID: MyString
+  fname: MyString
+  lname: MyString
+  phone: 1
+  expirydate: 2013-10-18
+  dr_note_date: 2013-10-18
+  password: MyString
+  email: MyString
+  birthday: 2013-10-18
+  is_member: false

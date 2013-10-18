@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Participantid:</strong>
+  <%= @enrollment.participantID %>
+</p>
+
+<p>
+  <strong>Courseid:</strong>
+  <%= @enrollment.courseID %>
+</p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @enrollment.startDate %>
+</p>
+
+<p>
+  <strong>Waitlist status:</strong>
+  <%= @enrollment.waitlist_status %>
+</p>
+
+<%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
+<%= link_to 'Back', enrollments_path %>

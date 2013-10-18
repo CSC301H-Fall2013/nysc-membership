@@ -1,0 +1,61 @@
+<%= form_for(@parq) do |f| %>
+  <% if @parq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parq.errors.count, "error") %> prohibited this parq from being saved:</h2>
+
+      <ul>
+      <% @parq.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :participantID %><br>
+    <%= f.text_field :participantID %>
+  </div>
+  <div class="field">
+    <%= f.label :courseID %><br>
+    <%= f.text_field :courseID %>
+  </div>
+  <div class="field">
+    <%= f.label :startDate %><br>
+    <%= f.date_select :startDate %>
+  </div>
+  <div class="field">
+    <%= f.label :disclaimer %><br>
+    <%= f.check_box :disclaimer %>
+  </div>
+  <div class="field">
+    <%= f.label :ans1 %><br>
+    <%= f.check_box :ans1 %>
+  </div>
+  <div class="field">
+    <%= f.label :ans2 %><br>
+    <%= f.check_box :ans2 %>
+  </div>
+  <div class="field">
+    <%= f.label :ans3 %><br>
+    <%= f.check_box :ans3 %>
+  </div>
+  <div class="field">
+    <%= f.label :ans4 %><br>
+    <%= f.check_box :ans4 %>
+  </div>
+  <div class="field">
+    <%= f.label :ans5 %><br>
+    <%= f.check_box :ans5 %>
+  </div>
+  <div class="field">
+    <%= f.label :ans6 %><br>
+    <%= f.check_box :ans6 %>
+  </div>
+  <div class="field">
+    <%= f.label :ans7 %><br>
+    <%= f.check_box :ans7 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

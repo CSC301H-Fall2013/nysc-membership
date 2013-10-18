@@ -1,0 +1,55 @@
+<h1>Listing courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Courseid</th>
+      <th>Startdate</th>
+      <th>Title</th>
+      <th>Instructor</th>
+      <th>Description</th>
+      <th>Intesity</th>
+      <th>Additional</th>
+      <th>Duration</th>
+      <th>Starttime</th>
+      <th>Endtime</th>
+      <th>Dayofweek</th>
+      <th>Earlybirdprice</th>
+      <th>Memberprice</th>
+      <th>Nonmemberprice</th>
+      <th>Size</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.courseID %></td>
+        <td><%= course.startDate %></td>
+        <td><%= course.title %></td>
+        <td><%= course.instructor %></td>
+        <td><%= course.description %></td>
+        <td><%= course.intesity %></td>
+        <td><%= course.additional %></td>
+        <td><%= course.duration %></td>
+        <td><%= course.startTime %></td>
+        <td><%= course.endTime %></td>
+        <td><%= course.dayOfWeek %></td>
+        <td><%= course.earlybirdPrice %></td>
+        <td><%= course.memberPrice %></td>
+        <td><%= course.nonmemberPrice %></td>
+        <td><%= course.size %></td>
+        <td><%= link_to 'Show', course %></td>
+        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course', new_course_path %>

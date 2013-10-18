@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Courseid:</strong>
+  <%= @course.courseID %>
+</p>
+
+<p>
+  <strong>Startdate:</strong>
+  <%= @course.startDate %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @course.title %>
+</p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= @course.instructor %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @course.description %>
+</p>
+
+<p>
+  <strong>Intesity:</strong>
+  <%= @course.intesity %>
+</p>
+
+<p>
+  <strong>Additional:</strong>
+  <%= @course.additional %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @course.duration %>
+</p>
+
+<p>
+  <strong>Starttime:</strong>
+  <%= @course.startTime %>
+</p>
+
+<p>
+  <strong>Endtime:</strong>
+  <%= @course.endTime %>
+</p>
+
+<p>
+  <strong>Dayofweek:</strong>
+  <%= @course.dayOfWeek %>
+</p>
+
+<p>
+  <strong>Earlybirdprice:</strong>
+  <%= @course.earlybirdPrice %>
+</p>
+
+<p>
+  <strong>Memberprice:</strong>
+  <%= @course.memberPrice %>
+</p>
+
+<p>
+  <strong>Nonmemberprice:</strong>
+  <%= @course.nonmemberPrice %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @course.size %>
+</p>
+
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

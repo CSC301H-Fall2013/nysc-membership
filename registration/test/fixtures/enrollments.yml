@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  participantID: MyString
+  courseID: MyString
+  startDate: 2013-10-18
+  waitlist_status: 1
+
+two:
+  participantID: MyString
+  courseID: MyString
+  startDate: 2013-10-18
+  waitlist_status: 1

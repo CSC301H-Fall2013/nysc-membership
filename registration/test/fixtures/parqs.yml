@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  participantID: MyString
+  courseID: MyString
+  startDate: 2013-10-18
+  disclaimer: false
+  ans1: false
+  ans2: false
+  ans3: false
+  ans4: false
+  ans5: false
+  ans6: false
+  ans7: false
+
+two:
+  participantID: MyString
+  courseID: MyString
+  startDate: 2013-10-18
+  disclaimer: false
+  ans1: false
+  ans2: false
+  ans3: false
+  ans4: false
+  ans5: false
+  ans6: false
+  ans7: false
