@@ -1,37 +1,59 @@
 require 'test_helper'
 
 class ParticipantTest < ActiveSupport::TestCase
-  
-  	#BASIC TESTS
-	#search by first name
+ 
+# -----------USER STORY 11---------------------------
+	# test the result of renewing a expired membership 
+	def test_expired_membership_renewal
+		actual = participants(:one)
+		#to be implemented:
+		#Participant.renew(actual)
+		expected = Date.today + 1.year
+		assert_equal(actual.expirydate, expected, "Membership expiry did not" +
+		 " update to a year from today")
+	end
+
+	# test the result of renewing a ongoing membership
+	def test_ongoing_membership_renewal
+		actual = participants(:two)
+		#to be implemented:
+		#Participant.renew(actual)
+		expected = Date.parse('2014-12-01')
+		assert_equal(actual.expirydate, expected, "Membership expiry did not" +
+		 " update to a year from previous expiry")
+	end
+
+# -----------USER STORY 22---------------------------
+	# BASIC TESTS
+	# search by first name
 	def test_search_by_fname
 		actual = Participant.search('Elizabeth')
 		expected = [participants(:one)]
 		assert_equal(actual, expected, "First name did not match")
 	end
 
-	#search by last name
+	# search by last name
 	def test_search_by_lname
 		actual = Participant.search('Hudson')
 		expected = [participants(:one)]
 		assert_equal(actual, expected, "Last name did not match")
 	end
 
-	#search by phone number
+	# search by phone number
 	def test_search_by_phone_number
 		actual = Participant.search('4161234567')
 		expected = [participants(:one)]
 		assert_equal(actual, expected, "Phone number did not match")
 	end
 
-	#search by participantID
+	# search by participantID
 	def test_search_by_participant_id
 		actual = Participant.search('shmoe2')
 		expected = [participants(:four)]
 		assert_equal(actual, expected, "Participant ID did not match")
 	end
 
-	#test no search criteria (all should be returned)
+	# test no search criteria (all should be returned)
 	def test_search_null
 		actual = Participant.search('')
 		expected = [participants(:four), participants(:three), \
@@ -40,37 +62,37 @@ class ParticipantTest < ActiveSupport::TestCase
 			were chosen")
 	end
 
-	#ADVANCED TESTS
-	#search with different case (see if lower case will match upper case)
+	# ADVANCED TESTS
+	# search with different case (see if lower case will match upper case)
 	def test_search_by_lowercase
 		actual = Participant.search('elizabeth')
 		expected = [participants(:one)]
 		assert_equal(actual, expected, "First name did not match")
 	end
 
-	#search by partial string (phone number - last 4 digits)
+	# search by partial string (phone number - last 4 digits)
 	def test_search_by_partial_string
 		actual = Participant.search('2000')
 		expected = [participants(:two)]
 		assert_equal(actual.uniq.sort, expected.uniq.sort, "Phone number did not match")
 	end
 
-	#search with multiple matches 
+	# search with multiple matches 
 	def test_search_with_multiple_matches
 		actual = Participant.search('mike')
 		expected = [participants(:three), participants(:four)]
 		assert_equal(actual.uniq.sort, expected.uniq.sort, "Phone number did not match")
 	end
 
-	#NEGATIVE TESTS
-	#search by a non-searchable field (ex: ismember)
+	# NEGATIVE TESTS
+	# search by a non-searchable field (ex: ismember)
 	def test_search_by_invalid_criteria
 		actual = Participant.search('true')
 		expected = []
 		assert_equal(actual.uniq.sort, expected.uniq.sort, "Phone number did not match")
 	end
 
-	#search for entry not in database
+	# search for entry not in database
 	def test_search_not_in_database
 		actual = Participant.search('johnnnyyyyyyy')
 		expected = []
@@ -78,3 +100,16 @@ class ParticipantTest < ActiveSupport::TestCase
 	end
 
 end
+
+
+# -----------USER STORY 25---------------------------
+
+	# test the result of updating a user's doctor's note 
+	def test_expired_membership_renewal
+		actual = participants(:one)
+		#to be implemented:
+		#Participant.addnote(actual)
+		expected = Date.today
+		assert_equal(actual.expirydate, expected, "Membership expiry did not" +
+		 " update to a year from today")
+	end

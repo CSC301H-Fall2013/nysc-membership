@@ -4,8 +4,8 @@ class ParticipantsController < ApplicationController
   # GET /participants
   # GET /participants.json
   def index
+    # Find all participants that match search criteria.
     @participants = Participant.search(params[:search])
-    #@participants = Participant.all
   end
 
   # GET /participants/1

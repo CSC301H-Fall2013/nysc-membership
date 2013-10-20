@@ -1,6 +1,6 @@
 <h1>Listing participants</h1>
 
-<!--this will search through all participants in the database -->
+<!-- Create a search bar that filters participants based on search criteria entered. -->
 <%= form_tag participants_path, :method => 'get' do %>
   <p>
     <p>Search by First name, Last name, Phone number, or Participant ID</p>
@@ -11,49 +11,34 @@
 <% end %> 
 
 
+<br>
+<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+
 <br><hr><br>
 
-<p> Table below for test/database verification: </p>
-<table>
+<!-- Create table to display search results. -->
+<table border="1">
   <thead>
     <tr>
-      <th>Participantid</th>
-      <th>Fname</th>
-      <th>Lname</th>
-      <th>Phone</th>
-      <th>Expirydate</th>
-      <th>Dr note date</th>
-      <th>Password</th>
-      <th>Email</th>
-      <th>Birthday</th>
-      <th>Is member</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Participant Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone Number</th>
+      <th>Membership Expiry Date</th>
     </tr>
   </thead>
 
   <tbody>
     <% @participants.each do |participant| %>
       <tr>
-        <td><%= participant.participantID %></td>
+        <td><%= link_to participant.participantID, participant%></td>
         <td><%= participant.fname %></td>
         <td><%= participant.lname %></td>
         <td><%= participant.phone %></td>
         <td><%= participant.expirydate %></td>
-        <td><%= participant.dr_note_date %></td>
-        <td><%= participant.password %></td>
-        <td><%= participant.email %></td>
-        <td><%= participant.birthday %></td>
-        <td><%= participant.is_member %></td>
-        <td><%= link_to 'Show', participant %></td>
-        <td><%= link_to 'Edit', edit_participant_path(participant) %></td>
-        <td><%= link_to 'Destroy', participant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Participant', new_participant_path %>
