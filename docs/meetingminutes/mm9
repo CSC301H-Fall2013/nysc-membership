@@ -1,0 +1,26 @@
+Team Superior Meeting - October 17th 2013
+ 
+Meeting called to order at 11:00 by all members.
+ 
+Members present:
+Cody Wong
+Ealona Shmoel
+Jessica Luu
+Janarthenan Rajakumar
+Michelle Liao
+Wen Xi (Kirien) Chen
+ 
+Members not present:
+(none)
+ 
+Decisions Made:
+Scrum Board location switched, no longer using Trello.
+Reassigned User Stories to be grouped appropriately; certain user stories are related.
+Decided on the various database tables.
+ 
+Action Items:
+1. Create Scrum board as a google doc due by October 17th at 22:00 by Ealona.
+2. User Stories tasks to be re-estimated by new member’s they are assigned to by October 17th at 22:00 by all members.
+3. Database tables to be created in rails application and pushed to github by October 18th at 22:00 by Cody.
+
+Meeting adjourned by all members at 12:00.
