@@ -1,25 +1,61 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  participantID: MyString
-  fname: MyString
-  lname: MyString
-  phone: 1
-  expirydate: 2013-10-18
-  dr_note_date: 2013-10-18
-  password: MyString
-  email: MyString
+  participantID: Hudson
+  fname: Elizabeth
+  lname: Hudson
+  phone: 4161234567
+  expirydate: 2014-10-10
+  dr_note_date: 2013-10-17
+  password: password
+  email: 
   birthday: 2013-10-18
   is_member: false
 
 two:
-  participantID: MyString
-  fname: MyString
-  lname: MyString
-  phone: 1
-  expirydate: 2013-10-18
-  dr_note_date: 2013-10-18
-  password: MyString
+  participantID: Temple
+  fname: Shirley
+  lname: Temple
+  phone: 6478452000
+  expirydate: 2013-12-01
+  dr_note_date: 2013-09-18
+  password: password
   email: MyString
-  birthday: 2013-10-18
-  is_member: false
+  birthday: 2000-10-18
+  is_member: true
+
+three:
+  participantID: shmoel
+  fname: mike
+  lname: shmoel
+  phone: 6478454848
+  expirydate: 2013-12-01
+  dr_note_date: 2013-09-18
+  password: password
+  email: MyString
+  birthday: 2000-10-18
+  is_member: true
+
+four:
+  participantID: shmoe2
+  fname: mike
+  lname: shmoel
+  phone: 6478454848
+  expirydate: 2013-12-01
+  dr_note_date: 2013-09-18
+  password: password
+  email: MyString
+  birthday: 2000-10-18
+  is_member: true
+
+five:
+  participantID: brian
+  fname: brian
+  lname: wong
+  phone: 6478448480
+  expirydate: 2013-12-01
+  dr_note_date: 2013-09-18
+  password: password
+  email: MyString
+  birthday: 2000-10-18
+  is_member: true
