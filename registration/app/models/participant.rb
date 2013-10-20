@@ -9,4 +9,13 @@ class Participant < ActiveRecord::Base
 	    []
 	  end
 	end
+
+	#validation
+	validates :participantID, :uniqueness => true;
+	validates :is_member, :fname, :lname, :phone, :presence => true
+	validates :expirydate, :dr_note_date, :birthday, :presence => { :message => "Date must be in DD-MM-YYYY"}, allow_nil: true
+
+	#validates participantID to be length of
+	validates :participantID, length: { is: 8 }
+
 end

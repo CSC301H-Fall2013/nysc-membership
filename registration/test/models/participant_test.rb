@@ -1,7 +1,37 @@
 require 'test_helper'
 
 class ParticipantTest < ActiveSupport::TestCase
- 
+
+	class Participants < ActiveRecord::Base
+	  	validates_uniqueness_of :participantID
+	  	validates_presence_of :fname, :lname, :is_member, :phone, :birthday
+	end
+# --------- USER STORY 10 ----------------------------
+	
+	# Test a valid new member without email saving in the participants database
+	def test_valid_new_member_nil_email
+		participant = Participant.new(:participantID => "kikiko01", :fname =>"Kiki", :lname =>"Ko", :phone => 4169876256, :expirydate => 2013-12-01, :dr_note_date => 2014-05-23, :password => "mypassword", :email => nil, :birthday => 2000-10-18, :is_member => true)
+		assert participant.save, "valid new member was not saved"
+	end
+
+	# Test a valid new member with email saving in the participants database
+	def test_valid_new_member_with_email
+		participant = Participant.new(:participantID => "kikiko01", :fname =>"Kiki", :lname =>"Ko", :phone => 4169876256, :expirydate => 2013-12-01, :dr_note_date => 2014-05-23, :password => "mypassword", :email => "kiki.koko@email.com", :birthday => 2000-10-18, :is_member => true)
+		assert participant.save, "valid new member was not saved"
+	end
+
+	# failing test of adding a unvalid member into the db ~ ID is not valid
+	def test_unvalid_new_member_shouldFail
+		participant = Participant.new(:participantID => "kungfu", :fname => "Haro", :lname => "There", :phone => 9999999999, :expirydate => nil, :dr_note_date => nil, :password => nil, :email => nil, :birthday => 1930-04-04, :is_member => true)
+		assert participant.save, "unvalid new member was saved"
+	end
+
+	# testing null members not being saved into the database
+	def test_null_new_member
+		participant = Participant.new(:participantID => nil, :fname => nil, :lname => nil, :phone => nil, :expirydate => nil, :dr_note_date => nil, :password => nil, :email => nil, :birthday => nil, :is_member => true)
+		assert_not_nil participant.save, "Did save a null nember into database"
+ 	end
+
 # -----------USER STORY 11---------------------------
 	# test the result of renewing a expired membership 
 	def test_expired_membership_renewal
