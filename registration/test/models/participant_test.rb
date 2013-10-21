@@ -32,25 +32,6 @@ class ParticipantTest < ActiveSupport::TestCase
 		assert_not_nil participant.save, "Did save a null nember into database"
  	end
 
-# -----------USER STORY 11---------------------------
-	# test the result of renewing a expired membership 
-	def test_expired_membership_renewal
-		actual = participants(:one)
-		Participant.renew(actual)
-		expected = Date.today + 1.year
-		assert_equal(actual.expirydate, expected, "Membership expiry did not" +
-		 " update to a year from today")
-	end
-
-	# test the result of renewing a ongoing membership
-	def test_ongoing_membership_renewal
-		actual = participants(:two)
-		Participant.renew(actual)
-		expected = Date.parse('2014-12-01')
-		assert_equal(actual.expirydate, expected, "Membership expiry did not" +
-		 " update to a year from previous expiry")
-	end
-
 # -----------USER STORY 22---------------------------
 	# BASIC TESTS
 	# search by first name
