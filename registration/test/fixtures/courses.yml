@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  courseID: MyString
+  courseID: run123
   startDate: 2013-10-18
   title: MyString
   instructor: MyString
@@ -12,13 +12,13 @@ one:
   startTime: 2013-10-18 15:27:06
   endTime: 2013-10-18 15:27:06
   dayOfWeek: MyString
-  earlybirdPrice: 1
-  memberPrice: 1
-  nonmemberPrice: 1
+  earlybirdPrice: 10
+  memberPrice: 20
+  nonmemberPrice: 30
   size: 1
 
 two:
-  courseID: MyString
+  courseID: yoga01
   startDate: 2013-10-18
   title: MyString
   instructor: MyString
@@ -29,7 +29,7 @@ two:
   startTime: 2013-10-18 15:27:06
   endTime: 2013-10-18 15:27:06
   dayOfWeek: MyString
-  earlybirdPrice: 1
-  memberPrice: 1
-  nonmemberPrice: 1
-  size: 1
+  earlybirdPrice: 5
+  memberPrice: 10
+  nonmemberPrice: 15
+  size: 30

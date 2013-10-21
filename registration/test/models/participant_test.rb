@@ -11,19 +11,19 @@ class ParticipantTest < ActiveSupport::TestCase
 	# Test a valid new member without email saving in the participants database
 	def test_valid_new_member_nil_email
 		participant = Participant.new(:participantID => "kikiko01", :fname =>"Kiki", :lname =>"Ko", :phone => 4169876256, :expirydate => 2013-12-01, :dr_note_date => 2014-05-23, :password => "mypassword", :email => nil, :birthday => 2000-10-18, :is_member => true)
-		assert participant.save, "valid new member was not saved"
+		assert participant.save, "valid new member was not saved into database"
 	end
 
 	# Test a valid new member with email saving in the participants database
 	def test_valid_new_member_with_email
-		participant = Participant.new(:participantID => "kikiko01", :fname =>"Kiki", :lname =>"Ko", :phone => 4169876256, :expirydate => 2013-12-01, :dr_note_date => 2014-05-23, :password => "mypassword", :email => "kiki.koko@email.com", :birthday => 2000-10-18, :is_member => true)
+		participant = Participant.new(:participantID => "kikiko02", :fname =>"Kiki", :lname =>"Ko", :phone => 4169876256, :expirydate => 2013-12-01, :dr_note_date => 2014-05-23, :password => "mypassword", :email => "kiki.koko@email.com", :birthday => 2000-10-18, :is_member => true)
 		assert participant.save, "valid new member was not saved"
 	end
 
 	# failing test of adding a unvalid member into the db ~ ID is not valid
-	def test_unvalid_new_member_shouldFail
+	def test_unvalid_new_member
 		participant = Participant.new(:participantID => "kungfu", :fname => "Haro", :lname => "There", :phone => 9999999999, :expirydate => nil, :dr_note_date => nil, :password => nil, :email => nil, :birthday => 1930-04-04, :is_member => true)
-		assert participant.save, "unvalid new member was saved"
+		assert_not_nil participant.save, "unvalid new member was saved"
 	end
 
 	# testing null members not being saved into the database
@@ -85,7 +85,7 @@ class ParticipantTest < ActiveSupport::TestCase
 	def test_search_null
 		actual = Participant.search('')
 		expected = [participants(:four), participants(:three), \
-			participants(:two), participants(:one), participants(:five)]
+			participants(:two), participants(:one), participants(:five), participants(:six), participants(:non_member_one)]
 		assert_equal(actual.uniq.sort, expected.uniq.sort, "Not all members \
 			were chosen")
 	end

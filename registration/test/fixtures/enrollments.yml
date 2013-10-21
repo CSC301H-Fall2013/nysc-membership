@@ -1,13 +1,26 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  participantID: MyString
-  courseID: MyString
+  participantID: liaomi00
+  courseID: run123
   startDate: 2013-10-18
-  waitlist_status: 1
+  waitlist_status: 0
 
 two:
-  participantID: MyString
-  courseID: MyString
+  participantID: liaomi00
+  courseID: yoga01
+  startDate: 2013-10-18
+  waitlist_status: 0
+
+non_member_one:
+  participantID: liaomi11
+  courseID: yoga01
+  startDate: 2013-10-18
+  waitlist_status: 0
+
+
+non_member_two:
+  participantID: liaomi11
+  courseID: run123
   startDate: 2013-10-18
   waitlist_status: 1

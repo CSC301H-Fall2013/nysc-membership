@@ -60,4 +60,29 @@ five:
   birthday: 2000-10-18
   is_member: true
 
+six:
+  participantID: liaomi00
+  fname: mico
+  lname: liao
+  phone: 6479991234
+  expirydate: 2014-01-07
+  dr_note_date: 2014-09-18
+  password: password
+  email: MyString
+  birthday: 1940-10-18
+  is_member: true
+
+non_member_one:
+  participantID: liaomi11
+  fname: Mich
+  lname: Liao
+  phone: 6479996789
+  expirydate:
+  dr_note_date:
+  password:
+  email:
+  birthday:
+  is_member: false
+
+
 
