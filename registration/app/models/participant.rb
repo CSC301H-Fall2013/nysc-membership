@@ -10,15 +10,6 @@ class Participant < ActiveRecord::Base
 	  end
 	end
 
-	# Updates a participant's expiry date by one year
-	def self.renew(participant)
-		if (participant.expirydate < Date.today) #membership has expired, membership should be renewed from today's date
-			participant.expirydate = Date.today + 1.year
-		else # membership has not yet expired - membership should be renewed from the expiry date
-			participant.expirydate = participant.expirydate + 1.year
-		end
-	end
-
 	# Export all members information as a csv file.
 	def self.to_csv
 		CSV.generate do |csv|
@@ -30,10 +21,18 @@ class Participant < ActiveRecord::Base
 
 	end
 
+	# A Participant must present a doctor's note that was written before, and including today
+	def dr_note_date_cannot_be_in_the_future
+		if dr_note_date.present? && dr_note_date > Date.today
+			errors.add(:dr_note_date, "Can't be in the future!")
+		end
+	end
+
 	#validation
 	validates :participantID, :uniqueness => true;
 	validates :is_member, :fname, :lname, :phone, :presence => true
 	validates :expirydate, :dr_note_date, :birthday, :presence => { :message => "Date must be in DD-MM-YYYY"}, allow_nil: true
+	validate :dr_note_date_cannot_be_in_the_future 
 
 	#validates participantID to be length of
 	validates :participantID, length: { is: 8 }
