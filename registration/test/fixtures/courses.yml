@@ -2,7 +2,7 @@
 
 one:
   courseID: run123
-  startDate: 2013-10-18
+  startDate: 18-10-2013
   title: MyString
   instructor: MyString
   description: MyString
@@ -19,7 +19,7 @@ one:
 
 two:
   courseID: yoga01
-  startDate: 2013-10-18
+  startDate: 18-10-2013
   title: MyString
   instructor: MyString
   description: MyString
@@ -33,3 +33,37 @@ two:
   memberPrice: 10
   nonmemberPrice: 15
   size: 30
+
+three:
+  courseID: nap123
+  startDate: 18-10-2013
+  title: MyString
+  instructor: MyString
+  description: MyString
+  intesity: 1
+  additional: MyString
+  duration: MyString
+  startTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 15:27:06
+  dayOfWeek: MyString
+  earlybirdPrice: 5
+  memberPrice: 10
+  nonmemberPrice: 15
+  size: 30
+
+four:
+  courseID: walk11
+  startDate: 18-10-2013
+  title: MyString
+  instructor: MyString
+  description: MyString
+  intesity: 1
+  additional: MyString
+  duration: MyString
+  startTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 15:27:06
+  dayOfWeek: MyString
+  earlybirdPrice: 5
+  memberPrice: 10
+  nonmemberPrice: 15
+  size: 0

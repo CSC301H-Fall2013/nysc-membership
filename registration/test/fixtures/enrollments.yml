@@ -3,24 +3,24 @@
 one:
   participantID: liaomi00
   courseID: run123
-  startDate: 2013-10-18
+  startDate: 18-10-2013
   waitlist_status: 0
 
 two:
   participantID: liaomi00
   courseID: yoga01
-  startDate: 2013-10-18
+  startDate: 18-10-2013
   waitlist_status: 0
 
 non_member_one:
   participantID: liaomi11
   courseID: yoga01
-  startDate: 2013-10-18
+  startDate: 18-10-2013
   waitlist_status: 0
 
 
 non_member_two:
   participantID: liaomi11
   courseID: run123
-  startDate: 2013-10-18
+  startDate: 18-10-2013
   waitlist_status: 1
