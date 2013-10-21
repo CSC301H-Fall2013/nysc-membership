@@ -180,6 +180,60 @@ class EnrollmentTest < ActiveSupport::TestCase
 	end
 
 
+#-------------------- User Story 14 -----------------
 
+	# Test expectated waitlist non member's waitlist_status
+	def test_waistlisted_nonmember
+		non_member = enrollments(:non_member_two)
+		expected = 1
+		assert_equal expected, non_member.waitlist_status, "Supposedly waitlisted non member is not waitlisted"
+	end
+
+	# Test expectated waitlist member's waitlist_status
+	def test_waitlisted_member
+		member = enrollments(:three)
+		expected = 1
+		assert_equal expected, member.waitlist_status, "Supposedly waitlisted member is not waitlisted"
+	end
+
+	# Test adding a member to be waitlisted
+	def test_adding_to_waitlist_member
+		member = Enrollments.new(:participantID => participants(:six).participantID,:courseID => "run123", :startDate => '2013-10-18' )
+	
+		#Checking the capacity of the course
+		actual = Course.find_by(courseID: member.courseID)
+		current_enrollment = Enrollments.where(courseID: member.courseID).count
+		assert_operator current_enrollment, :<, actual.size, "The size of the course is full, should fail since we are going to be waitlisting"
+
+		# Adding proper values before saving
+		member.startDate = actual.startDate
+		member.waitlist_status = 1
+
+		assert member.save, "registering a new valid member was not saved"
+
+		waitlisted_member = Enrollments.find_by(participantID: member.participantID)
+		expected = 1
+		assert expected, waitlisted_member.waitlist_status, "Saved member's waitlist_status is false"
+	end
+
+	# Test adding a non member to be waitlisted
+	def test_adding_to_waitlist_non_member
+		non_member = Enrollments.new(:participantID => participants(:non_member_one).participantID,:courseID => "run123", :startDate => '2013-10-18' )
+	
+		#Checking the capacity of the course
+		actual = Course.find_by(courseID: non_member.courseID)
+		current_enrollment = Enrollments.where(courseID: non_member.courseID).count
+		assert_operator current_enrollment, :<, actual.size, "The size of the course is full, should fail since we are going to be waitlisting"
+
+		# Adding proper values before saving
+		non_member.startDate = actual.startDate
+		non_member.waitlist_status = 1
+
+		assert non_member.save, "registering a new valid non_member was not saved"
+
+		waitlisted_member = Enrollments.find_by(participantID: non_member.participantID)
+		expected = 1
+		assert expected, waitlisted_member.waitlist_status, "Saved non_member's waitlist_status is false"
+	end
 
 end

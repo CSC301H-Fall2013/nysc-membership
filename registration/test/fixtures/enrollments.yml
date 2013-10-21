@@ -12,6 +12,12 @@ two:
   startDate: 18-10-2013
   waitlist_status: 0
 
+three:
+  participantID: liaomi00
+  courseID: walk11
+  startDate: 18-10-2013
+  waitlist_status: 1
+
 non_member_one:
   participantID: liaomi11
   courseID: yoga01
