@@ -6,6 +6,12 @@ class ParticipantsController < ApplicationController
   def index
     # Find all participants that match search criteria.
     @participants = Participant.search(params[:search])
+    # Export all member's information to a csv file.
+    @exports = Participant.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @exports.to_csv }
+    end
   end
 
   # GET /participants/1

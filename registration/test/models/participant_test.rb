@@ -36,8 +36,7 @@ class ParticipantTest < ActiveSupport::TestCase
 	# test the result of renewing a expired membership 
 	def test_expired_membership_renewal
 		actual = participants(:one)
-		#to be implemented:
-		#Participant.renew(actual)
+		Participant.renew(actual)
 		expected = Date.today + 1.year
 		assert_equal(actual.expirydate, expected, "Membership expiry did not" +
 		 " update to a year from today")
@@ -46,8 +45,7 @@ class ParticipantTest < ActiveSupport::TestCase
 	# test the result of renewing a ongoing membership
 	def test_ongoing_membership_renewal
 		actual = participants(:two)
-		#to be implemented:
-		#Participant.renew(actual)
+		Participant.renew(actual)
 		expected = Date.parse('2014-12-01')
 		assert_equal(actual.expirydate, expected, "Membership expiry did not" +
 		 " update to a year from previous expiry")

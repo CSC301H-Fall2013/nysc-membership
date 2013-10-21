@@ -10,6 +10,26 @@ class Participant < ActiveRecord::Base
 	  end
 	end
 
+	# Updates a participant's expiry date by one year
+	def self.renew(participant)
+		if (participant.expirydate < Date.today) #membership has expired, membership should be renewed from today's date
+			participant.expirydate = Date.today + 1.year
+		else # membership has not yet expired - membership should be renewed from the expiry date
+			participant.expirydate = participant.expirydate + 1.year
+		end
+	end
+
+	# Export all members information as a csv file.
+	def self.to_csv
+		CSV.generate do |csv|
+			csv << column_names
+			all.each do |participant|
+				csv << participant.attributes.values_at(*column_names)
+			end
+		end
+
+	end
+
 	#validation
 	validates :participantID, :uniqueness => true;
 	validates :is_member, :fname, :lname, :phone, :presence => true

@@ -10,9 +10,10 @@
 
 
 <h3>Manage Members</h3>
-<%= link_to 'Find a member', participants_path %>
-
+<%= link_to 'Find a member', participants_path %><br>
+<%= link_to "Export data of all participants", participants_path(format: "csv") %>
 
 
 <h3>Course stuff</h3>
-<%= link_to 'Courses', courses_path %>
+<%= link_to 'Courses', courses_path %><br>
+<%= link_to "Export all Parq", parqs_path(format: "csv") %>

@@ -5,6 +5,12 @@ class ParqsController < ApplicationController
   # GET /parqs.json
   def index
     @parqs = Parq.all
+
+    # Export all parq to a csv file.
+    respond_to do |format|
+      format.html
+      format.csv { send_data @parqs.to_csv }
+    end
   end
 
   # GET /parqs/1
