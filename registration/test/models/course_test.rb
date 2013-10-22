@@ -23,7 +23,7 @@ class CourseTest < ActiveSupport::TestCase
 
 	# Test case to verifying no duplicate courseCode
 	def test_double_courseCode
-		course = courses(:one)
+		course = courses(:four)
 		dupCourse = courses(:duplicateFour)
 		course.save
 		assert_not_nil Course.find_by(courseID: course.courseID), "Course one was not saved"
@@ -36,5 +36,15 @@ class CourseTest < ActiveSupport::TestCase
 		assert !course.save, "Nil course form saved"
 	end
 
+	# Test for endTime earlier than startTime
+	def test_endTime_earlier_than_startTime
+		course = courses(:four)
+		assert !course.save, "Course was saved with endTime earlier than startTime"
+	end
 
+	# Test for correct courseId length
+	def test_correct_courseID_length
+		course = courses(:one)
+		assert !course.save, "Course ID with wrong length accepted"
+	end
 end
