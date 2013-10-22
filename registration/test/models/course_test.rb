@@ -47,4 +47,11 @@ class CourseTest < ActiveSupport::TestCase
 		course = courses(:one)
 		assert !course.save, "Course ID with wrong length accepted"
 	end
+
+	# Test case for user story 19
+        def test_cancel_course
+                course = courses(:five)
+                Course.find_by(courseID: course.courseID).delete_all
+                assert Course.find_by(courseID: course.courseID), "Course is not in Courses database"
+        end
 end
