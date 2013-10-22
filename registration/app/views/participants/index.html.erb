@@ -1,5 +1,14 @@
 <h1>Listing participants</h1>
  
+ <!-- Create a search bar that filters participants based on search criteria entered. -->
+<%= form_tag participants_path, :method => 'get' do %>
+  <p>
+    <p>Search by First name, Last name, Phone number, or Participant ID</p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+
+<% end %> 
 <br>
 <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
 
