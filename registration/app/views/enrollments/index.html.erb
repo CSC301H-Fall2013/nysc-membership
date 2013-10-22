@@ -1,4 +1,14 @@
-<h1>Listing enrollments</h1>
+<h1>Listing enrollments</h1> 
+
+<!-- Create a search bar that filters participants based on search criteria entered. -->
+<%= form_tag enrollments_path, :method => 'get' do %>
+  <p>
+    <p>Search by Participant ID, Course ID, or Start Date</p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+
+<% end %> 
 
 <table>
   <thead>
@@ -30,4 +40,5 @@
 
 <br>
 
-<%= link_to 'New Enrollment', new_enrollment_path %>
+<%= link_to 'New Enrollment', new_enrollment_path %></br>
+<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
