@@ -3,10 +3,12 @@
  <!-- Create a search bar that filters participants based on search criteria entered. -->
 <%= form_tag participants_path, :method => 'get' do %>
   <p>
-    <p>Search by First name, Last name, Phone number, or Participant ID.<br>
-    To view all participants, leave search criteria blank and click search.</p>
+    <p>Search by First name, Last name, Phone number, or Participant ID.</p>
+  
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
+    <br>
+    <small>To view all participants, leave search criteria blank and click search.</small>
   </p>
 
 <% end %> 
