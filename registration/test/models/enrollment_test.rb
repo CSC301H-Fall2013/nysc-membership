@@ -236,4 +236,37 @@ class EnrollmentTest < ActiveSupport::TestCase
 		assert expected, waitlisted_member.waitlist_status, "Saved non_member's waitlist_status is false"
 	end
 
+#-------------------- User Story 16 -----------------
+
+	# Test for member to register during early bird session
+	def test_member_registering_early_bird
+		member = Enrollments.new(:participantID => participants(:six).participantID,:courseID => "run123", :startDate => '2013-10-18' )
+		assert Participant.find_by(participantID: member.participantID).is_member, "Member is not a member"
+		early_bird_last_date = '2013-11-01'
+
+		#Date.today since creating the enrollment will of today
+		assert_operator Date.today, :<, Date.parse(early_bird_last_date), "Member registered too late for early bird"
+	end
+
+	# Test non member registering for early bird, not allow
+	def test_non_member_registering_early_bird
+		non_member = Enrollments.new(:participantID => participants(:non_member_one).participantID,:courseID => "run123", :startDate => '2013-10-18' )
+		assert !Participant.find_by(participantID: non_member.participantID).is_member, "Member is not a member"
+		early_bird_last_date = '2013-11-01'
+
+		#Date.today since creating the enrollment will of today
+		assert_operator Date.today, :<, Date.parse(early_bird_last_date), "Member registered too late for early bird"
+	end
+
+	# FAILURE TEST
+	# Test for registering for early bird after date has past
+	def test_member_register_after_early_bird
+		member = Enrollments.new(:participantID => participants(:six).participantID,:courseID => "run123", :startDate => '2013-10-18' )
+		assert Participant.find_by(participantID: member.participantID).is_member, "Member is not a member"
+		early_bird_last_date = '2013-09-01'
+
+		#Date.today since creating the enrollment will of today
+		assert_operator Date.today, :<, Date.parse(early_bird_last_date), "Member registered too late for early bird"
+	end
+
 end
