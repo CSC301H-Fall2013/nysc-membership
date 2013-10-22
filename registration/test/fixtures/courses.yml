@@ -17,7 +17,7 @@ nil:
   size:
 
 one:
-  courseID: run123
+  courseID: run12345
   startDate: 18-10-2013
   title: MyString
   instructor: MyString
@@ -26,7 +26,7 @@ one:
   additional: MyString
   duration: MyString
   startTime: 2013-10-18 15:27:06
-  endTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 16:27:06
   dayOfWeek: MyString
   earlybirdPrice: 10
   memberPrice: 20
@@ -34,7 +34,7 @@ one:
   size: 1
 
 two:
-  courseID: yoga01
+  courseID: yoga0123
   startDate: 18-10-2013
   title: MyString
   instructor: MyString
@@ -43,7 +43,7 @@ two:
   additional: MyString
   duration: MyString
   startTime: 2013-10-18 15:27:06
-  endTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 16:27:06
   dayOfWeek: MyString
   earlybirdPrice: 5
   memberPrice: 10
@@ -51,7 +51,7 @@ two:
   size: 30
 
 three:
-  courseID: nap123
+  courseID: nap12345
   startDate: 18-10-2013
   title: MyString
   instructor: MyString
@@ -60,7 +60,7 @@ three:
   additional: MyString
   duration: MyString
   startTime: 2013-10-18 15:27:06
-  endTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 16:27:06
   dayOfWeek: MyString
   earlybirdPrice: 5
   memberPrice: 10
@@ -68,7 +68,7 @@ three:
   size: 30
 
 four:
-  courseID: walk11
+  courseID: walk1122
   startDate: 18-10-2013
   title: MyString
   instructor: MyString
@@ -77,7 +77,7 @@ four:
   additional: MyString
   duration: MyString
   startTime: 2013-10-18 15:27:06
-  endTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 12:27:06
   dayOfWeek: MyString
   earlybirdPrice: 5
   memberPrice: 10
@@ -85,7 +85,7 @@ four:
   size: 0
 
 duplicateFour:
-  courseID: walk11
+  courseID: walk1122
   startDate: 18-10-2013
   title: MyString
   instructor: MyString
@@ -94,7 +94,7 @@ duplicateFour:
   additional: MyString
   duration: MyString
   startTime: 2013-10-18 15:27:06
-  endTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 16:27:06
   dayOfWeek: MyString
   earlybirdPrice: 5
   memberPrice: 10
