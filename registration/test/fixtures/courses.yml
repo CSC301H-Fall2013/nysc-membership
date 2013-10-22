@@ -84,6 +84,23 @@ four:
   nonmemberPrice: 15
   size: 0
 
+five:
+  courseID: zum101
+  startDate: 28-11-2013
+  title: MyString
+  instructor: MyString
+  description: MyString
+  intesity: 1
+  additional: MyString
+  duration: MyString
+  startTime: 2013-11-28 15:27:06
+  endTime: 2013-11-28 16:27:06
+  dayOfWeek: MyString
+  earlybirdPrice: 15
+  memberPrice: 20
+  nonmemberPrice: 25
+  size: 20
+
 duplicateFour:
   courseID: walk1122
   startDate: 18-10-2013
