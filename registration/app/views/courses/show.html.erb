@@ -72,9 +72,9 @@
 
 <p>
   <strong>Size:</strong>
-  # Need to edit so that links to a new page which will display all participants
-  <%= link_to @course.size, courses_path %>
+  <%= @course.size %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', courses_path %> ||
+<%= link_to 'List Participants', courses_path%> ||
