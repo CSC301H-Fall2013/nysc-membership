@@ -1,4 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+nil:
+  courseName:
+  courseCode: 
+  instructor: 
+  description: 
+  intensity: 
+  additional: 
+  startDate: 
+  endDate: 
+  startTime: 
+  endTime:
+  duration:
+  earlybirdPrice:
+  memberPrice:
+  nonmemberPrice:
 
 one:
   courseID: run123
@@ -67,3 +82,20 @@ four:
   memberPrice: 10
   nonmemberPrice: 15
   size: 0
+
+duplicate:
+  courseID: walk11
+  startDate: 18-10-2013
+  title: MyString
+  instructor: MyString
+  description: MyString
+  intesity: 1
+  additional: MyString
+  duration: MyString
+  startTime: 2013-10-18 15:27:06
+  endTime: 2013-10-18 15:27:06
+  dayOfWeek: MyString
+  earlybirdPrice: 5
+  memberPrice: 10
+  nonmemberPrice: 15
+  size: 0  
