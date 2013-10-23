@@ -1,23 +1,23 @@
-<h1>StaticPages- adminhome - Hi team superior</h1>
-
-
-
-<p> this is our admin home page. add your links to your sections here. and add corresponding back buttons later.. </p>
-<p>Find me in app/views/static_pages/adminhome.html.erb</p>
-
+<h1>StaticPages- adminhome</h1>
 
 <br><br>
 
 
 <h3>Manage Members</h3>
+
+<!-- Links that take you to a page depending on what admin wants to do. -->
 <%= link_to 'Add a member', new_participant_path %><br>
 <%= link_to 'Find a member', participants_path %><br>
 <%= link_to "Edit a member's information", participants_path %><br>
+
+<!-- Exports a csv file with all member's information. -->
 <%= link_to "Export data of all participants", participants_path(format: "csv") %>
 
 
 <h3>Course stuff</h3>
 <%= link_to 'Courses', courses_path %><br>
+
+<!-- Exports a csv file with all member's parq forms information. -->
 <%= link_to "Export all Parq", parqs_path(format: "csv") %>
 
 <h3>Enrollments</h3>
