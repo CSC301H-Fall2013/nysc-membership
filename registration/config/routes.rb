@@ -4,7 +4,7 @@ Registration::Application.routes.draw do
 
   resources :courses
 
-  resources :enrollments
+  resources :enrollments 
 
   resources :participants
 

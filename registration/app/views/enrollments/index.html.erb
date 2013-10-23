@@ -1,44 +1,70 @@
 <h1>Listing enrollments</h1> 
 
+
+  
+
 <!-- Create a search bar that filters participants based on search criteria entered. -->
+
+
 <%= form_tag enrollments_path, :method => 'get' do %>
   <p>
-    <p>Search by Participant ID, Course ID, or Start Date</p>
+    <p>Search Enrollments by Participant ID, Course ID, or Start Date</p>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
+    <%= submit_tag "Search Enrolled Members", :name => nil %>
   </p>
+<% end %>
 
-<% end %> 
 
-<table>
+  <%= form_tag({:controller => "courses", :action => "index"}, :method => "get", :id => "course_id") do %>
+      <p>
+        <p>Search Courses by Course ID, Title, or Start Date</p>
+        <%= text_field_tag :search, params[:search], id: 'couse_text'%> 
+        <%= submit_tag "Search Courses", :name => nil, id: 'course_submit'  %>
+      </p>
+  <% end %>
+<br>
+
+<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+
+<br><hr><br>
+
+<!-- Create table to display search results. -->
+
+<table border="1">
   <thead>
     <tr>
       <th>Participantid</th>
       <th>Courseid</th>
       <th>Startdate</th>
       <th>Waitlist status</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
 
+  <%if @enrollments%>
   <tbody>
     <% @enrollments.each do |enrollment| %>
       <tr>
-        <td><%= enrollment.participantID %></td>
+        <td><%= link_to enrollment.participantID, enrollment %></td>
         <td><%= enrollment.courseID %></td>
         <td><%= enrollment.startDate %></td>
         <td><%= enrollment.waitlist_status %></td>
-        <td><%= link_to 'Show', enrollment %></td>
         <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
-        <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+  <%end%>
   </tbody>
+  <%end%>
 </table>
 
 <br>
 
 <%= link_to 'New Enrollment', new_enrollment_path %></br>
 <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+
+
+
+
+
+

@@ -1,10 +1,11 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: [:show, :edit, :update, :destroy]
 
+
   # GET /enrollments
   # GET /enrollments.json
   def index
-    @enrollments = Enrollment.all
+    @enrollments = Enrollment.search(params[:search])
   end
 
   # GET /enrollments/1
@@ -25,21 +26,38 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments.json
   def create
     @enrollment = Enrollment.new(enrollment_params)
+    @course = Course.find_by(courseID: @enrollment.courseID)
 
-    respond_to do |format|
-      if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @enrollment }
+    if @course.nil?
+      errors.add(:course, "course does not exist")
+      render "new"
+    else
+      #check course size
+      current_enrollment = Enrollments.where(courseID: @enrollment.courseID).count
+      if current_enrollment > course.size
+        #cannot enroll ~ waitlisted
+      
+      # Course is not full
       else
-        format.html { render action: 'new' }
-        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
-      end
-    end
+        respond_to do |format|
+          if @enrollment.save
+            format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+            format.json { render action: 'show', status: :created, location: @enrollment }
+          else
+            format.html { render action: 'new' }
+            format.json { render json: @enrollment.errors, status: :unprocessable_entity }
+          end
+        end  
+      end 
+    end    
   end
 
   # PATCH/PUT /enrollments/1
   # PATCH/PUT /enrollments/1.json
   def update
+
+    redirect_to courses_url
+
     respond_to do |format|
       if @enrollment.update(enrollment_params)
         format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
