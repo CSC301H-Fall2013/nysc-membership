@@ -1,28 +1,17 @@
-== README
+TA Instructions:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Running implemention (if necessary).
+Logging into Ubuntu VM:
+1. ssh superior@nysc.cloudapp.net
+    -should be prompted for password
+2. Password: Super1or
+    -should be welcomed into the vm
+3. cd into registration: "cd nysc-membership/registration"
+    -should be in the application
+4. run server by typing: "rails s"
+    -server should start running
+5. To access this sprints implementation homepage, in a browser type in the following 
+  url: "nysc.cloudapp.net/static_pages/adminhome"
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+All links on the admin home page should direct you to any implementation for this sprint,
+you are now ready to begin using the admin functionality implemented.
