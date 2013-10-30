@@ -2,11 +2,7 @@
 
 <%= render 'form' %>
 
-<!-- Renew membership, charge the member's registration fee. -->
-<%= link_to("Renew Membership", participant_path(@participant, :participant => {:expirydate => @participant.expirydate + 1.year}), :method => :put, :confirm => "You are renewing a membership, please charge member $40.") %> | 
-
-<!-- Renew expired membership, charge the member the same fee as a new member. -->
-<%= link_to("Renew Expired Membership", participant_path(@participant, :participant => {:expirydate => Date.today + 1.year}), :method => :put, :confirm => "You are renewing an EXPIRED membership, please charge member $45.") %><br>
+<%= renew_link %><br><br><br>
 
 <%= link_to 'Show', @participant %> |
 <%= link_to 'Back', participants_path %>

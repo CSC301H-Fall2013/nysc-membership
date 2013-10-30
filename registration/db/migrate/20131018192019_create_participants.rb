@@ -10,7 +10,6 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :password
       t.string :email
       t.date :birthday
-      t.boolean :is_member
 
       t.timestamps
     end

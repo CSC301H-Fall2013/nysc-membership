@@ -12,44 +12,40 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :participantID %><br>
+    <%= f.label :participantID, "Participant ID" %><br>
     <%= f.text_field :participantID %>
   </div>
   <div class="field">
-    <%= f.label :fname %><br>
+    <%= f.label :fname, "First Name" %><br>
     <%= f.text_field :fname %>
   </div>
   <div class="field">
-    <%= f.label :lname %><br>
+    <%= f.label :lname, "Last Name" %><br>
     <%= f.text_field :lname %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br>
+    <%= f.label :birthday, "Date of Birth" %><br>
+    <%= f.date_select :birthday, order: [:month, :day, :year] %>
+  </div>
+  <div class="field">
+    <%= f.label :phone, "Phone Number" %><br>
     <%= f.number_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :expirydate %><br>
-    <%= f.date_select :expirydate %>
-  </div>
-  <div class="field">
-    <%= f.label :dr_note_date %><br>
-    <%= f.date_select :dr_note_date %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
+    <%= f.label :password, "Password" %><br>
     <%= f.text_field :password %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email, "Email Address" %><br>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :birthday %><br>
-    <%= f.date_select :birthday %>
+    <%= f.label :expirydate, "Membership Expiry Date" %><br>
+    <%= f.date_select :expirydate, order: [:month, :day, :year], default: 1.years.from_now %>
   </div>
   <div class="field">
-    <%= f.label :is_member %><br>
-    <%= f.check_box :is_member %>
+    <%= f.label :dr_note_date, "Doctor's Note Date" %><br>
+    <%= f.date_select :dr_note_date, order: [:month, :day, :year], include_blank: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
