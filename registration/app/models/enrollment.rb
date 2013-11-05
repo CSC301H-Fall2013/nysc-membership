@@ -11,6 +11,10 @@ class Enrollment < ActiveRecord::Base
 	  end
 	end
 
+	def self.waitlist_generate(course, participant)
+		return true
+	end
+
 	#Validation
 	validates :participantID, :uniqueness => { :scope => :courseID }
 

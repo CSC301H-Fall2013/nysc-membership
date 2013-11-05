@@ -81,6 +81,7 @@ class EnrollmentTest < ActiveSupport::TestCase
  		assert !Course.find_by(courseID: registering_member.courseID), "Non existent Course is in Courses database"
 	end
 
+	# Covers USER STORY 14A 
 	# FAILURE TEST
 	# Test a member registering into a full course that is full - waitlist will be tested in other cases
 	def test_valid_member_registering_full_class
@@ -109,6 +110,12 @@ class EnrollmentTest < ActiveSupport::TestCase
 		registering_member.waitlist_status = 1
 
 		assert registering_member.save, "registering a new valid member was not saved"
+	end
+
+	def test_auto_generate_waitlist
+		course = courses(:one)
+		participant = participants(:one)
+		assert Enrollment.waitlist_generate(course, participant), "auto generate waitlist did not give value"
 	end
 
 #-------------------- User Story 15 -----------------
