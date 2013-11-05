@@ -1,6 +1,6 @@
 Registration::Application.routes.draw do
   get "static_pages/adminhome"
-  resources :parqs
+  #resources :parqs
 
   resources :courses
 

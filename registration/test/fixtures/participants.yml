@@ -10,7 +10,6 @@ one:
   password: password
   email: 
   birthday: 2013-10-18
-  is_member: false
 
 two:
   participantID: Temple
@@ -22,7 +21,6 @@ two:
   password: password
   email: MyString
   birthday: 2000-10-18
-  is_member: true
 
 three:
   participantID: shmoel
@@ -34,7 +32,6 @@ three:
   password: password
   email: MyString
   birthday: 2000-10-18
-  is_member: true
 
 four:
   participantID: shmoe2
@@ -46,7 +43,6 @@ four:
   password: password
   email: MyString
   birthday: 2000-10-18
-  is_member: true
 
 five:
   participantID: brian
@@ -58,7 +54,6 @@ five:
   password: password
   email: MyString
   birthday: 2000-10-18
-  is_member: true
 
 six:
   participantID: liaomi00
@@ -70,7 +65,6 @@ six:
   password: password
   email: MyString
   birthday: 1940-10-18
-  is_member: true
 
 non_member_one:
   participantID: liaomi11
@@ -82,7 +76,6 @@ non_member_one:
   password:
   email:
   birthday:
-  is_member: false
 
 
 
