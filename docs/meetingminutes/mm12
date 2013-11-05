@@ -1,0 +1,25 @@
+Team Superior Meeting - October 27th 2013
+ 
+Meeting called to order at 15:00 by Cody Wong.
+ 
+Members present:
+Cody Wong
+Ealona Shmoel
+Jessica Luu
+Janarthenan Rajakumar
+Wen Xi (Kirien) Chen
+ 
+Members not present:
+Michelle Liao
+ 
+Decisions Made:
+User Stories distribution amongst sprints changed, no longer implementing any user stories that do not have priority “Very High” and “High”, due to time constraint, and PC recommendation.
+Reassigned user stories and tasks that were incompleted from Sprint 1, if necessary re-estimate certain tasks.
+Database to be updated, attribute ismember to be removed, and enrollment and parq tables merged into one.
+
+Action Items:
+1. Sprint Release document to be changed in accordance to new user story distribution by November 13th at 22:00 by Ealona. and Cody.
+2. Reassigned user story tasks to be re-estimated if necessary, and fully tested by November 5th at 22:00 by all members.
+3. Database to be updated by November 5th at 22:00 by Cody.
+
+Meeting adjourned by all members at 16:00.
