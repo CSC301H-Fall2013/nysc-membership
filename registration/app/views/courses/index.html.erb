@@ -51,6 +51,22 @@
 </table>
 
 <br>
+<hr>
 
+<h3>View List Participants</h3>
+ <!-- Create a search bar that filters participants based on search criteria entered. -->
+<%= form_tag enrollments_path, :method => 'get' do %>
+  <p>
+    <p>Search by Course ID.</p>
+  
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "View Participants", :name => nil %>
+    <br>
+    <small>To view all participants, leave search criteria blank and click search.</small>
+  </p>
+
+<% end %> 
+<br>
+<hr>
 <%= link_to 'New Course', new_course_path %>
 <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
