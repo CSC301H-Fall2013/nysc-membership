@@ -13,8 +13,8 @@ class Course < ActiveRecord::Base
 
 
 	def startTime_endTime_conflict
-		if :startTime >= :endTime
-			errors.add(:course, "End Time Ahead of Start Time")
+		if startTime >= endTime
+			self.errors.add :startTime, "Should Be Before End Time"
 		end
 	end
 
