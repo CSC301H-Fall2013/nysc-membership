@@ -37,6 +37,7 @@
       <th>Courseid</th>
       <th>Startdate</th>
       <th>Waitlist status</th>
+      <th>Waitlist price</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -50,6 +51,7 @@
         <td><%= enrollment.courseID %></td>
         <td><%= enrollment.startDate %></td>
         <td><%= enrollment.waitlist_status %></td>
+        <td><%= enrollment.waitlist_price %></td>
         <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

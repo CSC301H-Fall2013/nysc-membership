@@ -5,6 +5,7 @@ class CreateEnrollments < ActiveRecord::Migration
       t.string :courseID
       t.date :startDate
       t.integer :waitlist_status
+      t.integer :waitlist_price
       t.boolean :disclaimer
       t.boolean :ans1
       t.boolean :ans2

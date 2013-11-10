@@ -20,5 +20,10 @@
   <%= @enrollment.waitlist_status %>
 </p>
 
+<p>
+  <strong>Waitlist status:</strong>
+  <%= @enrollment.waitlist_price %>
+</p>
+
 <%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
 <%= link_to 'Back', enrollments_path %>
