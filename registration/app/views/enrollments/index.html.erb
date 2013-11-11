@@ -1,35 +1,41 @@
-<h1>Listing enrollments</h1> 
-
-
-  
+<h1>Enrollment</h1> </br>
 
 <!-- Create a search bar that filters participants based on search criteria entered. -->
 
+<h2>Index</h2>
+<h4><%= link_to 'New Enrollment', new_enrollment_path %></h4>
+<h4><%= link_to 'Back to Admin Home', static_pages_adminhome_path %></h4>
+<a href=#enrollments><h4>Check Enrollments</h4></a>
+<a href=#availableCourses><h4>Check Availalbe Courses</h4></a> </br>
 
+
+<h2>Search</h2>
 <%= form_tag enrollments_path, :method => 'get' do %>
   <p>
-    <p>Search Enrollments by Participant ID, Course ID, or Start Date</p>
+    <p><b>Search Enrollments</b> by Participant ID, Course ID, or Start Date</p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search Enrolled Members", :name => nil %>
+    <i>* To check all enrollments, search a blank request</i>
   </p>
 <% end %>
 
 
   <%= form_tag({:controller => "courses", :action => "index"}, :method => "get", :id => "course_id") do %>
       <p>
-        <p>Search Courses by Course ID, Title, or Start Date</p>
+        <p><b>Search Courses</b> by Course ID, Title, or Start Date</p>
         <%= text_field_tag :search, params[:search], id: 'couse_text'%> 
         <%= submit_tag "Search Courses", :name => nil, id: 'course_submit'  %>
       </p>
   <% end %>
 <br>
 
-<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
 
 <br><hr><br>
 
+
 <!-- Create table to display search results. -->
 
+<h2 id="enrollments">Enrollments</h2>
 <table border="1">
   <thead>
     <tr>
@@ -43,8 +49,8 @@
     </tr>
   </thead>
 
-  <%if @enrollments%>
-  <tbody>
+<%if @enrollments%>
+<tbody>
     <% @enrollments.each do |enrollment| %>
       <tr>
         <td><%= link_to enrollment.participantID, enrollment %></td>
@@ -55,15 +61,39 @@
         <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-  <%end%>
+    <%end%>
   </tbody>
-  <%end%>
+
+<%end%>
 </table>
+
+<h2 id="availableCourses">Available Courses</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Course Name</th>
+      <th>Courseid</th>
+      <th>Startdate</th>
+      <th>Capacity</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @availableCourses.each do |enrollment| %>
+      <tr>
+        <td><%= enrollment.title %></td>
+        <td><%= enrollment.courseID %></td>
+        <td><%= enrollment.startDate %></td>
+        <td><%= enrollment.size %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+
 
 <br>
 
-<%= link_to 'New Enrollment', new_enrollment_path %></br>
-<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
 
 
 

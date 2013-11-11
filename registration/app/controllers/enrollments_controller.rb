@@ -6,6 +6,7 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments.json
   def index
     @enrollments = Enrollment.search(params[:search])
+    @availableCourses = Course.where(:startDate => Date.today)
   end
 
   # GET /enrollments/1
@@ -26,30 +27,15 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments.json
   def create
     @enrollment = Enrollment.new(enrollment_params)
-    @course = Course.find_by(courseID: @enrollment.courseID)
-
-    if @course.nil?
-      errors.add(:course, "course does not exist")
-      render "new"
-    else
-      #check course size
-      current_enrollment = Enrollments.where(courseID: @enrollment.courseID).count
-      if current_enrollment > course.size
-        #cannot enroll ~ waitlisted
-      
-      # Course is not full
+    respond_to do |format|
+      if @enrollment.save
+        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @enrollment }
       else
-        respond_to do |format|
-          if @enrollment.save
-            format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
-            format.json { render action: 'show', status: :created, location: @enrollment }
-          else
-            format.html { render action: 'new' }
-            format.json { render json: @enrollment.errors, status: :unprocessable_entity }
-          end
-        end  
-      end 
-    end    
+        format.html { render action: 'new' }
+        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
+      end
+    end 
   end
 
   # PATCH/PUT /enrollments/1
