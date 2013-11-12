@@ -11,9 +11,15 @@ class Enrollment < ActiveRecord::Base
 	  end
 	end
 
-	# auto- generate waitlist value
-	def self.waitlist_generate(course, participant)
-		return true
+	# auto - generate waitlist value
+	def waitlist_generate(course)
+		#debugger
+		if course_full
+			enrollment = Enrollment.where(courseID: course).maximum("waitlist_status")
+			return enrollment+1
+		else 
+			return 0
+		end
 	end
 
 	# check if a course one attempts to enrol in, is full
@@ -22,10 +28,9 @@ class Enrollment < ActiveRecord::Base
 		max_enrol = Course.find_by(courseID: courseID).size
 		current_enrol = Enrollment.where(courseID: courseID).count
 		if current_enrol < max_enrol
-			waitlist_status = 0
 			return false
 		else
-			self.waitlist_status = 1
+			return true
 		end
 
 	end
@@ -75,6 +80,11 @@ class Enrollment < ActiveRecord::Base
 		else 
 			return Date.parse("2013-10-01")
 		end
+	end
+
+
+	def pay_course
+		return true
 	end
 
 

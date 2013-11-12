@@ -34,6 +34,10 @@ class EnrollmentsController < ApplicationController
     respond_to do |format|
       if Enrollment.check_validation(@enrollment)
         @enrollment.waitlist_price = Enrollment.charge_fee(@enrollment)
+        @enrollment.waitlist_status = @enrollment.waitlist_generate(@enrollment.courseID)
+        if @enrollment.waitlist_status > 0
+          flash[:warning] = "The class is full, you have been added onto the waitlist"
+        end
         if @enrollment.save
           format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
           format.json { render action: 'show', status: :created, location: @enrollment }
@@ -43,7 +47,6 @@ class EnrollmentsController < ApplicationController
         end
       else
         format.html { render action: 'new'}
-        #format.json { render json: @enrollment.errors, status: :unprocessable_entity }
         flash[:notice] = "CourseID or ParticipantID does not exist, please put in valid IDs (8 characters)"
       end
     end 
@@ -53,11 +56,12 @@ class EnrollmentsController < ApplicationController
   # PATCH/PUT /enrollments/1.json
   def update
 
-    redirect_to courses_url
+    #redirect_to enrollments_url
 
     respond_to do |format|
       if @enrollment.update(enrollment_params)
         format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
+        #return
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
