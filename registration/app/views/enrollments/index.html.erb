@@ -2,6 +2,7 @@
 
 <!-- Create a search bar that filters participants based on search criteria entered. -->
 
+
 <h2>Index</h2>
 <h4><%= link_to 'New Enrollment', new_enrollment_path %></h4>
 <h4><%= link_to 'Back to Admin Home', static_pages_adminhome_path %></h4>
@@ -79,13 +80,15 @@
   </thead>
 
   <tbody>
-    <% @availableCourses.each do |enrollment| %>
+    <%if @availableCourses%>
+    <% @availableCourses.each do |availableCourse| %>
       <tr>
-        <td><%= enrollment.title %></td>
-        <td><%= enrollment.courseID %></td>
-        <td><%= enrollment.startDate %></td>
-        <td><%= enrollment.size %></td>
+        <td><%= availableCourse.title %></td>
+        <td><%= availableCourse.courseID %></td>
+        <td><%= availableCourse.startDate %></td>
+        <td><%= availableCourse.size %></td>
       </tr>
+    <%end%>
     <%end%>
   </tbody>
 </table>
