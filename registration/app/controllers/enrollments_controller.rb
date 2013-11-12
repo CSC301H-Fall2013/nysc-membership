@@ -29,9 +29,11 @@ class EnrollmentsController < ApplicationController
     @enrollment = Enrollment.new(enrollment_params)
     respond_to do |format|
       if @enrollment.save
+        # successfully created
         format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @enrollment }
       else
+        # errors
         format.html { render action: 'new' }
         format.json { render json: @enrollment.errors, status: :unprocessable_entity }
       end
