@@ -6,7 +6,11 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments.json
   def index
     @enrollments = Enrollment.search(params[:search])
-    @availableCourses = Course.where(:startDate => Date.today)
+    
+    #Showing courses that are availabe for that certain season
+    start_date = Enrollment.get_season
+    end_date = Enrollment.get_season + 2.month
+    @availableCourses = Course.where(:startDate => start_date..end_date)
   end
 
   # GET /enrollments/1
@@ -28,12 +32,19 @@ class EnrollmentsController < ApplicationController
   def create
     @enrollment = Enrollment.new(enrollment_params)
     respond_to do |format|
-      if @enrollment.save
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @enrollment }
+      if Enrollment.check_validation(@enrollment)
+        @enrollment.waitlist_price = Enrollment.charge_fee(@enrollment)
+        if @enrollment.save
+          format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @enrollment }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @enrollment.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render action: 'new' }
-        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
+        format.html { render action: 'new'}
+        #format.json { render json: @enrollment.errors, status: :unprocessable_entity }
+        flash[:notice] = "CourseID or ParticipantID does not exist, please put in valid IDs (8 characters)"
       end
     end 
   end
