@@ -36,7 +36,7 @@ class EnrollmentsController < ApplicationController
         @enrollment.waitlist_price = Enrollment.charge_fee(@enrollment)
         @enrollment.waitlist_status = @enrollment.waitlist_generate(@enrollment.courseID)
         if @enrollment.waitlist_status > 0
-          flash[:warning] = "The class is full, you have been added onto the waitlist"
+          flash[:warning] = "The class is full, you have been added onto the waitlist as #{@enrollment.waitlist_status}"
         end
         if @enrollment.save
           format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
