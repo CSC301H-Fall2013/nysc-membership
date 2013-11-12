@@ -86,21 +86,6 @@ class Enrollment < ActiveRecord::Base
 		end
 	end
 
-
-
-
-	# # when user clicks the "validate" button beside the courseID input field with a courseID, create the pop-up
-	# # displaying if participant will be waitlisted, and how much they will need to pay, either now or later
-	# def self.gen_popup_validate(courseID)
-	# 	full = self.course_full(course)
-	# 	# find price to charge
-	# 	if not full:
-	# 		# stuff
-	# 	else:
-	# 		# full
-	# 	end
-	# end
-
 	#Validation
 
 	#Primary key of courseID and participantID
@@ -112,6 +97,5 @@ class Enrollment < ActiveRecord::Base
 	validate :course_full
 	validates :participantID, :courseID, :startDate, :presence => true
 	validates :startDate, :presence => { :message => "Date must be in DD-MM-YYYY"}
-
 
 end
