@@ -15,8 +15,12 @@ class Enrollment < ActiveRecord::Base
 	def waitlist_generate(course)
 		#debugger
 		if course_full
-			enrollment = Enrollment.where(courseID: course).maximum("waitlist_status")
-			return enrollment+1
+			if Course.find_by(courseID: course).size > 0
+				enrollment = Enrollment.where(courseID: course).maximum("waitlist_status")
+				return enrollment+1
+			else
+				return 1
+			end
 		else 
 			return 0
 		end
@@ -83,9 +87,6 @@ class Enrollment < ActiveRecord::Base
 	end
 
 
-	def pay_course
-		return true
-	end
 
 
 	# # when user clicks the "validate" button beside the courseID input field with a courseID, create the pop-up
