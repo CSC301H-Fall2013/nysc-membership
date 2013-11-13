@@ -18,8 +18,8 @@
 <table border="1">
   <thead>
     <tr>
-      <th>Course Name</th>
       <th>Courseid</th>
+      <th>Course Name</th>
       <th>Startdate</th>
       <th>Capacity</th>
     </tr>
@@ -29,8 +29,8 @@
     <%if @courses%>
     <% @courses.each do |course| %>
       <tr>
+        <td><%= link_to course.courseID, course %></td>
         <td><%= course.title %></td>
-        <td><%= course.courseID %></td>
         <td><%= course.startDate %></td>
         <td><%= course.size %></td>
       </tr>
