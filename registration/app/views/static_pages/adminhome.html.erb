@@ -8,14 +8,14 @@
 <!-- Links that take you to a page depending on what admin wants to do. -->
 <%= link_to 'Add a member', new_participant_path %><br>
 <%= link_to 'Find a member', participants_path %><br>
-<%= link_to "Edit a member's information", participants_path %><br>
 
 <!-- Exports a csv file with all member's information. -->
 <%= link_to "Export data of all participants", participants_path(format: "csv") %>
 
 
 <h3>Course stuff</h3>
-<%= link_to 'Courses', courses_path %><br>
+<%= link_to 'Add a Course', new_course_path %><br>
+<%= link_to 'Find a Courses', courses_path %><br>
 
 <h3>Enrollments</h3>
-<%= link_to 'Enroll', enrollments_path %><br>
+<%= link_to 'Enroll A Member in a Course', enrollments_path %><br>

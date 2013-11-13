@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112002546) do
+ActiveRecord::Schema.define(version: 20131018192706) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20131112002546) do
     t.string   "courseID"
     t.date     "startDate"
     t.integer  "waitlist_status"
+    t.integer  "waitlist_price"
     t.boolean  "disclaimer"
     t.boolean  "ans1"
     t.boolean  "ans2"
@@ -55,7 +56,6 @@ ActiveRecord::Schema.define(version: 20131112002546) do
     t.boolean  "ans7"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "waitlist_price"
   end
 
   create_table "participants", force: true do |t|
