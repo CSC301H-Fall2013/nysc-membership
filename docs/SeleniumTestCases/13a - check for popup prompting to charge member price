@@ -4,22 +4,27 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:3000/" />
-<title>13a-enrollparticipant-withyestoparq</title>
+<title>13a - check for popup prompting to charge particpant price</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">13a-enrollparticipant-withyestoparq</td></tr>
+<tr><td rowspan="1" colspan="3">13a - check for popup prompting to charge particpant price</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/enrollments/new</td>
+	<td>/static_pages/adminhome</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Enroll A Member in a Course</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=enrollment_participantID</td>
-	<td>12345679</td>
+	<td>12345678</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -33,7 +38,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=enrollment_ans1_true</td>
+	<td>id=enrollment_ans1_false</td>
 	<td></td>
 </tr>
 <tr>
@@ -43,12 +48,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=enrollment_ans3_false</td>
+	<td>id=enrollment_ans4_false</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=enrollment_ans4_false</td>
+	<td>id=enrollment_ans3_false</td>
 	<td></td>
 </tr>
 <tr>
@@ -68,33 +73,13 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//input[@name='commit'])[2]</td>
+	<td>name=commit</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertConfirmationPresent</td>
+	<td>assertPrompt</td>
 	<td></td>
-	<td>Please bring a doctors note</td>
-</tr>
-<tr>
-	<td>assertConfirmation</td>
-	<td>Please bring a doctors note</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td></td>
-	<td>Enrollment was successfully created.</td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td></td>
-	<td>Participantid: 12345679</td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td></td>
-	<td>Courseid: course12 </td>
+	<td>Please charge the participant $40</td>
 </tr>
 </tbody></table>
 </body>

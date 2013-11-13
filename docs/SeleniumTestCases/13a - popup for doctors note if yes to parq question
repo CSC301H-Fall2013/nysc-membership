@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:3000/" />
-<title>enrollparticipant</title>
+<title>13a-Enroll participant with yes to a parq question - expecting popup</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">enrollparticipant</td></tr>
+<tr><td rowspan="1" colspan="3">13a-enrollparticipant-withyestoparq</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -33,7 +33,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=enrollment_ans1_false</td>
+	<td>id=enrollment_ans1_true</td>
 	<td></td>
 </tr>
 <tr>
@@ -74,11 +74,11 @@
 <tr>
 	<td>assertConfirmationPresent</td>
 	<td></td>
-	<td>Participant will now be enrolled into the class</td>
+	<td>Please bring a doctors note</td>
 </tr>
 <tr>
 	<td>assertConfirmation</td>
-	<td>Participant will now be enrolled into the class</td>
+	<td>Please bring a doctors note</td>
 	<td></td>
 </tr>
 <tr>
@@ -96,7 +96,6 @@
 	<td></td>
 	<td>Courseid: course12 </td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
