@@ -17,6 +17,7 @@ class ParticipantsController < ApplicationController
   # GET /participants/1
   # GET /participants/1.json
   def show
+	@enrollments = Enrollment.where(:participantID => @participant.participantID)
   end
 
   # GET /participants/new
