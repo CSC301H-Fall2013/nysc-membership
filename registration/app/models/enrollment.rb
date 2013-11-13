@@ -59,15 +59,18 @@ class Enrollment < ActiveRecord::Base
 	def self.charge_fee(enrollment)
 		if_member = Participant.find_by(participantID: enrollment.participantID)
 		if_course = Course.find_by(courseID: enrollment.courseID)
-		earlyBirdTime = if_course.startDate.months_ago(1)
-		if if_member.expirydate > Date.today
-			if Date.today >= earlyBirdTime && Date.today < if_course.startDate
-				return if_course.earlybirdPrice
+		
+		if if_course != nil && if_member != nil
+			earlyBirdTime = if_course.startDate.months_ago(1)
+			if if_member.expirydate > Date.today
+				if Date.today >= earlyBirdTime && Date.today < if_course.startDate
+					return if_course.earlybirdPrice
+				else
+					return if_course.memberPrice
+				end
 			else
-				return if_course.memberPrice
+				return if_course.nonmemberPrice
 			end
-		else
-			return if_course.nonmemberPrice
 		end
 	end
 

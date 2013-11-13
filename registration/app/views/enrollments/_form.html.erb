@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field" id="nameValidation">
     <%= f.label :participantID %><br>
     <%= f.text_field :participantID %>
   </div>
-  <div class="field">
+  <div class="field" >
     <%= f.label :courseID %><br>
     <%= f.text_field :courseID %>
   </div>
@@ -79,5 +79,24 @@
   </p>
   <div class="actions">
     <%= f.submit %>
+    <%= f.submit "Enroll", :class => "button", :onclick => "return showAlert()" %>
   </div>
+ 
+
+   <script type="text/javascript" charset="utf-8"> 
+      function showAlert() {
+        var price = "<%= course_fee(if_member(@enrollment.participantID), @enrollment.courseID) %>"
+        var name = "<%= @enrollment.courseID %>"
+        alert("Please charge: $" + name);
+      }
+
+      
+
+    </script>
 <% end %>
+
+
+
+
+
+

@@ -27,11 +27,37 @@ module EnrollmentsHelper
 					:method => :put, \
 					:confirm => "Please charge $ #{course_fee.nonmemberPrice}")
 
-		end
-
-		
-		
+		end		
 	end
+
+	def if_member(member)
+		if_member = Participant.find_by(participantID: member)
+		if if_member != nil
+			if if_member.expirydate > Date.today
+				return true
+			else
+				return false
+			end
+		end
+	end
+
+	def course_fee(member, course)
+		if_course = Course.find_by(courseID: course)
+		if if_course != nil
+			earlyBirdTime = if_course.startDate.months_ago(1)
+			if member
+			 	if Date.today >= earlyBirdTime && Date.today < if_course.startDate
+			 		return if_course.earlybirdPrice
+				else
+			 		return if_course.memberPrice
+			 	end
+			else
+				return if_course.nonmemberPrice
+			 end
+		end
+	end
+
+
 
 	
 
