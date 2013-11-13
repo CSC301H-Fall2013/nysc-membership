@@ -3,6 +3,29 @@
   <strong>Course Start Date: </strong> 
   <%= @course.startDate %>
 </p>
+<table>
+  <thead>
+    <tr>
+      <th>ParticipantID</th>
+      <th>Waitlist Status</th>
+      <th>Waitlist Price</th>
+	  <th> </th>
+	  <th> </th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+		<% @enrollment = enrollment %>
+        <td><%= @enrollment.participantID %></td>
+        <td><%= @enrollment.waitlist_status %></td>
+        <td><%= @enrollment.waitlist_price %></td>
+		<td><%= pay_course  %></td>
+		<td><%= link_to 'Delete', @enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Back', @course %>

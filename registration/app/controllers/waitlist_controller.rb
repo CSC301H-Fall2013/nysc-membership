@@ -3,12 +3,12 @@ class WaitlistController < ApplicationController
   # GET /waitlist
   # GET /waitlist.json
   def index
-    @courses = Course.all
   end
   
   # GET /waitlist/1
   # GET /waitlist/1.json
   def show
+      @enrollments = Enrollment.where(:courseID => @course.courseID, :startDate => @course.startDate).where(['enrollments.waitlist_status <> ?', 0])
   end
   
   private
