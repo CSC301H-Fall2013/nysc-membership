@@ -74,7 +74,7 @@
         <td><%= enrollment.ans5 ? "Yes" : "No" %></td>
         <td><%= enrollment.ans6 ? "Yes" : "No" %></td>
         <td><%= enrollment.ans7 ? "Yes" : "No" %></td>
-        <td><%= enrollment.disclaimer %></td>
+        <td><%= enrollment.disclaimer ? "Accept" : "Decline"%></td>
         <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
