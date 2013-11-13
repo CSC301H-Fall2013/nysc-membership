@@ -1,72 +1,41 @@
 <h1>Listing courses</h1>
 
-<table>
+
+<h3>View List Participants</h3>
+ <!-- Create a search bar that filters participants based on search criteria entered. -->
+
+  <%= form_tag({:controller => "courses", :action => "index"}, :method => "get", :id => "course_id") do %>
+      <p>
+        <p><b>Search Courses</b> by Course ID, Title, or Start Date</p>
+        <%= text_field_tag :search, params[:search], id: 'couse_text'%> 
+        <%= submit_tag "Search Courses", :name => nil, id: 'course_submit'  %>
+      </p>
+  <% end %>
+<br>
+
+
+<h2 id="availableCourses">Available Courses</h2>
+<table border="1">
   <thead>
     <tr>
+      <th>Course Name</th>
       <th>Courseid</th>
       <th>Startdate</th>
-      <th>Title</th>
-      <th>Instructor</th>
-      <th>Description</th>
-      <th>Intesity</th>
-      <th>Additional</th>
-      <th>Duration</th>
-      <th>Starttime</th>
-      <th>Endtime</th>
-      <th>Dayofweek</th>
-      <th>Earlybirdprice</th>
-      <th>Memberprice</th>
-      <th>Nonmemberprice</th>
-      <th>Size</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Capacity</th>
     </tr>
   </thead>
 
   <tbody>
+    <%if @courses%>
     <% @courses.each do |course| %>
       <tr>
+        <td><%= course.title %></td>
         <td><%= course.courseID %></td>
         <td><%= course.startDate %></td>
-        <td><%= course.title %></td>
-        <td><%= course.instructor %></td>
-        <td><%= course.description %></td>
-        <td><%= course.intesity %></td>
-        <td><%= course.additional %></td>
-        <td><%= course.duration %></td>
-        <td><%= course.startTime %></td>
-        <td><%= course.endTime %></td>
-        <td><%= course.dayOfWeek %></td>
-        <td><%= course.earlybirdPrice %></td>
-        <td><%= course.memberPrice %></td>
-        <td><%= course.nonmemberPrice %></td>
         <td><%= course.size %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
+    <%end%>
+    <%end%>
   </tbody>
 </table>
-
-<br>
-<hr>
-
-<h3>View List Participants</h3>
- <!-- Create a search bar that filters participants based on search criteria entered. -->
-<%= form_tag enrollments_path, :method => 'get' do %>
-  <p>
-    <p>Search by Course ID.</p>
-  
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "View Participants", :name => nil %>
-    <br>
-    <small>To view all participants, leave search criteria blank and click search.</small>
-  </p>
-
-<% end %> 
-<br>
-<hr>
-
 <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>

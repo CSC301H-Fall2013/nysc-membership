@@ -11,6 +11,13 @@ class Course < ActiveRecord::Base
 
 	validate :startTime_endTime_conflict
 
+	def self.search(search)
+	  if search
+	    Course.where(['courseID LIKE ? ', "%#{search}%"])
+	  else # When page is initially loaded display no registeration information.
+	    []
+	  end
+	end
 
 	def startTime_endTime_conflict
 		if startTime >= endTime
