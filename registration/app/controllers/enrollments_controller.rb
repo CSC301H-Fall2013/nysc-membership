@@ -89,6 +89,6 @@ class EnrollmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
-      params.require(:enrollment).permit(:participantID, :courseID, :startDate, :waitlist_status, :waitlist_price)
+      params.fetch(:enrollment).permit(:participantID, :courseID, :startDate, :waitlist_status, :waitlist_price, :ans1, :ans2, :ans3, :ans4, :ans5, :ans6, :ans7)
     end
 end

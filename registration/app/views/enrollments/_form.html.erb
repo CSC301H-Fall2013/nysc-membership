@@ -23,6 +23,60 @@
     <%= f.label :startDate %><br>
     <%= f.date_select :startDate %>
   </div>
+
+  <table>
+    <tr> 
+        <td></td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans1", true) %></td>
+        <td><%= radio_button("enrollment", "ans1", false) %></td>
+        <td>1.</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans2", true) %></td>
+        <td><%= radio_button("enrollment", "ans2", false) %></td>
+        <td>2.</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans3", true) %></td>
+        <td><%= radio_button("enrollment", "ans3", false) %></td>
+        <td>3.</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans4", true) %></td>
+        <td><%= radio_button("enrollment", "ans4", false) %></td>
+        <td>4.</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans5", true) %></td>
+        <td><%= radio_button("enrollment", "ans5", false) %></td>
+        <td>5.</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans6", true) %></td>
+        <td><%= radio_button("enrollment", "ans6", false) %></td>
+        <td>6.</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans7", true) %></td>
+        <td><%= radio_button("enrollment", "ans7", false) %></td>
+        <td>7.</td>
+    </tr>
+  </table>
+
+  <p>
+    Agreement.
+  </p>
   <div class="actions">
     <%= f.submit %>
   </div>
