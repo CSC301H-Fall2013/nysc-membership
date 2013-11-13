@@ -65,11 +65,11 @@
         <td><%= enrollment.courseID %></td>
         <td><%= enrollment.startDate %></td>
 		<td><%= enrollment.waitlist_status %></td>
-        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', participant_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= link_to 'Edit', edit_participant_path(@participant) %> |
-<%= link_to 'Back', participants_path %>
+<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
