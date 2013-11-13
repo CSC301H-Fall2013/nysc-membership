@@ -45,6 +45,14 @@
       <th>Startdate</th>
       <th>Waitlist status</th>
       <th>Waitlist price</th>
+      <th>Ans1</th>
+      <th>Ans2</th>
+      <th>Ans3</th>
+      <th>Ans4</th>
+      <th>Ans5</th>
+      <th>Ans6</th>
+      <th>Ans7</th>
+      <th>Disclaimer</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -59,6 +67,14 @@
         <td><%= enrollment.startDate %></td>
         <td><%= enrollment.waitlist_status %></td>
         <td><%= enrollment.waitlist_price %></td>
+        <td><%= enrollment.ans1 ? "Yes" : "No" %></td>
+        <td><%= enrollment.ans2 ? "Yes" : "No" %></td>
+        <td><%= enrollment.ans3 ? "Yes" : "No" %></td>
+        <td><%= enrollment.ans4 ? "Yes" : "No" %></td>
+        <td><%= enrollment.ans5 ? "Yes" : "No" %></td>
+        <td><%= enrollment.ans6 ? "Yes" : "No" %></td>
+        <td><%= enrollment.ans7 ? "Yes" : "No" %></td>
+        <td><%= enrollment.disclaimer %></td>
         <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

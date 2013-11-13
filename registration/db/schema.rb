@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20131112002546) do
     t.string   "courseID"
     t.date     "startDate"
     t.integer  "waitlist_status"
-    t.integer  "waitlist_price"
     t.boolean  "disclaimer"
     t.boolean  "ans1"
     t.boolean  "ans2"
@@ -56,6 +55,7 @@ ActiveRecord::Schema.define(version: 20131112002546) do
     t.boolean  "ans7"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "waitlist_price"
   end
 
   create_table "participants", force: true do |t|
