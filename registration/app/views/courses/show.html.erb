@@ -75,6 +75,7 @@
   <%= @course.size %>
 </p>
 
+<%= link_to 'Waitlist', waitlist_path(@course) %> |
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Delete', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', courses_path %>

@@ -6,6 +6,8 @@ Registration::Application.routes.draw do
 
   resources :enrollments 
 
+  resources :waitlist
+  
   resources :participants
 
   resources :admins

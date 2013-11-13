@@ -45,5 +45,31 @@
   <%= @participant.birthday %>
 </p>
 
+<h3>
+  <strong>Current Enrolled and Waitlisted Courses:</strong>
+</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Courseid</th>
+      <th>Startdate</th>
+	  <th>Waitlist Status</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td><%= enrollment.courseID %></td>
+        <td><%= enrollment.startDate %></td>
+		<td><%= enrollment.waitlist_status %></td>
+        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_participant_path(@participant) %> |
 <%= link_to 'Back', participants_path %>
