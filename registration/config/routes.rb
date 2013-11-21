@@ -1,5 +1,9 @@
 Registration::Application.routes.draw do
+
+  get "static_pages/participanthome"
+  
   devise_for :participants
+
   get "static_pages/adminhome"
 
   resources :courses

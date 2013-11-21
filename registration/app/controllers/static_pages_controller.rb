@@ -1,4 +1,4 @@
 class StaticPagesController < ApplicationController
-  def adminhome
+  def participanthome
   end
 end

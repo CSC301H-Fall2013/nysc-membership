@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(participant)
     if participant.admin?
     	static_pages_adminhome_path
-     end
+    else 
+    	static_pages_participanthome_path
+    end
   end
 
 end
