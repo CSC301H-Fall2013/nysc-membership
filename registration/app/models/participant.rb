@@ -1,4 +1,8 @@
 class Participant < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
 	# Search for all participants that match in the database
 	# by fname, lname, participantID, or phone.
@@ -26,6 +30,11 @@ class Participant < ActiveRecord::Base
 		if dr_note_date.present? && dr_note_date > Date.today
 			errors.add(:dr_note_date, "Can't be in the future!")
 		end
+	end
+
+	# Check if a user is an admin type.
+	def admin?
+		return self.role
 	end
 
 	#validation

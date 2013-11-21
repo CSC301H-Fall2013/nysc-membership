@@ -1,6 +1,6 @@
 Registration::Application.routes.draw do
+  devise_for :participants
   get "static_pages/adminhome"
-  #resources :parqs
 
   resources :courses
 
@@ -12,7 +12,7 @@ Registration::Application.routes.draw do
 
   resources :admins
 
-  get "static_pages/listParticipants"
+  root :to => "participants#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

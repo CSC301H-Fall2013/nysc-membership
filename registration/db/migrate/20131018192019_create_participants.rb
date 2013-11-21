@@ -7,6 +7,8 @@ class CreateParticipants < ActiveRecord::Migration
       t.integer :phone
       t.date :expirydate
       t.date :dr_note_date
+
+      # Devise created password, and email, thereofre these two should be deleted.
       t.string :password
       t.string :email
       t.date :birthday
