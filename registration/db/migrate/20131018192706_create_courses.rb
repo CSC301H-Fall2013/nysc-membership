@@ -6,7 +6,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :title
       t.string :instructor
       t.string :description
-      t.integer :intesity
+      t.integer :intensity
       t.string :additional
       t.string :duration
       t.time :startTime

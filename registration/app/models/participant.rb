@@ -37,13 +37,19 @@ class Participant < ActiveRecord::Base
 		return self.role
 	end
 
+	# Validates 
+	def phone_length_between_nine_and_ten
+  		errors.add(:phone, "number should be 9 or 10 characters in length") if phone.to_s.length < 9 or phone.to_s.length > 10
+	end
+
 	#validation
 	validates :participantID, :uniqueness => true;
-	validates :fname, :presence => { :message => "First Name can't be blank!"}
-	validates :lname, :presence => { :message => "Last Name can't be blank!"}
-	validates :phone, :presence => { :message => "Phone Number can't be blank!"}
+	validates :fname, :presence => { :message => "First Name can't be blank"}
+	validates :lname, :presence => { :message => "Last Name can't be blank"}
+	validates :phone, :presence => { :message => "Phone Number can't be blank"}
 	validates :expirydate, :dr_note_date, :birthday, :presence => { :message => "Date must be in DD-MM-YYYY"}, allow_nil: true
 	validate :dr_note_date_cannot_be_in_the_future 
+	validate :phone_length_between_nine_and_ten
 	
 	#validates participantID to be length of
 	validates :participantID, length: { is: 8 }

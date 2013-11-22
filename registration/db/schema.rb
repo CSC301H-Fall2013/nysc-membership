@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20131121012759) do
     t.string   "title"
     t.string   "instructor"
     t.string   "description"
-    t.integer  "intesity"
+    t.integer  "intensity"
     t.string   "additional"
     t.string   "duration"
     t.time     "startTime"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20131121012759) do
     t.date     "birthday"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
+    t.string   "email",                  default: ""
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :startDate %><br>
-    <%= f.date_select :startDate %>
+    <%= f.date_select :startDate, start_year: Date.current.year, end_year: Date.current.year + 1, order: [:month, :day, :year] %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
@@ -32,8 +32,8 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :intesity %><br>
-    <%= f.number_field :intesity %>
+    <%= f.label :intensity %><br>
+    <%= f.number_field :intensity %>
   </div>
   <div class="field">
     <%= f.label :additional %><br>

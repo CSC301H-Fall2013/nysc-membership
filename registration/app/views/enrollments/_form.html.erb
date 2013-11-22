@@ -95,6 +95,7 @@
  
   <!-- for future use -->
    <script type="text/javascript" charset="utf-8"> 
+    // show popup for price thingy..
       function showAlert() {
         var price = "<%= course_fee(if_member(@enrollment.participantID), @enrollment.courseID) %>"
         var name = "<%= @enrollment.courseID %>"

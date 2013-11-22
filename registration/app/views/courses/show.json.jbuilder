@@ -1,1 +1,1 @@
-json.extract! @course, :courseID, :startDate, :title, :instructor, :description, :intesity, :additional, :duration, :startTime, :endTime, :dayOfWeek, :earlybirdPrice, :memberPrice, :nonmemberPrice, :size, :created_at, :updated_at
+json.extract! @course, :courseID, :startDate, :title, :instructor, :description, :intensity, :additional, :duration, :startTime, :endTime, :dayOfWeek, :earlybirdPrice, :memberPrice, :nonmemberPrice, :size, :created_at, :updated_at

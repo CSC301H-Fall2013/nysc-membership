@@ -18,7 +18,7 @@ class CoursesControllerTest < ActionController::TestCase
 
   test "should create course" do
     assert_difference('Course.count') do
-      post :create, course: { additional: @course.additional, courseID: @course.courseID, dayOfWeek: @course.dayOfWeek, description: @course.description, duration: @course.duration, earlybirdPrice: @course.earlybirdPrice, endTime: @course.endTime, instructor: @course.instructor, intesity: @course.intesity, memberPrice: @course.memberPrice, nonmemberPrice: @course.nonmemberPrice, size: @course.size, startDate: @course.startDate, startTime: @course.startTime, title: @course.title }
+      post :create, course: { additional: @course.additional, courseID: @course.courseID, dayOfWeek: @course.dayOfWeek, description: @course.description, duration: @course.duration, earlybirdPrice: @course.earlybirdPrice, endTime: @course.endTime, instructor: @course.instructor, intensity: @course.intensity, memberPrice: @course.memberPrice, nonmemberPrice: @course.nonmemberPrice, size: @course.size, startDate: @course.startDate, startTime: @course.startTime, title: @course.title }
     end
 
     assert_redirected_to course_path(assigns(:course))
@@ -35,7 +35,7 @@ class CoursesControllerTest < ActionController::TestCase
   end
 
   test "should update course" do
-    patch :update, id: @course, course: { additional: @course.additional, courseID: @course.courseID, dayOfWeek: @course.dayOfWeek, description: @course.description, duration: @course.duration, earlybirdPrice: @course.earlybirdPrice, endTime: @course.endTime, instructor: @course.instructor, intesity: @course.intesity, memberPrice: @course.memberPrice, nonmemberPrice: @course.nonmemberPrice, size: @course.size, startDate: @course.startDate, startTime: @course.startTime, title: @course.title }
+    patch :update, id: @course, course: { additional: @course.additional, courseID: @course.courseID, dayOfWeek: @course.dayOfWeek, description: @course.description, duration: @course.duration, earlybirdPrice: @course.earlybirdPrice, endTime: @course.endTime, instructor: @course.instructor, intensity: @course.intensity, memberPrice: @course.memberPrice, nonmemberPrice: @course.nonmemberPrice, size: @course.size, startDate: @course.startDate, startTime: @course.startTime, title: @course.title }
     assert_redirected_to course_path(assigns(:course))
   end
 
