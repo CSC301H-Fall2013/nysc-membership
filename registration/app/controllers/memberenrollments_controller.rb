@@ -15,7 +15,7 @@ class MemberenrollmentsController < ApplicationController
   # POST /memberenrollments.json
   def create
     session[:memberenrollment_params].deep_merge!(params[:memberenrollment]) if params[:memberenrollment]
-    @memberenrollment = MemberEnrollment.new(session[:memberenrollment_params])
+    @memberenrollment = Enrollment.new(session[:memberenrollment_params])
     @memberenrollment.current_step = session[:memberenrollment_step]
     if @memberenrollment.valid?
       if params[:back_button]
