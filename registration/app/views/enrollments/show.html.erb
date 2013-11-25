@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= flash[:warning] %>
+<b style="color: red"><%= flash[:warning] %></b>
 
 <p>
   <strong>Participantid:</strong>
@@ -32,7 +32,7 @@
   <%= @enrollment.ans2 %>
 </p>
 
-<%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |
+<%= link_to 'De-waitlist This Enrollment', edit_enrollment_path(@enrollment) %> |
 <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
 
 

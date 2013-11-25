@@ -1,6 +1,12 @@
 <h1>Editing enrollment</h1>
 
-<%= render 'form' %>
+<%= form_for(@enrollment) do |f| %>
+
+Thank you for registering. <b>Please pay $<%= @enrollment.waitlist_price %></b>.
+
+<p><%= f.submit "Process Payment" %></p>
+
+<% end %>
 
 <%= link_to 'Show', @enrollment %> |
 <%= link_to 'Back', enrollments_path %>
