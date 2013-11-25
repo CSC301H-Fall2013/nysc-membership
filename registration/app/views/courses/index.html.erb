@@ -27,7 +27,11 @@
     <%if @courses%>
     <% @courses.each do |course| %>
       <tr>
-        <td><%= link_to course.courseID, course %></td>
+        <%if admin_signed_in? %> 
+          <td><%= link_to course.courseID, course %></td>
+        <% else %>
+          <td><%= link_to course.courseID, new_memberenrollment_path %></td>
+        <%end%>
         <td><%= course.title %></td>
         <td><%= course.startDate %></td>
         <td><%= course.size %></td>
@@ -36,4 +40,8 @@
     <%end%>
   </tbody>
 </table>
-<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+<%if admin_signed_in? %> 
+  <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+<% else %>
+  <%= link_to 'Back to Member Home Page', static_pages_participanthome_path %>
+<%end%>
