@@ -26,9 +26,6 @@ class EnrollmentsController < ApplicationController
 
   # GET /enrollments/1/edit
   def edit
-    session[:enrollment_params] ||= {}
-    @enrollment = Enrollment.new(session[:enrollment_params])
-    @enrollment.current_step = session[:enrollment_step]
   end
 
   # POST /enrollments
@@ -96,20 +93,17 @@ class EnrollmentsController < ApplicationController
   # PATCH/PUT /enrollments/1
   # PATCH/PUT /enrollments/1.json
   def update
-
-    #redirect_to enrollments_url
-
-    respond_to do |format|
-      if @enrollment.update(enrollment_params)
-        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully updated.' }
-        #return
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @enrollment.errors, status: :unprocessable_entity }
-      end
+    @enrollment = Enrollment.find(params[:id])
+    @enrollment.waitlist_price = 0
+    @enrollment.waitlist_status = 0
+    if @enrollment.update_attributes(params[:enrollment])
+       redirect_to :action => 'show', :id => @enrollment
+       flash[:warning] = "You have been removed from the waitlist and enrolled into the course. Thank you for paying!"
+    else
+       render :action => 'edit'
     end
   end
+
 
   # DELETE /enrollments/1
   # DELETE /enrollments/1.json

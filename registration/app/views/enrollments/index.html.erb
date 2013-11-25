@@ -53,7 +53,7 @@
       <th>Ans6</th>
       <th>Ans7</th>
       <th>Disclaimer</th>
-      <th>Edit</th>
+      <th>De-waitlist</th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -75,7 +75,7 @@
         <td><%= enrollment.ans6 ? "Yes" : "No" %></td>
         <td><%= enrollment.ans7 ? "Yes" : "No" %></td>
         <td><%= enrollment.disclaimer ? "Accept" : "Decline"%></td>
-        <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
+        <td><%= link_to 'De-waitlist', edit_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <%end%>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:3000/" />
+<title>10a - multi-step form: enrollment, PARQ, payment</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10a - multi-step form: enrollment, PARQ, payment</td></tr>
+</thead><tbody>
+<!--Create 2 courses: 12345678 with intensity > 0, and 12345679 with intensity = 0; both capacity of 1. Create two participants to enroll; 11111111 and 12312312.-->
+<tr>
+	<td>open</td>
+	<td>/enrollments/new</td>
+	<td></td>
+</tr>
+<!--Enrol as non-waitlisted into a fitness course-->
+<tr>
+	<td>type</td>
+	<td>id=enrollment_participantID</td>
+	<td>11111111</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_courseID</td>
+	<td>12345678</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h1</td>
+	<td>New enrollment - PARQ</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h1</td>
+	<td>New enrollment - Payment</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>glob:*Waitlist status: 0*Course fee: 0*</td>
+	<td></td>
+</tr>
+<!--Enroll into fitness course as waitlisted.-->
+<tr>
+	<td>open</td>
+	<td>/enrollments/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_participantID</td>
+	<td>12312310</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_courseID</td>
+	<td>12345678</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h1</td>
+	<td>New enrollment - PARQ</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>glob:* The class is full, you have been added onto the waitlist as number 1. Please pay at time of successful registration, if necessary.*</td>
+	<td></td>
+</tr>
+<!--Enrol into non-fitness class as non-waitlisted.-->
+<tr>
+	<td>open</td>
+	<td>/enrollments/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_participantID</td>
+	<td>11111111</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_courseID</td>
+	<td>12345679</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h1</td>
+	<td>New enrollment - Payment</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>glob:*Waitlist status: 0*Course fee: 0*</td>
+	<td></td>
+</tr>
+<!--Enrol into non-fitness course as waitlisted.-->
+<tr>
+	<td>open</td>
+	<td>/enrollments/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_participantID</td>
+	<td>12312310</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_courseID</td>
+	<td>12345679</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>glob:* The class is full, you have been added onto the waitlist as number 1. Please pay at time of successful registration, if necessary.*</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
