@@ -1,7 +1,6 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: [:show, :edit, :update, :destroy]
 
-
   # GET /enrollments
   # GET /enrollments.json
   def index
@@ -20,37 +19,75 @@ class EnrollmentsController < ApplicationController
 
   # GET /enrollments/new
   def new
-    @enrollment = Enrollment.new
+    session[:enrollment_params] ||= {}
+    @enrollment = Enrollment.new(session[:enrollment_params])
+    @enrollment.current_step = session[:enrollment_step]
   end
 
   # GET /enrollments/1/edit
   def edit
+    session[:enrollment_params] ||= {}
+    @enrollment = Enrollment.new(session[:enrollment_params])
+    @enrollment.current_step = session[:enrollment_step]
   end
 
   # POST /enrollments
   # POST /enrollments.json
   def create
-    @enrollment = Enrollment.new(enrollment_params)
-    respond_to do |format|
-      if Enrollment.check_validation(@enrollment)
-        @enrollment.disclaimer = true
-        @enrollment.waitlist_status = @enrollment.waitlist_generate(@enrollment.courseID)
-        if @enrollment.waitlist_status > 0
-          @enrollment.waitlist_price = Enrollment.charge_fee(@enrollment)
-          flash[:warning] = "The class is full, you have been added onto the waitlist as #{@enrollment.waitlist_status}"
-        end
-        if @enrollment.save
-          format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @enrollment }
+    session[:enrollment_params].deep_merge!(params[:enrollment]) if params[:enrollment]
+    @enrollment = Enrollment.new(session[:enrollment_params])
+    @enrollment.current_step = session[:enrollment_step]
+    if @enrollment.valid?
+      if params[:back_button]
+        @enrollment.previous_step
+      # if last step, we want to save
+      elsif @enrollment.last_step?
+        # also zero out the price because we know the member has paid for sure
+        @enrollment.waitlist_price = 0
+        @enrollment.waitlist_status = @enrollment.waitlist_generate
+        @enrollment.save
+      # if first step, check if PARQ is necessary
+      elsif @enrollment.first_step?
+        if @enrollment.check_fitness
+          # PARQ is necessary, go to step 2
+          @enrollment.next_step
         else
-          format.html { render action: 'new' }
-          format.json { render json: @enrollment.errors, status: :unprocessable_entity }
+          @enrollment.waitlist_price = @enrollment.charge_fee
+          # PARQ is not necessary, check if waitlisted
+          @enrollment.waitlist_status = @enrollment.waitlist_generate
+          if @enrollment.waitlist_status > 0
+            # waitlisted
+            flash[:warning] = "The class is full, you have been added onto the waitlist as number #{@enrollment.waitlist_status}. " +
+            "Please pay at time of successful registration, if necessary."
+            @enrollment.save if @enrollment.all_valid?
+          else
+            # not waitlisted - just go to step 3 and display the price to pay
+            @enrollment.next_step
+            @enrollment.next_step
+          end
         end
-      else
-        format.html { render action: 'new'}
-        flash[:notice] = "CourseID or ParticipantID does not exist, please put in valid IDs (8 characters)"
+      # step 2
+      elsif @enrollment.steps[1]
+        @enrollment.waitlist_status = @enrollment.waitlist_generate
+        @enrollment.waitlist_price = @enrollment.charge_fee
+        if @enrollment.waitlist_status > 0
+          # waitlisted... don't pay yet
+          flash[:warning] = "The class is full, you have been added onto the waitlist as number #{@enrollment.waitlist_status}. " +
+          "Please pay at time of successful registration, if necessary."
+          @enrollment.save if @enrollment.all_valid?
+        else
+          @enrollment.next_step
+        end
       end
-    end 
+      session[:enrollment_step] = @enrollment.current_step
+    end
+    if @enrollment.new_record?
+      render "new"
+    else
+      session[:enrollment_step] = session[:enrollment_params] = nil
+      flash[:notice] = "Enrollment saved!"
+      redirect_to @enrollment
+    end
   end
 
   # PATCH/PUT /enrollments/1

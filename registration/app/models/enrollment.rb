@@ -1,5 +1,52 @@
 class Enrollment < ActiveRecord::Base
+	attr_writer :current_step
 
+	# Validation
+	validate :valid_participant, :valid_course, :if => lambda { |o| o.current_step == "init" }
+	validates :participantID, :presence => true, :uniqueness => {:scope => 
+		:courseID, :message => "has been already enrolled in that course"}, :if => lambda { |o| o.current_step == "init" }
+
+	#----------------------------------------------#
+	# for multi-step enrollment form
+	# adapted from http://railscasts.com/episodes/217-multistep-forms
+	def current_step
+	  @current_step || steps.first
+	end
+
+	def steps
+	  %w[init parq pay]
+	end
+
+	def next_step
+	  self.current_step = steps[steps.index(current_step) + 1]
+	end
+
+	def previous_step
+	  self.current_step = steps[steps.index(current_step) - 1]
+	end
+
+	def first_step?
+	  current_step == steps.first
+	end
+
+	def last_step?
+	  current_step == steps.last
+	end
+
+	def all_valid?
+	  steps.all? do |step|
+	    self.current_step = step
+	    valid?
+	  end
+	end
+
+	#--------------------------------------------------#
+
+	# check if fitness is between 1-3
+	def check_fitness
+		course = Course.find_by(courseID: courseID)
+		return course.intensity > 0
+	end
 
 	# Search for all participants that match in the database
 	# by participantID, courseID, or startDate
@@ -12,12 +59,11 @@ class Enrollment < ActiveRecord::Base
 	end
 
 	# auto - generate waitlist value
-	def waitlist_generate(course)
-		#debugger
+	def waitlist_generate
 		if course_full
-			if Course.find_by(courseID: course).size > 0
-				enrollment = Enrollment.where(courseID: course).maximum("waitlist_status")
-				return enrollment+1
+			if Course.find_by(courseID: courseID).size > 0
+				enrollment = Enrollment.where(courseID: courseID).maximum("waitlist_status")
+				return enrollment + 1
 			else
 				return 1
 			end
@@ -39,26 +85,24 @@ class Enrollment < ActiveRecord::Base
 
 	end
 
-	# make sure the course exists, used for validation
-	def course_exists
-		if not Course.exists?(courseID: courseID)
-			errors.add(:courseID, "is invalid!")
-		end
-	end
-
 	#Check if enrollment ID inputs are in the database
-	def self.check_validation(enrollment)
-	    if Participant.find_by(participantID: enrollment.participantID) 
-	    	if Course.find_by(courseID: enrollment.courseID) 
-	      		return true
-	    	end
+	def valid_participant
+	    if not Participant.find_by(participantID: participantID)
+	    	errors.add(:participantID, 'is not valid. Please enter a valid ID (8 characters)')
 	    end
 	end
 
-	#Charges participant fee by their membership and date
-	def self.charge_fee(enrollment)
-		if_member = Participant.find_by(participantID: enrollment.participantID)
-		if_course = Course.find_by(courseID: enrollment.courseID)
+	# Check if course ID input is in db
+	def valid_course
+		if not Course.find_by(courseID: courseID)
+			errors.add(:courseID, 'is not valid. Please enter a valid ID (8 characters)')
+		end
+	end
+
+	# Charges participant fee by their membership and date
+	def charge_fee
+		if_member = Participant.find_by(participantID: participantID)
+		if_course = Course.find_by(courseID: courseID)
 		
 		if if_course != nil && if_member != nil
 			earlyBirdTime = if_course.startDate.months_ago(1)
@@ -88,17 +132,5 @@ class Enrollment < ActiveRecord::Base
 			return Date.parse("2013-10-01")
 		end
 	end
-
-	#Validation
-
-	#Primary key of courseID and participantID
-	validates :participantID, :presence => true, :uniqueness => {:scope => :courseID, :message => "has been already enrolled in that course"}
-	validates :courseID, :presence => true, :uniqueness => {:scope => :participantID, :message => "has that participant enrolled already"}
-	
-	validates :courseID, length: { is: 8 }
-	validate :course_exists
-	validate :course_full
-	validates :participantID, :courseID, :startDate, :presence => true
-	validates :startDate, :presence => { :message => "Date must be in DD-MM-YYYY"}
 
 end

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:3000/" />
+<title>10a - only display PARQ if fitness class (intensity 1-3)</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10a - only display PARQ if fitness class (intensity 1-3)</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/enrollments/new</td>
+	<td></td>
+</tr>
+<!--First create a participant with ID 12312311, and course with id 12345679. Course has intensity 0.-->
+<tr>
+	<td>type</td>
+	<td>id=enrollment_participantID</td>
+	<td>12312311</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_courseID</td>
+	<td>12345679</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextNotPresent</td>
+	<td>glob:*Has your doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?*</td>
+	<td></td>
+</tr>
+<!--Have a course 12345678 created with intensity between 1 and 3.-->
+<tr>
+	<td>type</td>
+	<td>id=enrollment_participantID</td>
+	<td>12312311</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_courseID</td>
+	<td>12345678</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>glob:*Has your doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?*</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

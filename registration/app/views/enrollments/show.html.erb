@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= flash[:warning] || flash[:notice] || flash[:alert] %>
+<%= flash[:warning] %>
 
 <p>
   <strong>Participantid:</strong>
@@ -25,6 +25,11 @@
 <p>
   <strong>Course fee:</strong>
   <%= @enrollment.waitlist_price %>
+</p>
+
+<p>
+  <strong>Fitness:</strong>
+  <%= @enrollment.ans2 %>
 </p>
 
 <%= link_to 'Edit', edit_enrollment_path(@enrollment) %> |

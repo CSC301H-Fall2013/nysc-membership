@@ -26,6 +26,7 @@
       <th>Last Name</th>
       <th>Phone Number</th>
       <th>Membership Expiry Date</th>
+      <th>Is Admin?</th>
     </tr>
   </thead>
 
@@ -37,6 +38,7 @@
         <td><%= participant.lname %></td>
         <td><%= participant.phone %></td>
         <td><%= participant.expirydate %></td>
+        <td><%= participant.role %></td>
       </tr>
     <% end %>
   </tbody>

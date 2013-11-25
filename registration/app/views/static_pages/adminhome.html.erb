@@ -3,14 +3,14 @@
 <br><br>
 
 
-<h3>Manage Members</h3>
+<h3>Manage Members and Admins</h3>
 
 <!-- Links that take you to a page depending on what admin wants to do. -->
-<%= link_to 'Add a member', new_participant_path %><br>
-<%= link_to 'Find a member', participants_path %><br>
+<%= link_to 'Add a member or admin', new_participant_path %><br>
+<%= link_to 'Find a member or admin', participants_path %><br>
 
 <!-- Exports a csv file with all member's information. -->
-<%= link_to "Export data of all participants", participants_path(format: "csv") %>
+<%= link_to "Export data of all members and admins", participants_path(format: "csv") %>
 
 
 <h3>Course stuff</h3>

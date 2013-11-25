@@ -12,6 +12,10 @@ class Course < ActiveRecord::Base
 	validate :startTime_endTime_conflict
 	validates :intensity, :inclusion => { :in => 0..3, :message => "must be between 0 and 3" }
 
+	# all prices and class sizes must be non-negative
+	validates_numericality_of :earlybirdPrice, :memberPrice, :nonmemberPrice, \
+	  :size, :only_integer =>true, :greater_than_or_equal_to =>0, :message => "must be non-negative"
+
 	def self.search(search)
 	  if search
 	    Course.where(['courseID LIKE ? ', "%#{search}%"])

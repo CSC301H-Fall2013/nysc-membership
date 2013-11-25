@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:3000/" />
+<title>10a - PARQ cannot be incomplete; pop-up dr's note alert on "yes" answers</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">10a - PARQ cannot be incomplete; pop-up dr's note alert on "yes" answers</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/enrollments/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_participantID</td>
+	<td>12312311</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_courseID</td>
+	<td>12345678</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=commit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=enrollment_ans1_false</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=enrollment_ans2_false</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=enrollment_ans3_false</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=enrollment_ans4_false</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=enrollment_ans5_false</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=enrollment_ans6_false</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=enrollment_ans7_false</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans1_true</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>You (the registrant) must bring a signed and dated letter of physical activity readiness signed by your doctor as soon as possible in order to complete registration. If more information regarding the required contents of the form is necessary, please contact staff for assistance at 416-733-4111</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans2_true</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>You (the registrant) must bring a signed and dated letter of physical activity readiness signed by your doctor as soon as possible in order to complete registration. If more information regarding the required contents of the form is necessary, please contact staff for assistance at 416-733-4111</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans3_true</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>You (the registrant) must bring a signed and dated letter of physical activity readiness signed by your doctor as soon as possible in order to complete registration. If more information regarding the required contents of the form is necessary, please contact staff for assistance at 416-733-4111</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans4_true</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>You (the registrant) must bring a signed and dated letter of physical activity readiness signed by your doctor as soon as possible in order to complete registration. If more information regarding the required contents of the form is necessary, please contact staff for assistance at 416-733-4111</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans5_true</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>You (the registrant) must bring a signed and dated letter of physical activity readiness signed by your doctor as soon as possible in order to complete registration. If more information regarding the required contents of the form is necessary, please contact staff for assistance at 416-733-4111</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans6_true</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>You (the registrant) must bring a signed and dated letter of physical activity readiness signed by your doctor as soon as possible in order to complete registration. If more information regarding the required contents of the form is necessary, please contact staff for assistance at 416-733-4111</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans7_true</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertAlert</td>
+	<td>You (the registrant) must bring a signed and dated letter of physical activity readiness signed by your doctor as soon as possible in order to complete registration. If more information regarding the required contents of the form is necessary, please contact staff for assistance at 416-733-4111</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<h1>New enrollment - PARQ</h1>
+
+<table>
+    <tr> 
+        <td></td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td ><%= radio_button("enrollment", "ans1", true, options = {:onclick => "showAlert()"}) %></td>
+        <td><%= radio_button("enrollment", "ans1", false, options = {:checked => true}) %></td>
+        <td>1. Has your doctor ever said that you have a heart condition <b>and</b> that you should only do physical activity recommended by a doctor?</td>
+    </tr>
+	    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans2", true, options = {:onclick => "showAlert()"}) %></td>
+        <td><%= radio_button("enrollment", "ans2", false, options = {:checked => true}) %></td>
+        <td>2. Do you feel pain in your chest when you do physical activity?</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans3", true, options = {:onclick => "showAlert()"}) %></td>
+        <td><%= radio_button("enrollment", "ans3", false, options = {:checked => true}) %></td>
+        <td>3. In the past month, have you had chest pain when you were not doing physical activity?</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans4", true, options = {:onclick => "showAlert()"}) %></td>
+        <td><%= radio_button("enrollment", "ans4", false, options = {:checked => true}) %></td>
+        <td>4. Do you lose your balance because of dizziness or do you ever lose conciousness?</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans5", true, options = {:onclick => "showAlert()"}) %></td>
+        <td><%= radio_button("enrollment", "ans5", false, options = {:checked => true}) %></td>
+        <td>5. Do you have a bone or joint problem (for example, back, knee or hip) that could be made worse by a change in your physical activity?</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans6", true, options = {:onclick => "showAlert()"}) %></td>
+        <td><%= radio_button("enrollment", "ans6", false, options = {:checked => true}) %></td>
+        <td>6. Is your doctor currently prescribing drugs (for example, water pills) for your blood pressure or heart condition?</td>
+    </tr>
+    <tr> 
+        <td></td>
+        <td><%= radio_button("enrollment", "ans7", true, options = {:onclick => "showAlert()"}) %></td>
+        <td><%= radio_button("enrollment", "ans7", false, options = {:checked => true}) %></td>
+        <td>7. Do you know of <b>any other reason</b> why you should not do physical activity?</td>
+	</tr>
+</table>
+

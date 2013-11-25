@@ -11,9 +11,11 @@
     </div>
   <% end %>
 
+  <!-- a form for editing existing participant entries... -->
+
   <div class="field">
     <%= f.label :participantID, "Participant ID" %><br>
-    <%= f.text_field :participantID %>
+    <%= f.text_field :participantID, readonly: true %>
   </div>
   <div class="field">
     <%= f.label :fname, "First Name" %><br>

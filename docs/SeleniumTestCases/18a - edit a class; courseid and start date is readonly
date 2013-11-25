@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:3000/" />
+<title>18a - edit a class; courseid and start date is readonly</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">18a - edit a class; courseid and start date is readonly</td></tr>
+</thead><tbody>
+<!--Please create at least one course before running this test.-->
+<tr>
+	<td>open</td>
+	<td>/courses/1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotEditable</td>
+	<td>id=course_courseID</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>id=course_startDate_2i</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>id=course_startDate_3i</td>
+	<td>id=course_startDate_1i</td>
+</tr>
+<tr>
+	<td>verifyElementNotPresent</td>
+	<td>id=course_startDate_1i</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

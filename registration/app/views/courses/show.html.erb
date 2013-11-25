@@ -42,12 +42,12 @@
 
 <p>
   <strong>Start Time:</strong>
-  <%= @course.startTime %>
+  <%= @course.startTime.to_formatted_s(:time) + ' EST' %>
 </p>
 
 <p>
   <strong>End Time:</strong>
-  <%= @course.endTime %>
+  <%= @course.endTime.to_formatted_s(:time) + ' EST' %>
 </p>
 
 <p>
@@ -78,6 +78,6 @@
 <%= link_to 'Waitlist', waitlist_path(@course) %> |
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Delete', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Back', static_pages_adminhome_path %>
 
  

@@ -6,6 +6,8 @@ Registration::Application.routes.draw do
 
   get "static_pages/adminhome"
 
+  devise_for :admins
+
   resources :courses
 
   resources :enrollments 
