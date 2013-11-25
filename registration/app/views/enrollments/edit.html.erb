@@ -14,7 +14,6 @@
   <%= render "#{@enrollment.current_step}_step", :f => f %>
 
   <p><%= f.submit "Continue" %></p>
-  <p><%= f.submit "Back", :name => "back_button" unless @enrollment.first_step? %></p>
 
     <script type="text/javascript" charset="utf-8"> 
         function showAlert() {
