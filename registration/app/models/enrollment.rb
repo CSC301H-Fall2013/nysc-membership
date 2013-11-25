@@ -118,6 +118,9 @@ class Enrollment < ActiveRecord::Base
 		end
 	end
 
+	def get_start_date
+		return Course.find_by(courseID: courseID).startDate
+	end
 
 	def self.get_season #should change the years later
 		if Date.today.month >= 1 && Date.today.month <= 3

@@ -45,6 +45,7 @@ class EnrollmentsController < ApplicationController
         # also zero out the price because we know the member has paid for sure
         @enrollment.waitlist_price = 0
         @enrollment.waitlist_status = @enrollment.waitlist_generate
+        @enrollment.startDate = @enrollment.get_start_date
         @enrollment.save
       # if first step, check if PARQ is necessary
       elsif @enrollment.first_step?
@@ -55,6 +56,7 @@ class EnrollmentsController < ApplicationController
           @enrollment.waitlist_price = @enrollment.charge_fee
           # PARQ is not necessary, check if waitlisted
           @enrollment.waitlist_status = @enrollment.waitlist_generate
+          @enrollment.startDate = @enrollment.get_start_date
           if @enrollment.waitlist_status > 0
             # waitlisted
             flash[:warning] = "The class is full, you have been added onto the waitlist as number #{@enrollment.waitlist_status}. " +
@@ -70,6 +72,7 @@ class EnrollmentsController < ApplicationController
       elsif @enrollment.steps[1]
         @enrollment.waitlist_status = @enrollment.waitlist_generate
         @enrollment.waitlist_price = @enrollment.charge_fee
+        @enrollment.startDate = @enrollment.get_start_date
         if @enrollment.waitlist_status > 0
           # waitlisted... don't pay yet
           flash[:warning] = "The class is full, you have been added onto the waitlist as number #{@enrollment.waitlist_status}. " +

@@ -1,27 +1,6 @@
-<%= form_for(@enrollment) do |f| %>
-  <% if @enrollment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
+<h1>Editing enrollment</h1>
 
-      <ul>
-      <% @enrollment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render 'form' %>
 
-  <%= render "#{@enrollment.current_step}_step", :f => f %>
-
-  <p><%= f.submit "Continue" %></p>
-
-    <script type="text/javascript" charset="utf-8"> 
-        function showAlert() {
-          // horray for multi-line strings!
-          alert("You \(the registrant\) must bring a signed and dated letter of physical activity readiness signed by your doctor " +
-            "as soon as possible in order to complete registration. If more information regarding " +
-            "the required contents of the form is necessary, please contact staff for assistance at 416-733-4111");
-        }
-    </script>
-
-<% end %>
+<%= link_to 'Show', @enrollment %> |
+<%= link_to 'Back', enrollments_path %>
