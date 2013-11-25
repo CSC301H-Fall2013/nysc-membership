@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:3000/" />
+<title>8 - create popup if YES selected in any question on PARQ form</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">8 - create popup if YES selected in any question on PARQ form</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/static_pages/participanthome</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Courses</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td></td>
+	<td>Available Courses</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=member01</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Course01</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td></td>
+	<td>Enrollement</td>
+</tr>
+<tr>
+	<td>assertConfirmation</td>
+	<td>Participant will now be enrolled into the class</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_participantID</td>
+	<td>member01</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=enrollment_courseID</td>
+	<td>course01</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans1_false</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans2_false</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans3_false</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans4_false</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans5_false</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans6_false</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=enrollment_ans7_true</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertPrompt</td>
+	<td></td>
+	<td>Valid Doctor's Note Required</td>
+</tr>
+</tbody></table>
+</body>
+</html>
