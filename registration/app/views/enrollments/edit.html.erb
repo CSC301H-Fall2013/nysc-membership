@@ -2,7 +2,7 @@
 
 <%= form_for(@enrollment) do |f| %>
 
-Thank you for registering. <b>Please pay $<%= @enrollment.waitlist_price %></b>.
+Thank you for registering. <b>Please pay $<%= @enrollment.price_owed %></b>.
 
 <p><%= f.submit "Process Payment" %></p>
 

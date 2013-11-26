@@ -8,14 +8,14 @@ module EnrollmentsHelper
 			if @enrollment.created_at < Enrollment.get_season #EarlyBird Fee
 				link_to("Pay Course Fee Now!", \
 				enrollment_path(@enrollment, \
-					:enrollment => {:waitlist_price => 0, :waitlist_status => 0}), \
+					:enrollment => {:price_owed => 0, :price_paid => course_fee.earlybirdPrice, :waitlist_status => 0}), \
 					:method => :put, \
 					:confirm => "Please charge $ #{course_fee.earlybirdPrice}")
 			else
 				#nonearly member price
 				link_to("Pay Course Fee Now!", \
 				enrollment_path(@enrollment, \
-					:enrollment => {:waitlist_price => 0, :waitlist_status => 0}), \
+					:enrollment => {:price_owed => 0, :price_paid => course_fee.memberPrice, :waitlist_status => 0}), \
 					:method => :put, \
 					:confirm => "Please charge $ #{course_fee.memberPrice}")
 
@@ -23,7 +23,7 @@ module EnrollmentsHelper
 		else 	#reg non member price
 			link_to("Pay Course Fee Now!", \
 				enrollment_path(@enrollment, \
-					:enrollment => {:waitlist_price => 0, :waitlist_status => 0}), \
+					:enrollment => {:price_owed => 0, :price_paid => course_fee.nonmemberPrice, :waitlist_status => 0}), \
 					:method => :put, \
 					:confirm => "Please charge $ #{course_fee.nonmemberPrice}")
 

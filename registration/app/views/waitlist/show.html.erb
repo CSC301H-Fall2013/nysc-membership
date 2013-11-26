@@ -8,7 +8,8 @@
     <tr>
       <th>ParticipantID</th>
       <th>Waitlist Status</th>
-      <th>Waitlist Price</th>
+      <th>Price Paid</th>
+      <th>Price Owed</th>
 	  <th> </th>
 	  <th> </th>
     </tr>
@@ -20,7 +21,8 @@
 		<% @enrollment = enrollment %>
         <td><%= @enrollment.participantID %></td>
         <td><%= @enrollment.waitlist_status %></td>
-        <td><%= @enrollment.waitlist_price %></td>
+        <td><%= @enrollment.price_paid %></td>
+        <td><%= @enrollment.price_owed %></td>
 		<td><%= pay_course  %></td>
 		<td><%= link_to 'Delete', @enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

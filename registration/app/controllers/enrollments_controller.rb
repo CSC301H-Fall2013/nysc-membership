@@ -40,7 +40,8 @@ class EnrollmentsController < ApplicationController
       # if last step, we want to save
       elsif @enrollment.last_step?
         # also zero out the price because we know the member has paid for sure
-        @enrollment.waitlist_price = 0
+        @enrollment.price_owed = 0
+        @enrollment.price_paid = @enrollment.charge_fee
         @enrollment.waitlist_status = @enrollment.waitlist_generate
         @enrollment.startDate = @enrollment.get_start_date
         @enrollment.save
@@ -50,7 +51,8 @@ class EnrollmentsController < ApplicationController
           # PARQ is necessary, go to step 2
           @enrollment.next_step
         else
-          @enrollment.waitlist_price = @enrollment.charge_fee
+          @enrollment.price_paid = 0
+          @enrollment.price_owed = @enrollment.charge_fee
           # PARQ is not necessary, check if waitlisted
           @enrollment.waitlist_status = @enrollment.waitlist_generate
           @enrollment.startDate = @enrollment.get_start_date
@@ -68,7 +70,8 @@ class EnrollmentsController < ApplicationController
       # step 2
       elsif @enrollment.steps[1]
         @enrollment.waitlist_status = @enrollment.waitlist_generate
-        @enrollment.waitlist_price = @enrollment.charge_fee
+        @enrollment.price_paid = 0 
+        @enrollment.price_owed = @enrollment.charge_fee
         @enrollment.startDate = @enrollment.get_start_date
         if @enrollment.waitlist_status > 0
           # waitlisted... don't pay yet
@@ -94,7 +97,8 @@ class EnrollmentsController < ApplicationController
   # PATCH/PUT /enrollments/1.json
   def update
     @enrollment = Enrollment.find(params[:id])
-    @enrollment.waitlist_price = 0
+    @enrollment.price_paid = @enrollment.price_owed
+    @enrollment.price_owed = 0
     @enrollment.waitlist_status = 0
     if @enrollment.update_attributes(params[:enrollment])
        redirect_to :action => 'show', :id => @enrollment
@@ -123,6 +127,6 @@ class EnrollmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
-      params.fetch(:enrollment).permit(:participantID, :courseID, :startDate, :waitlist_status, :waitlist_price, :ans1, :ans2, :ans3, :ans4, :ans5, :ans6, :ans7)
+      params.fetch(:enrollment).permit(:participantID, :courseID, :startDate, :waitlist_status, :price_paid, :price_owed, :ans1, :ans2, :ans3, :ans4, :ans5, :ans6, :ans7)
     end
 end

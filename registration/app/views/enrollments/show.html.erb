@@ -23,8 +23,13 @@
 </p>
 
 <p>
-  <strong>Course fee:</strong>
-  <%= @enrollment.waitlist_price %>
+  <strong>Paid fee:</strong>
+  <%= @enrollment.price_paid %>
+</p>
+
+<p>
+  <strong>Unpaid fee:</strong>
+  <%= @enrollment.price_owed %>
 </p>
 
 <p>

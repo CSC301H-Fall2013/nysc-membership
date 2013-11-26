@@ -44,7 +44,8 @@
       <th>Courseid</th>
       <th>Startdate</th>
       <th>Waitlist status</th>
-      <th>Waitlist price</th>
+      <th>Price paid</th>
+      <th>Price owed</th>
       <th>Ans1</th>
       <th>Ans2</th>
       <th>Ans3</th>
@@ -66,7 +67,8 @@
         <td><%= enrollment.courseID %></td>
         <td><%= enrollment.startDate %></td>
         <td><%= enrollment.waitlist_status %></td>
-        <td><%= enrollment.waitlist_price %></td>
+        <td><%= enrollment.price_paid %></td>
+        <td><%= enrollment.price_owed %></td>
         <td><%= enrollment.ans1 ? "Yes" : "No" %></td>
         <td><%= enrollment.ans2 ? "Yes" : "No" %></td>
         <td><%= enrollment.ans3 ? "Yes" : "No" %></td>
