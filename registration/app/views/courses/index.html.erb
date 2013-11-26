@@ -30,7 +30,7 @@
     <%if @courses%>
     <% @courses.each do |course| %>
       <tr>
-        <%if admin_signed_in? %> 
+        <%if current_participant.role? %> 
           <td><%= link_to course.courseID, course %></td>
         <% else %>
           <td><%= link_to course.courseID, new_memberenrollment_path %></td>
@@ -48,7 +48,7 @@
 </table>
 <br>
 <hr>
-<%if admin_signed_in? %> 
+<%if current_participant.role? %> 
   <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
 <% else %>
   <%= link_to 'Back to Member Home Page', static_pages_participanthome_path %>
