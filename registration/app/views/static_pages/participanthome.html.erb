@@ -1,7 +1,16 @@
 <h1>NYSC Member Home Page</h1>
-<h3>Hello,</h3>
+
+<% if participant_signed_in? %>
+	<div> Signed in as: <%= current_participant.email %> </div>
+<% end %>
+
+
+<h3>Hello,  <%= current_participant.fname %> </h3>
 
 	<p>Welcome to the North York Senior Centre Online Services. Please select an option below to continue.</p>
+
+
+<div> Your Current Membership Expires On:  <%= current_participant.expirydate.to_time.strftime('%B %d, %Y')  %> </div><br>
 	  
 <%= link_to 'Find a Course', courses_path %><br>
 

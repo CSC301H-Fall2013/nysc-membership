@@ -2,6 +2,11 @@
 
 <br><br>
 
+<% if participant_signed_in? %>
+	<div> Signed in as: <%= current_participant.email %> </div>
+<% end %>
+
+<br><br>
 
 <h3>Manage Members and Admins</h3>
 

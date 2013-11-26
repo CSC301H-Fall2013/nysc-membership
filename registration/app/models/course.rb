@@ -19,8 +19,8 @@ class Course < ActiveRecord::Base
 	def self.search(search)
 	  if search
 	    Course.where(['courseID LIKE ? ', "%#{search}%"])
-	  else # When page is initially loaded display no registeration information.
-	    []
+	  else # When page is initially loaded display all courses available.
+	    find(:all)
 	  end
 	end
 
