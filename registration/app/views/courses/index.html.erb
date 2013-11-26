@@ -18,7 +18,10 @@
     <tr>
       <th>Courseid</th>
       <th>Course Name</th>
-      <th>Startdate</th>
+      <th>Start Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Day of Week</th>
       <th>Capacity</th>
     </tr>
   </thead>
@@ -33,13 +36,18 @@
           <td><%= link_to course.courseID, new_memberenrollment_path %></td>
         <%end%>
         <td><%= course.title %></td>
-        <td><%= course.startDate %></td>
+        <td><%= course.startDate.to_time.strftime('%B %d, %Y') %></td>
+        <td><%= course.startTime.to_time.strftime('%l:%M %p') %></td>
+        <td><%= course.endTime.to_time.strftime('%l:%M %p') %></td>
+        <td><%= course.dayOfWeek %></td>
         <td><%= course.size %></td>
       </tr>
     <%end%>
     <%end%>
   </tbody>
 </table>
+<br>
+<hr>
 <%if admin_signed_in? %> 
   <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
 <% else %>
