@@ -5,9 +5,11 @@
     <p><%= current_participant.participantID %></p>
     <%= f.hidden_field :participantID, :value => current_participant.participantID %>
 </div>
+
 <div class="field" >
   <%= f.label :courseID %><br>
-  <%= f.text_field :courseID %>
+  <p><%= request.fullpath().from(23) %></p>
+  <%= f.hidden_field :courseID, :value =>  request.fullpath().from(23) %>
 </div>
 
 <h2>Participant Agreement</h2>
