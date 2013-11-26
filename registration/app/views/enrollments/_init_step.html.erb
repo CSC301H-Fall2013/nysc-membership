@@ -1,13 +1,29 @@
-<h1>New enrollment</h1>
+<%if current_participant.role? %> 
+    <h1>New enrollment - New Enrollment</h1>
+    <div class="field" id="nameValidation">
+        <%= f.label :participantID %><br>
+        <%= f.text_field :participantID %>
+    </div>
+    <div class="field" >
+        <%= f.label :courseID %><br>
+        <%= f.text_field :courseID %>
+    </div>
+<%else%>
+    <h1>Course Registration - New Enrollment</h1>
+    <div class="field" id="nameValidation">
+        <%= f.label :participantID %><br>
+        <p><%= current_participant.participantID %></p>
+        <%= f.hidden_field :participantID, :value => current_participant.participantID %>
+    </div>
+    <div class="field" >
+        <%= f.label :courseID %><br>
+        <%= f.text_field :courseID %>
+        <!--p%= @course.courseID %></p>-->
+        <!--%= f.hidden_field :courseID, :value => @course.courseID %>-->
+    </div>
+<%end%>
 
-<div class="field" id="nameValidation">
-    <%= f.label :participantID %><br>
-    <%= f.text_field :participantID %>
-</div>
-<div class="field" >
-  <%= f.label :courseID %><br>
-  <%= f.text_field :courseID %>
-</div>
+
 
 <h2>Participant Agreement</h2>
 <h5>ATTENTION: Please read this document carefully before accepting. If you have any questions about this form please ask staff for assistance at 416-733-4111.</h5>

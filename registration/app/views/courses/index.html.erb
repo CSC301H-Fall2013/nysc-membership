@@ -30,7 +30,8 @@
         <%if admin_signed_in? %> 
           <td><%= link_to course.courseID, course %></td>
         <% else %>
-          <td><%= link_to course.courseID, new_memberenrollment_path %></td>
+          <% @course = course %>
+          <td><%= link_to course.courseID, new_enrollment_path(:id => @course.id) %></td>
         <%end%>
         <td><%= course.title %></td>
         <td><%= course.startDate %></td>

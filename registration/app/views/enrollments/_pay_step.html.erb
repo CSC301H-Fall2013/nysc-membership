@@ -1,4 +1,8 @@
-<h1>New enrollment - Payment</h1>
+<%if current_participant.role? %> 
+    <h1>New enrollment - Payment</h1>
+<%else%>
+	<h1>Course Registration - Payment</h1>
+<%end%>
 
 <div class="field">
     Thank you for registering. <b>Please pay $<%= @enrollment.waitlist_price %></b>.
