@@ -32,7 +32,13 @@
   <%= @enrollment.ans2 %>
 </p>
 
-<%= link_to 'De-waitlist This Enrollment', edit_enrollment_path(@enrollment) %> |
-<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+
+
+<%if current_participant.role? %> 
+  <%= link_to 'De-waitlist This Enrollment', edit_enrollment_path(@enrollment) %> |
+  <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+<% else %>
+  <%= link_to 'Back to Member Home Page', static_pages_participanthome_path %>
+<%end%>
 
 

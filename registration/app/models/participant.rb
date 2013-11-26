@@ -41,7 +41,7 @@ class Participant < ActiveRecord::Base
 	def phone_length_between_nine_and_ten
   		errors.add(:phone, "number should be 9 or 10 characters in length") if phone.to_s.length < 9 or phone.to_s.length > 10
 	end
-
+	
 	#validation
 	validates :participantID, :uniqueness => true;
 	validates :fname, :presence => { :message => "First Name can't be blank"}
