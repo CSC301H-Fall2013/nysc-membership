@@ -34,7 +34,7 @@
           <td><%= link_to course.courseID, course %></td>
         <% else %>
           <% @course = course %>
-          <td><%= link_to course.courseID, new_enrollment_path(:id => @course.id) %></td>
+          <td><%= link_to course.courseID, new_enrollment_path(@course.courseID) %></td>
         <%end%>
         <td><%= course.title %></td>
         <td><%= course.startDate.to_time.strftime('%B %d, %Y') %></td>

@@ -16,10 +16,9 @@
         <%= f.hidden_field :participantID, :value => current_participant.participantID %>
     </div>
     <div class="field" >
-        <%= f.label :courseID %><br>
-        <%= f.text_field :courseID %>
-        <!--p%= @course.courseID %></p>-->
-        <!--%= f.hidden_field :courseID, :value => @course.courseID %>-->
+      <%= f.label :courseID %><br>
+      <p><%= request.fullpath().from(17) %></p>
+      <%= f.hidden_field :courseID, :value =>  request.fullpath().from(17) %>
     </div>
 <%end%>
 
@@ -36,4 +35,8 @@
   otherwise; and from all claims, demands, damages, costs, expenses, actions, and causes of action, whether in law or equity, in respect of death, <br>
   in jury, loss or damage to my person or property howsoever caused, arising or to arise, by reason of my participation in the program, whether as a <br>
   spectator, participant, or otherwise, whether prior to, during or subsequent to my participation.
-</p>
+</p><br>
+
+<%= link_to 'Back', courses_path %>
+<br>
+<br>
