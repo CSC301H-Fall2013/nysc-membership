@@ -40,11 +40,21 @@ class EnrollmentsController < ApplicationController
       # if last step, we want to save
       elsif @enrollment.last_step?
         # also zero out the price because we know the member has paid for sure
-        @enrollment.price_owed = 0
-        @enrollment.price_paid = @enrollment.charge_fee
-        @enrollment.waitlist_status = @enrollment.waitlist_generate
-        @enrollment.startDate = @enrollment.get_start_date
-        @enrollment.save
+        if current_participant.role?
+          @enrollment.price_owed = 0
+          @enrollment.price_paid = @enrollment.charge_fee
+          @enrollment.waitlist_status = @enrollment.waitlist_generate
+          @enrollment.startDate = @enrollment.get_start_date
+          @enrollment.save
+        else
+          @enrollment.price_owed = @enrollment.charge_fee
+          @enrollment.price_paid = 0
+          @enrollment.waitlist_status = @enrollment.waitlist_generate
+          @enrollment.startDate = @enrollment.get_start_date
+          session[:enroll_save] = @enrollment
+          @enrollment.updatepayment
+          redirect_to paypal_url(@enrollment)
+        end
       # if first step, check if PARQ is necessary
       elsif @enrollment.first_step?
         if @enrollment.check_fitness
@@ -85,7 +95,9 @@ class EnrollmentsController < ApplicationController
       session[:enrollment_step] = @enrollment.current_step
     end
     if @enrollment.new_record?
-      render "new"
+      if @enrollment.is_payment?
+        render "new"
+      end
     else
       session[:enrollment_step] = session[:enrollment_params] = nil
       flash[:notice] = "Enrollment saved!"
@@ -128,5 +140,23 @@ class EnrollmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
       params.fetch(:enrollment).permit(:participantID, :courseID, :startDate, :waitlist_status, :price_paid, :price_owed, :ans1, :ans2, :ans3, :ans4, :ans5, :ans6, :ans7)
+    end
+
+
+    def paypal_url(return_url)
+      @enrollment = session[:enroll_save]
+        values = {
+          :business => 'seller@nysc.com',
+          :cmd => '_cart',
+          :upload => 1,
+          :return => return_url,
+          :invoice => @enrollment.id,
+          :currency_code => 'CAD',
+          :amount_1 => @enrollment.price_owed,
+          :item_name_1 => @enrollment.courseID,
+          :item_number_1 => @enrollment.courseID,
+          :quantity_1 => '1'
+        }
+        "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
     end
 end

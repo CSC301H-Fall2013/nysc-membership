@@ -1,5 +1,6 @@
 class Enrollment < ActiveRecord::Base
 	attr_writer :current_step
+	attr_writer :payment
 
 	# Validation
 	validate :valid_participant, :valid_course, :if => lambda { |o| o.current_step == "init" }
@@ -40,6 +41,17 @@ class Enrollment < ActiveRecord::Base
 	  end
 	end
 
+	def payment
+		@payment || 1
+	end
+
+	def updatepayment
+		self.payment = 0
+	end
+
+	def is_payment?
+		payment == 1		
+	end
 	#--------------------------------------------------#
 
 	# check if fitness is between 1-3
@@ -135,5 +147,6 @@ class Enrollment < ActiveRecord::Base
 			return Date.parse("2013-10-01")
 		end
 	end
+
 
 end

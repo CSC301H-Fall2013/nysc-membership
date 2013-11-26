@@ -46,3 +46,6 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'wicked'
+
+#for more storage space
+gem 'activerecord-session_store'
