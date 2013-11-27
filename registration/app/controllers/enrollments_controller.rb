@@ -53,7 +53,7 @@ class EnrollmentsController < ApplicationController
           @enrollment.startDate = @enrollment.get_start_date
           session[:enroll_save] = @enrollment
           @enrollment.updatepayment
-          redirect_to paypal_url(courses_url)
+          redirect_to paypal_url(courses_url, payment_notifications_url)
         end
       # if first step, check if PARQ is necessary
       elsif @enrollment.first_step?
@@ -143,7 +143,7 @@ class EnrollmentsController < ApplicationController
     end
 
 
-    def paypal_url(return_url)
+    def paypal_url(return_url, notify_url)
       @enrollment = session[:enroll_save]
         values = {
           :business => 'seller@nysc.com',
@@ -155,7 +155,8 @@ class EnrollmentsController < ApplicationController
           :amount_1 => @enrollment.price_owed,
           :item_name_1 => @enrollment.courseID,
           :item_number_1 => @enrollment.courseID,
-          :quantity_1 => '1'
+          :quantity_1 => '1',
+          :notify_url => notify_url
         }
         "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126190157) do
+ActiveRecord::Schema.define(version: 20131127042817) do
 
   create_table "admins", force: true do |t|
     t.string   "username"
@@ -45,8 +45,6 @@ ActiveRecord::Schema.define(version: 20131126190157) do
     t.string   "courseID"
     t.date     "startDate"
     t.integer  "waitlist_status"
-    t.integer  "price_paid"
-    t.integer  "price_owed"
     t.boolean  "disclaimer"
     t.boolean  "ans1"
     t.boolean  "ans2"
@@ -57,6 +55,8 @@ ActiveRecord::Schema.define(version: 20131126190157) do
     t.boolean  "ans7"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "price_paid"
+    t.integer  "price_owed"
   end
 
   create_table "participants", force: true do |t|
@@ -85,6 +85,15 @@ ActiveRecord::Schema.define(version: 20131126190157) do
 
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true
   add_index "participants", ["reset_password_token"], name: "index_participants_on_reset_password_token", unique: true
+
+  create_table "payment_notifications", force: true do |t|
+    t.text     "params"
+    t.integer  "cart_id"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", force: true do |t|
     t.string   "session_id", null: false
