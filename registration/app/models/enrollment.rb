@@ -40,6 +40,8 @@ class Enrollment < ActiveRecord::Base
 	    valid?
 	  end
 	end
+	#--------------------------------------------------#
+	# used to deal with payment processing in the multistep form
 
 	def payment
 		@payment || 1

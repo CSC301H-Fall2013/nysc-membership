@@ -39,20 +39,24 @@ class EnrollmentsController < ApplicationController
         @enrollment.previous_step
       # if last step, we want to save
       elsif @enrollment.last_step?
-        # also zero out the price because we know the member has paid for sure
+        # check if the person processing the enrollment is a member or admin
         if current_participant.role?
+          # also zero out the price because we know the member has paid since the admin is handling it
           @enrollment.price_owed = 0
           @enrollment.price_paid = @enrollment.charge_fee
           @enrollment.waitlist_status = @enrollment.waitlist_generate
           @enrollment.startDate = @enrollment.get_start_date
           @enrollment.save
         else
+          # make it such that price_owed has the amount to be charged, do not change until we know they paid
           @enrollment.price_owed = @enrollment.charge_fee
           @enrollment.price_paid = 0
           @enrollment.waitlist_status = @enrollment.waitlist_generate
           @enrollment.startDate = @enrollment.get_start_date
+          # save the enrollment object in the session, do not add it to database until payment notification is received
           session[:enroll_save] = @enrollment
           @enrollment.updatepayment
+          # redirect to paypal website
           redirect_to paypal_url(courses_url, @paymentnotifications)
         end
       # if first step, check if PARQ is necessary
@@ -142,22 +146,31 @@ class EnrollmentsController < ApplicationController
       params.fetch(:enrollment).permit(:participantID, :courseID, :startDate, :waitlist_status, :price_paid, :price_owed, :ans1, :ans2, :ans3, :ans4, :ans5, :ans6, :ans7)
     end
 
-
+    # Constructs the enrollment paypal url with the appropriate query values to pass to the website
     def paypal_url(return_url, notify_url)
+      # take the enrollment object from session to use for processing paypal payment
       @enrollment = session[:enroll_save]
         values = {
+          # specify business account used for selling, seller@nysc.com is a developer account
           :business => 'seller@nysc.com',
+          # shopping cart was chosen as the payment type, later developers can expand this so members can pay for multiple classes at once
           :cmd => '_cart',
           :upload => 1,
+          # pass url that paypal redirects to after payment 
           :return => return_url,
+          # a unique identifier used for the invoice number otherwise paypal will tell members they have paid already after that invoice id is paid for once
           :invoice => @enrollment.id,
+          # ensures the person is paying in CAD instead of the default currency, USD
           :currency_code => 'CAD',
           :amount_1 => @enrollment.price_owed,
           :item_name_1 => @enrollment.courseID,
           :item_number_1 => @enrollment.courseID,
+          # quantity remains as 1 because members can only enroll themselves in the class 
           :quantity_1 => '1',
+          # url that paypal should send notification to when payment has processed successfully
           :notify_url => notify_url
         }
+        # use https://www.sandbox.paypal.com for test payments with dummy account, switch to https://www.paypal.com for real payments
         "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
     end
 end
