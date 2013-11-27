@@ -53,7 +53,7 @@ class EnrollmentsController < ApplicationController
           @enrollment.startDate = @enrollment.get_start_date
           session[:enroll_save] = @enrollment
           @enrollment.updatepayment
-          redirect_to paypal_url(courses_url, payment_notifications_url)
+          redirect_to paypal_url(courses_url, paymentnotification_url)
         end
       # if first step, check if PARQ is necessary
       elsif @enrollment.first_step?

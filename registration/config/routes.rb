@@ -20,6 +20,8 @@ Registration::Application.routes.draw do
 
   resources :admins
 
+  resources :paymentnotification
+  
   root :to => "participants#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
