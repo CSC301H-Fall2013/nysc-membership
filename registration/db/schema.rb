@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 20131127053508) do
   add_index "participants", ["email"], name: "index_participants_on_email", unique: true
   add_index "participants", ["reset_password_token"], name: "index_participants_on_reset_password_token", unique: true
 
+  create_table "payment_notifications", force: true do |t|
+    t.text     "params"
+    t.integer  "cart_id"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "paymentnotifications", force: true do |t|
     t.text     "params"
     t.integer  "cart_id"

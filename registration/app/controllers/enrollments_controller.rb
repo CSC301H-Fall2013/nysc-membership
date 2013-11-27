@@ -57,7 +57,7 @@ class EnrollmentsController < ApplicationController
           session[:enroll_save] = @enrollment
           @enrollment.updatepayment
           # redirect to paypal website
-          redirect_to paypal_url(courses_url, @paymentnotifications)
+          redirect_to paypal_url(static_pages_participanthome_url, @paymentnotification_create_url)
         end
       # if first step, check if PARQ is necessary
       elsif @enrollment.first_step?
