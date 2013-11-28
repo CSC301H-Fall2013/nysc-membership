@@ -18,7 +18,7 @@ class Course < ActiveRecord::Base
 
 	def self.search(search)
 	  if search
-	    Course.where(['courseID LIKE ? ', "%#{search}%"])
+	    Course.where(['courseID LIKE ? OR title LIKE ? OR startDate LIKE ? ', "%#{search}%", "%#{search}%", "%#{search}%"])    
 	  else # When page is initially loaded display all courses available.
 	    find(:all)
 	  end
@@ -27,6 +27,33 @@ class Course < ActiveRecord::Base
 	def startTime_endTime_conflict
 		if startTime >= endTime
 			self.errors.add :startTime, "Should Be Before End Time"
+		end
+	end
+
+	def get_class_list
+		courseList = Enrollment.where(:courseID => self.courseID)
+		return courseList
+	end
+
+	def set_refunds
+		self.get_class_list do |p|
+			if if_member(p.participantID)
+				p.refund_back = self.memberPrice
+			else
+				p.refund_back = self.nonmemberPrice
+			end
+		end
+		return true
+	end	
+
+	def if_member(member)
+		if_member = Participant.find_by(participantID: member)
+		if if_member != nil
+			if if_member.expirydate > Date.today
+				return true
+			else
+				return false
+			end
 		end
 	end
 
