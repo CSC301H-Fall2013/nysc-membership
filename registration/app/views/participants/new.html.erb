@@ -3,3 +3,42 @@
 <%= render 'form' %>
 
 <%= link_to 'Back to Admin Home Page', static_pages_adminhome_path %>
+
+<script type="text/javascript" charset="utf-8"> 
+    function noMember() {
+      // visible fields
+      var pickYear = document.getElementById("participant_expirydate_1i");
+      var pickMonth = document.getElementById("participant_expirydate_2i");
+      var pickDay = document.getElementById("participant_expirydate_3i");
+
+      // hidden fields
+      ninjas = document.getElementById("hidden").children;
+      var ninjaYear = ninjas[0];
+      var ninjaMonth = ninjas[1];
+      var ninjaDay = ninjas[2];
+
+      // first check if I'm a member
+      if (document.getElementById("checkBox").checked) {
+      	// I'm not a member, disable visible fields
+      	pickYear.disabled = true;
+      	pickMonth.disabled = true;
+      	pickDay.disabled = true;
+
+      	// enable hidden fields
+      	ninjaDay.disabled = false;
+      	ninjaMonth.disabled = false;
+      	ninjaYear.disabled = false;
+      	
+      } else {
+      	// I am a member, disable hidden field
+      	ninjaDay.disabled = true;
+      	ninjaMonth.disabled = true;
+      	ninjaYear.disabled = true;
+
+      	// re-enable visible field
+      	pickYear.disabled = false;
+      	pickMonth.disabled = false;
+      	pickDay.disabled = false;
+      }
+    }
+</script>          

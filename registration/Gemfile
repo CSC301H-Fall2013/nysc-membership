@@ -50,3 +50,4 @@ gem 'wicked'
 #for more storage space
 gem 'activerecord-session_store'
 
+gem 'bootstrap-sass'
