@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20131128131849) do
     t.datetime "updated_at"
     t.integer  "price_paid"
     t.integer  "price_owed"
-    t.integer  "refund_back", default: 0
+    t.integer  "refund_back"
   end
 
   create_table "participants", force: true do |t|
