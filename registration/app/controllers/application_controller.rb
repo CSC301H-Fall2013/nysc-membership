@@ -27,6 +27,17 @@ class ApplicationController < ActionController::Base
     end
     @current_cart
 end
+
+  # layout based on signin
+  layout :layout_by_resource
+
+  def layout_by_resource
+    if devise_controller? && resource_name == :participant && action_name == 'new'
+      "devise"
+    else
+      "application"
+    end
+  end
   
   
 end
