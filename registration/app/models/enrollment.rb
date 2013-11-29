@@ -150,5 +150,8 @@ class Enrollment < ActiveRecord::Base
 		end
 	end
 
+	def class_list
+		return true
+	end
 
 end

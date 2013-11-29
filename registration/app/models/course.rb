@@ -30,20 +30,20 @@ class Course < ActiveRecord::Base
 		end
 	end
 
-	def get_class_list
-		courseList = Enrollment.where(:courseID => self.courseID)
-		return courseList
-	end
-
 	def set_refunds
-		self.get_class_list do |p|
+		courseList = Enrollment.where(:courseID => self.courseID)
+		courseList.each do |p|
 			if if_member(p.participantID)
-				p.refund_back = self.memberPrice
+				p.refund_back = self.memberPrice + p.refund_back
+				p.save
+				return true
 			else
-				p.refund_back = self.nonmemberPrice
+				p.refund_back = self.nonmemberPrice + p.refund_back
+				p.save
+				return true
 			end
 		end
-		return true
+		return false
 	end	
 
 	def if_member(member)
