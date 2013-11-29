@@ -22,7 +22,7 @@
       <th>Start Time</th>
       <th>End Time</th>
       <th>Day of Week</th>
-      <th>Capacity</th>
+      <th>Space</th>
     </tr>
   </thead>
 
@@ -41,7 +41,7 @@
         <td><%= course.startTime.to_time.strftime('%l:%M %p') %></td>
         <td><%= course.endTime.to_time.strftime('%l:%M %p') %></td>
         <td><%= course.dayOfWeek %></td>
-        <td><%= course.size %></td>
+        <td><%= space_left(course) %></td>
       </tr>
     <%end%>
     <%end%>

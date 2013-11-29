@@ -57,4 +57,7 @@ class Course < ActiveRecord::Base
 		end
 	end
 
+	
+
+
 end
