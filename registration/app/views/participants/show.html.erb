@@ -69,7 +69,7 @@
       <tr>
         <td><%= enrollment.courseID %></td>
         <td><%= enrollment.startDate %></td>
-		<td><%= enrollment.waitlist_status %></td>
+		    <td><%= enrollment.waitlist_status %></td>
         <td><%= link_to 'Delete', participant_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

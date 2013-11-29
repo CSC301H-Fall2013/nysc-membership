@@ -90,7 +90,7 @@
     <% class_list(@course).each do |enrollment| %>
       <tr>
         <td><%= link_to enrollment.participantID, enrollment %></td>
-        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Please give back the participant the amount shown in the table' } %></td>
+        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Please give back the participant the amount shown in the course description' } %></td>
       </tr>
     <%end%>
   </tbody>
