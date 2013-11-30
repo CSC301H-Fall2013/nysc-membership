@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "North York Senior Centre" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Registration Manager" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Registration Manager" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
@@ -12,28 +12,28 @@
     <!-- NAVIGATION -->
     <header class="navbar navbar-fixed-top" >
       <nav class="navbar navbar-default" role="navigation">
-
-        <div class="navbar-header">
+      <div class="navbar-header">
           <%= image_tag("navlogo.jpg", :alt => "rss feed") %>
-        </div>     
-        <form class="nav navbar-nav navbar-right">
-          <%= link_to 'Logout', destroy_participant_session_path, :method => :delete %>
-          
-        </form><br/><br/>
-        <form class="nav navbar-nav navbar-right">
-        <% if participant_signed_in? %>
-            <small> Signed in as: <%= current_participant.email %> </small>
-          <% end %>
-            </form>
-      </nav>
-    </header>
-    
+      </div>      
 
+       <form class="nav navbar-nav navbar-right">
+     
+    </form>
+    </nav>
+
+     
+
+
+
+
+
+    </header>
     <main role="main">
       <div class="container">
         <div class="content">
            <div class="row">
             <div class="span12">
+              <!-- messages?! -->
               <%= yield %>
             </div>
           </div>

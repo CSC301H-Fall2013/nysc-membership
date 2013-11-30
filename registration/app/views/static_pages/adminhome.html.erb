@@ -1,27 +1,37 @@
-<h1>Admin Main Menu</h1>
+<html>
+<body>
+	<div class="container">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<h1 align="center">Admin Main Menu</h1>
+				
+				<br/><br/>
+				<div class="col-md-4">		
 
-<br><br>
+					<!-- Links that take you to a page depending on what admin wants to do. -->
 
-<% if participant_signed_in? %>
-	<div> Signed in as: <%= current_participant.email %> </div>
-<% end %>
+					<h3>Participants</h3>
+						<%= button_to 'Add a member or admin', new_participant_path, :class => "btn btn-lg", :method => "get" %><br><br/>
+						<%= button_to 'Find a member or admin', participants_path, :class => "btn btn-lg", :method => "get" %><br/><br/>
+						
+						<!-- Exports a csv file with all member's information. -->
+						<%= button_to "Export data of all members and admins", participants_path(format: "csv"), :class => "btn btn-lg", :method => "get" %>
+				</div>
+				<div class="col-md-4">
+					<h3>Enrollments</h3>
+					    <%= button_to 'Enroll into a Course', new_enrollment_path, :class => "btn btn-lg", :method => "get" %>
 
-<br><br>
+				</div>
+				<div class="col-md-4">
+					<h3>Courses</h3>
+					<%= button_to 'Add a Course', new_course_path, :class => "btn btn-lg", :method => "get" %><br/><br/>
+					<%= button_to 'Find a Courses', courses_path, :class => "btn btn-lg", :method => "get" %><br/><br/>
+					<%= button_to 'Pay Back', enrollments_path, :class => "btn btn-lg", :method => "get" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
 
-<h3>Manage Members and Admins</h3>
 
-<!-- Links that take you to a page depending on what admin wants to do. -->
-<%= link_to 'Add a member or admin', new_participant_path %><br>
-<%= link_to 'Find a member or admin', participants_path %><br>
-
-<!-- Exports a csv file with all member's information. -->
-<%= link_to "Export data of all members and admins", participants_path(format: "csv") %>
-
-
-<h3>Course stuff</h3>
-<%= link_to 'Add a Course', new_course_path %><br>
-<%= link_to 'Find a Courses', courses_path %><br>
-
-<h3>Enrollments</h3>
-<%= link_to 'Enroll into a Course', new_enrollment_path %><br>
-<%= link_to 'Logout', destroy_participant_session_path, :method => :delete %><br>
+ </html>

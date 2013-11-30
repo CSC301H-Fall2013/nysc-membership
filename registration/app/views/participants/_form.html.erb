@@ -40,8 +40,15 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
+    Participant is Not an NYSC Member<br>
+    <input type="checkbox" id="checkBox" onclick="noMember()">
+  </div>
+  <div class="field">
     <%= f.label :expirydate, "Membership Expiry Date" %><br>
     <%= f.date_select :expirydate, start_year: Date.current.year + 1, order: [:month, :day, :year] %>
+  </div>
+  <div id="hidden" class="field">
+    <%= f.date_select :expirydate, start_year: Date.current.year - 1, :disabled => true, :discard_day => true, :discard_month => true, :discard_year => true %>
   </div>
   <div class="field">
     <%= f.label :dr_note_date, "Doctor's Note Date" %><br>

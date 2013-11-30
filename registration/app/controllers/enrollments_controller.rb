@@ -10,6 +10,7 @@ class EnrollmentsController < ApplicationController
     start_date = Enrollment.get_season
     end_date = Enrollment.get_season + 2.month
     @availableCourses = Course.where(:startDate => start_date..end_date)
+    @payback = Enrollment.where("refund_back > ?", 0)
   end
 
   # GET /enrollments/1
@@ -46,10 +47,12 @@ class EnrollmentsController < ApplicationController
           @enrollment.price_paid = @enrollment.charge_fee
           @enrollment.waitlist_status = @enrollment.waitlist_generate
           @enrollment.startDate = @enrollment.get_start_date
+          @enrollment.refund_back = 0
           @enrollment.save
         else
           # make it such that price_owed has the amount to be charged, do not change until we know they paid
           @enrollment.price_owed = @enrollment.charge_fee
+          @enrollment.refund_back = 0
           @enrollment.price_paid = 0
           @enrollment.waitlist_status = @enrollment.waitlist_generate
           @enrollment.startDate = @enrollment.get_start_date
@@ -66,6 +69,7 @@ class EnrollmentsController < ApplicationController
           @enrollment.next_step
         else
           @enrollment.price_paid = 0
+          @enrollment.refund_back = 0
           @enrollment.price_owed = @enrollment.charge_fee
           # PARQ is not necessary, check if waitlisted
           @enrollment.waitlist_status = @enrollment.waitlist_generate
@@ -84,7 +88,8 @@ class EnrollmentsController < ApplicationController
       # step 2
       elsif @enrollment.steps[1]
         @enrollment.waitlist_status = @enrollment.waitlist_generate
-        @enrollment.price_paid = 0 
+        @enrollment.price_paid = 0
+        @enrollment.refund_back = 0 
         @enrollment.price_owed = @enrollment.charge_fee
         @enrollment.startDate = @enrollment.get_start_date
         if @enrollment.waitlist_status > 0

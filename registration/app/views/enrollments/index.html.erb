@@ -1,33 +1,15 @@
-<h1>Enrollment</h1> </br>
-
-<!-- Create a search bar that filters participants based on search criteria entered. -->
-
-
-<h2>Index</h2>
-<h4><%= link_to 'New Enrollment', new_enrollment_path %></h4>
-<h4><%= link_to 'Back to Admin Home', static_pages_adminhome_path %></h4>
-<a href=#enrollments><h4>Check Enrollments</h4></a>
-<a href=#availableCourses><h4>Check Availalbe Courses</h4></a> </br>
+<h1>Deleted Courses</h1>
+<small>Participants to be paid back</small>
 
 
-<h2>Search</h2>
 <%= form_tag enrollments_path, :method => 'get' do %>
   <p>
-    <p><b>Search Enrollments</b> by Participant ID, Course ID, or Start Date</p>
+    <p><b>Search</b> by Participant ID, Course ID</p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search Enrolled Members", :name => nil %>
-    <i>* To check all enrollments, search a blank request</i>
+    <i>* To check all participants that were removed from deleted courses, search a blank request</i>
   </p>
 <% end %>
-
-
-  <%= form_tag({:controller => "courses", :action => "index"}, :method => "get", :id => "course_id") do %>
-      <p>
-        <p><b>Search Courses</b> by Course ID, Title, or Start Date</p>
-        <%= text_field_tag :search, params[:search], id: 'couse_text'%> 
-        <%= submit_tag "Search Courses", :name => nil, id: 'course_submit'  %>
-      </p>
-  <% end %>
 <br>
 
 
@@ -40,80 +22,31 @@
 <table border="1">
   <thead>
     <tr>
-      <th>Participantid</th>
-      <th>Courseid</th>
-      <th>Startdate</th>
-      <th>Waitlist status</th>
-      <th>Price paid</th>
-      <th>Price owed</th>
-      <th>Ans1</th>
-      <th>Ans2</th>
-      <th>Ans3</th>
-      <th>Ans4</th>
-      <th>Ans5</th>
-      <th>Ans6</th>
-      <th>Ans7</th>
-      <th>Disclaimer</th>
-      <th>De-waitlist</th>
-      <th>Delete</th>
+      <th>Participant ID</th>
+      <th>Course ID</th>
+      <th>Refund</th>
+      <th>Pay</th>
     </tr>
   </thead>
 
-<%if @enrollments%>
+
 <tbody>
-    <% @enrollments.each do |enrollment| %>
+    <% @payback.each do |enrollment| %>
       <tr>
         <td><%= link_to enrollment.participantID, enrollment %></td>
         <td><%= enrollment.courseID %></td>
-        <td><%= enrollment.startDate %></td>
-        <td><%= enrollment.waitlist_status %></td>
-        <td><%= enrollment.price_paid %></td>
-        <td><%= enrollment.price_owed %></td>
-        <td><%= enrollment.ans1 ? "Yes" : "No" %></td>
-        <td><%= enrollment.ans2 ? "Yes" : "No" %></td>
-        <td><%= enrollment.ans3 ? "Yes" : "No" %></td>
-        <td><%= enrollment.ans4 ? "Yes" : "No" %></td>
-        <td><%= enrollment.ans5 ? "Yes" : "No" %></td>
-        <td><%= enrollment.ans6 ? "Yes" : "No" %></td>
-        <td><%= enrollment.ans7 ? "Yes" : "No" %></td>
-        <td><%= enrollment.disclaimer ? "Accept" : "Decline"%></td>
-        <td><%= link_to 'De-waitlist', edit_enrollment_path(enrollment) %></td>
-        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= enrollment.refund_back %></td>
+        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Please give back the participant the amount shown in the table' } %></td>
       </tr>
     <%end%>
   </tbody>
 
-<%end%>
-</table>
 
-<h2 id="availableCourses">Available Courses</h2>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Course Name</th>
-      <th>Courseid</th>
-      <th>Startdate</th>
-      <th>Capacity</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%if @availableCourses%>
-    <% @availableCourses.each do |availableCourse| %>
-      <tr>
-        <td><%= availableCourse.title %></td>
-        <td><%= availableCourse.courseID %></td>
-        <td><%= availableCourse.startDate %></td>
-        <td><%= availableCourse.size %></td>
-      </tr>
-    <%end%>
-    <%end%>
-  </tbody>
 </table>
 
 
 
-<br>
+<%= link_to 'Back', static_pages_adminhome_path %>
 
 
 
@@ -121,3 +54,6 @@
 
 
 
+</br>
+</br>
+</br>

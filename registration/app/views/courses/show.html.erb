@@ -75,6 +75,31 @@
   <%= @course.size %>
 </p>
 
+
+<div>
+<h2 id="enrollments">Class List</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Participant ID</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% class_list(@course).each do |enrollment| %>
+      <tr>
+        <td><%= link_to enrollment.participantID, enrollment %></td>
+        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Please give back the participant the amount shown in the course description' } %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</div>
+
+
+
+
+
 <%= link_to 'Waitlist', waitlist_path(@course) %> |
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Delete', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |

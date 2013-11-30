@@ -33,9 +33,10 @@ class ParticipantsController < ApplicationController
   # POST /participants.json
   def create
     @participant = Participant.new(participant_params)
-
+    #@participant.password = Devise.friendly_token.first(8)
     respond_to do |format|
       if @participant.save
+        #RegistrationMailer.welcome(user, generated_password).deliver
         format.html { redirect_to @participant, notice: 'Participant was successfully created.' }
         format.json { render action: 'show', status: :created, location: @participant }
       else

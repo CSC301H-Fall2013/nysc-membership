@@ -54,10 +54,12 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course.destroy
-    respond_to do |format|
-      format.html { redirect_to courses_url }
-      format.json { head :no_content }
+    if @course.set_refunds
+      @course.destroy
+      respond_to do |format|
+        format.html {  redirect_to courses_url } #redirect_to courses_url
+        format.json { head :no_content }
+      end
     end
   end
 

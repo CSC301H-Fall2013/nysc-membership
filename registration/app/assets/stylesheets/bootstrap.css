@@ -302,6 +302,7 @@ table {
 html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
 }
 
 body {
@@ -310,6 +311,7 @@ body {
   line-height: 1.428571429;
   color: #333333;
   background-color: #ffffff;
+  min-width: 300px;
 }
 
 input,
@@ -423,7 +425,7 @@ cite {
 
 .text-primary:hover {
   color: #3071a9;
-}
+} 
 
 .text-warning {
   color: #c09853;
@@ -785,6 +787,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  min-width: 300px;
 }
 
 .container:before,
@@ -2263,7 +2266,7 @@ textarea.input-lg {
 
 .btn:hover,
 .btn:focus {
-  color: #333333;
+  color: #594A42;
   text-decoration: none;
 }
 
@@ -2287,8 +2290,8 @@ fieldset[disabled] .btn {
 }
 
 .btn-default {
-  color: #333333;
-  background-color: #ffffff;
+  color: #594A42;
+  background-color: #ffffff; 
   border-color: #cccccc;
 }
 
@@ -2296,7 +2299,7 @@ fieldset[disabled] .btn {
 .btn-default:focus,
 .btn-default:active,
 .btn-default.active,
-.open .dropdown-toggle.btn-default {
+.open .dropdown-toggle.btn-default { 
   color: #333333;
   background-color: #ebebeb;
   border-color: #adadad;
@@ -2575,6 +2578,44 @@ fieldset[disabled] .btn-link:focus {
   font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
+  color: #594A42;
+  background-color: #ffffff; 
+  border-color: #cccccc;
+}
+
+.btn-lg:hover,
+.btn-lg:focus,
+.btn-lg:active,
+.btn-lg.active,
+.open .dropdown-toggle.btn-lg { 
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+.btn-lg:active,
+.btn-lg.active,
+.open .dropdown-toggle.btn-lg {
+  background-image: none;
+}
+
+.btn-lg.disabled,
+.btn-lg[disabled],
+fieldset[disabled] .btn-lg,
+.btn-lg.disabled:hover,
+.btn-lg[disabled]:hover,
+fieldset[disabled] .btn-lg:hover,
+.btn-lg.disabled:focus,
+.btn-lg[disabled]:focus,
+fieldset[disabled] .btn-lg:focus,
+.btn-lg.disabled:active,
+.btn-lg[disabled]:active,
+fieldset[disabled] .btn-lg:active,
+.btn-lg.disabled.active,
+.btn-lg[disabled].active,
+fieldset[disabled] .btn-lg.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
 }
 
 .btn-sm,
