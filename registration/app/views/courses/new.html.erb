@@ -1,5 +1,16 @@
-<h1>New course</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back to Admin Page', static_pages_adminhome_path %>
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 align="center">Create a Course</h1>
+        
+        <br/><br/>
+        <div class="col-md-2"><%= link_to 'Back to Admin', static_pages_adminhome_path %></div>
+        <div class="col-md-10"><%= render 'form' %></div>
+      </div>
+      </div>
+     </div>
+   </body>
+</html>

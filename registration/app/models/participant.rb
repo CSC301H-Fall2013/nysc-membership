@@ -10,7 +10,7 @@ class Participant < ActiveRecord::Base
 	  if search
 	    Participant.where(['fname LIKE ? OR lname LIKE ? OR phone LIKE ? OR participantID like ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
 	  else # When page is initially loaded display no member information.
-	    []
+	    find(:all)
 	  end
 	end
 

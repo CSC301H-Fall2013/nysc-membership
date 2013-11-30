@@ -1,8 +1,20 @@
-<h1>New participant</h1>
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 align="center">Create a Participant</h1>
+        
+        <br/><br/>
+        <div class="col-md-2"><%= link_to 'Back to Admin', static_pages_adminhome_path %></div>
+        <div class="col-md-10"><%= render 'form' %></div>
+      </div>
+      </div>
+     </div>
+   </body>
+</html>
 
-<%= render 'form' %>
-
-<%= link_to 'Back to Admin Home Page', static_pages_adminhome_path %>
 
 <script type="text/javascript" charset="utf-8"> 
     function noMember() {
