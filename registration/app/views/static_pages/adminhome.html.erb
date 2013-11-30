@@ -12,22 +12,22 @@
 					<!-- Links that take you to a page depending on what admin wants to do. -->
 
 					<h3>Participants</h3>
-						<%= button_to 'Create a Member/Admin', new_participant_path, :class => "btn btn-lg", :method => "get" %><br><br/>
-						<%= button_to 'Find a Member/Admin', participants_path, :class => "btn btn-lg", :method => "get" %><br/><br/>
+						<%= button_to 'Create a Member/Admin', new_participant_path, :class => "btn btn-lg btn-admin", :method => "get" %><br><br/>
+						<%= button_to 'Find a Member/Admin', participants_path, :class => "btn btn-lg btn-admin", :method => "get" %><br/><br/>
 						
 						<!-- Exports a csv file with all member's information. -->
-						<%= button_to "Export data of all members and admins", participants_path(format: "csv"), :class => "btn btn-lg", :method => "get" %>
+						<%= button_to "Export member and admin data", participants_path(format: "csv"), :class => "btn btn-lg btn-admin", :method => "get" %>
 				</div>
 				<div class="col-md-4">
 					<h3>Enrollments</h3>
-					    <%= button_to 'Enroll into a Course', new_enrollment_path, :class => "btn btn-lg", :method => "get" %>
+					    <%= button_to 'Enroll into a Course', new_enrollment_path, :class => "btn btn-lg btn-admin", :method => "get" %>
 
 				</div>
 				<div class="col-md-4">
 					<h3>Courses</h3>
-					<%= button_to 'Create a Course', new_course_path, :class => "btn btn-lg", :method => "get" %><br/><br/>
-					<%= button_to 'Find a Courses', courses_path, :class => "btn btn-lg", :method => "get" %><br/><br/>
-					<%= button_to 'Pay Back', enrollments_path, :class => "btn btn-lg", :method => "get" %>
+					<%= button_to 'Create a Course', new_course_path, :class => "btn btn-lg btn-admin", :method => "get" %><br/><br/>
+					<%= button_to 'Find a Courses', courses_path, :class => "btn btn-lg btn-admin", :method => "get" %><br/><br/>
+					<%= button_to 'Refunds', enrollments_path, :class => "btn btn-lg btn-admin", :method => "get" %>
 				</div>
 
 				

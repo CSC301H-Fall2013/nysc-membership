@@ -2583,6 +2583,10 @@ fieldset[disabled] .btn-link:focus {
   border-color: #cccccc;
 }
 
+.btn-admin {
+  min-width: 280px;
+}
+
 .btn-lg:hover,
 .btn-lg:focus,
 .btn-lg:active,
