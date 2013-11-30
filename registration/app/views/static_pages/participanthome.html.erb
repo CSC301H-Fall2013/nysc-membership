@@ -10,13 +10,13 @@
 				<br/>
 				<div class="col-md-3">
 					<p class="lead">Hello,  <%= current_participant.fname %> </p>
-					<small>Your Current Membership Expires On:  <%= current_participant.expirydate.to_time.strftime('%B %d, %Y')  %> </small><br><br><br><br><br><br><br><br>
+					<p>Your Current Membership Expires On:  <%= current_participant.expirydate.to_time.strftime('%B %d, %Y')  %> </p><br><br><br><br><br><br><br><br><br><br><br>
 					<p>“A Day Away Club – For the Mind, Body and Soul”</p>
 				</div>
 				<div class="col-md-9">
-					<p>Welcome to the North York Senior Centre Online Services. Please select an option below to continue.</p><br>
+					<h4>Welcome to the North York Senior Centre Online Services. Please select an option below to continue.</h4><br>
 					<div class="col-md-6"><%= link_to 'Find a Course', courses_path, :class => "btn btn-lg" %></div>
-					<div class="col-md-6"><%= link_to 'Enroll into a Course', new_enrollment_path, :class => "btn btn-lg" %><br></div>
+					<div class="col-md-6"><%= link_to 'View Participant Agreement', new_enrollment_path, :class => "btn btn-lg" %><br></div>
 					<br><br><br><br><br><br>
 					<!-- Carousel -->
 		              <div class="col-md-9">
@@ -31,7 +31,7 @@
 		                      <%= image_tag("group.jpg", :alt => "rss feed") %>
 		                    </div>
 		                    <div class="item">
-		                      <%= image_tag("pic1.jpg", :alt => "rss feed") %>
+		                      <%= image_tag("pic4.jpg", :alt => "rss feed") %>
 		                    </div>
 		                    <div class="item">
 		                      <%= image_tag("pic2.jpg", :alt => "rss feed") %>
@@ -71,6 +71,12 @@
  * limitations under the License.
  * ========================================================== */
 
+
+$(document).ready(function() {
+         $('.carousel').carousel({
+             interval: 2000
+         })
+    }); 
 
 !function ($) {
 
@@ -225,7 +231,7 @@
   }
 
   $.fn.carousel.defaults = {
-    interval: 50000
+    interval: 2000
   , pause: 'hover'
   }
 
