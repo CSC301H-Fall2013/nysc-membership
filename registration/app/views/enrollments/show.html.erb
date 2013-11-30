@@ -4,8 +4,9 @@
   <div class="container">
     <div class="container-fluid">
       <div class="row-fluid">
-        <h1 align="center">Edit Participant</h1>
-        
+        <h1 align="center">Edit Enrollment</h1>
+        <p id="notice"><%= notice %></p>
+        <b style="color: red"><%= flash[:warning] %></b>
         <br/><br/>
         <div class="col-md-2">
           <%if current_participant.role? %> 
@@ -58,9 +59,7 @@
   </div>
 </body>
 </html>
-<p id="notice"><%= notice %></p>
 
-<b style="color: red"><%= flash[:warning] %></b>
 
 
 

@@ -9,7 +9,10 @@ module CoursesHelper
 	end
 
 	def class_list(course)
-		return Enrollment.where(:courseID => course.courseID)
+
+		list = Enrollment.where(:courseID => course.courseID)
+		return list.where("waitlist_status > ? ", 0)
+		
 	end
 
 
