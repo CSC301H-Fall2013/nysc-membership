@@ -1,33 +1,45 @@
-<h1>Course Waitlist for <%= @course.courseID %></h1>
-<p>
-  <strong>Course Start Date: </strong> 
-  <%= @course.startDate %>
-</p>
-<table>
-  <thead>
-    <tr>
-      <th>ParticipantID</th>
-      <th>Waitlist Status</th>
-      <th>Price Paid</th>
-      <th>Price Owed</th>
-	  <th> </th>
-	  <th> </th>
-    </tr>
-  </thead>
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <h1 align="center">Course Waitlist for <%= @course.courseID %></h1>
+          
+          <br/><br/>
+          <div class="col-md-1"><%= link_to 'Back', @course %></div>
+          <div class="col-md-11">
+            <p class="lead" align="center">Course Start Date:  <%= @course.startDate %> </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ParticipantID</th>
+                  <th>Waitlist Status</th>
+                  <th>Price Paid</th>
+                  <th>Price Owed</th>
+                <th> </th>
+                <th> </th>
+                </tr>
+              </thead>
 
-  <tbody>
-    <% @enrollments.each do |enrollment| %>
-      <tr>
-		<% @enrollment = enrollment %>
-        <td><%= @enrollment.participantID %></td>
-        <td><%= @enrollment.waitlist_status %></td>
-        <td><%= @enrollment.price_paid %></td>
-        <td><%= @enrollment.price_owed %></td>
-		<td><%= pay_course  %></td>
-		<td><%= link_to 'Delete', @enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <tbody>
+                <% @enrollments.each do |enrollment| %>
+                  <tr>
+                <% @enrollment = enrollment %>
+                    <td><%= @enrollment.participantID %></td>
+                    <td><%= @enrollment.waitlist_status %></td>
+                    <td><%= @enrollment.price_paid %></td>
+                    <td><%= @enrollment.price_owed %></td>
+                <td><%= pay_course  %></td>
+                <td><%= link_to 'Delete', @enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 
-<%= link_to 'Back', @course %>
