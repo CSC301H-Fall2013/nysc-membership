@@ -1,49 +1,69 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 align="center">Edit Enrollment</h1>
+        <p id="notice"><%= notice %></p>
+        <b style="color: red"><%= flash[:warning] %></b>
+        <br/><br/>
+        <div class="col-md-2">
+          <%if current_participant.role? %> 
+            <%= link_to 'De-waitlist This Enrollment', edit_enrollment_path(@enrollment) %> <br><br>
+            <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+          <% else %>
+            <%= link_to 'Back to Member Home Page', static_pages_participanthome_path %>
+          <%end%>
+                  </div>
+        <div class="col-md-10">
+          <p>
+            <strong>Participantid:</strong>
+            <%= @enrollment.participantID %>
+          </p>
 
-<b style="color: red"><%= flash[:warning] %></b>
+          <p>
+            <strong>Courseid:</strong>
+            <%= @enrollment.courseID %>
+          </p>
 
-<p>
-  <strong>Participantid:</strong>
-  <%= @enrollment.participantID %>
-</p>
+          <p>
+            <strong>Startdate:</strong>
+            <%= @enrollment.startDate %>
+          </p>
 
-<p>
-  <strong>Courseid:</strong>
-  <%= @enrollment.courseID %>
-</p>
+          <p>
+            <strong>Waitlist status:</strong>
+            <%= @enrollment.waitlist_status %>
+          </p>
 
-<p>
-  <strong>Startdate:</strong>
-  <%= @enrollment.startDate %>
-</p>
+          <p>
+            <strong>Paid fee:</strong>
+            <%= @enrollment.price_paid %>
+          </p>
 
-<p>
-  <strong>Waitlist status:</strong>
-  <%= @enrollment.waitlist_status %>
-</p>
+          <p>
+            <strong>Unpaid fee:</strong>
+            <%= @enrollment.price_owed %>
+          </p>
 
-<p>
-  <strong>Paid fee:</strong>
-  <%= @enrollment.price_paid %>
-</p>
-
-<p>
-  <strong>Unpaid fee:</strong>
-  <%= @enrollment.price_owed %>
-</p>
-
-<p>
-  <strong>Fitness:</strong>
-  <%= @enrollment.ans2 %>
-</p>
+          <p>
+            <strong>Fitness:</strong>
+            <%= @enrollment.ans2 %>
+          </p>
 
 
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
 
-<%if current_participant.role? %> 
-  <%= link_to 'De-waitlist This Enrollment', edit_enrollment_path(@enrollment) %> |
-  <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
-<% else %>
-  <%= link_to 'Back to Member Home Page', static_pages_participanthome_path %>
-<%end%>
+
+
+
+
+
 
 

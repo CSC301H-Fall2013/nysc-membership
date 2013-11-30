@@ -1,12 +1,29 @@
-<h1>Editing enrollment</h1>
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 align="center">Editing Enrollment</h1>
+        
+        <br/><br/>
+      	
+         <div class="col-md-12" align="center">Thank you for registering <b>Please pay $<%= @enrollment.price_owed %></b>. <br><br>
+</div>
+         <div class="col-md-12" align="center">
+         	<%= form_for(@enrollment) do |f| %>
+				<p><%= f.submit "Process Payment",:class => "btn btn-lg" %></p>
+			<% end %>
+         </div>
+         <div class="col-md-12" align="center">
+         	<%= link_to 'Show', @enrollment %> |
+			<%= link_to 'Back', enrollments_path %>
+		</div>
+		</div>
+      </div>
+     </div>
+    </div>
+   </body>
+   </html>
 
-<%= form_for(@enrollment) do |f| %>
 
-Thank you for registering. <b>Please pay $<%= @enrollment.price_owed %></b>.
-
-<p><%= f.submit "Process Payment" %></p>
-
-<% end %>
-
-<%= link_to 'Show', @enrollment %> |
-<%= link_to 'Back', enrollments_path %>

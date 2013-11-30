@@ -10,14 +10,35 @@
 				<br/>
 				<div class="col-md-3">
 					<p class="lead">Hello,  <%= current_participant.fname %> </p>
-					<small>Your Current Membership Expires On:  <%= current_participant.expirydate.to_time.strftime('%B %d, %Y')  %> </small><br><br><br><br><br><br><br><br>
+					<p>Your Current Membership Expires On:  <%= current_participant.expirydate.to_time.strftime('%B %d, %Y')  %> </p><br><br><br><br><br><br><br><br><br><br><br>
 					<p>“A Day Away Club – For the Mind, Body and Soul”</p>
 				</div>
 				<div class="col-md-9">
-					<p>Welcome to the North York Senior Centre Online Services. Please select an option below to continue.</p><br>
-					<div class="col-md-6"><button class="btn btn-default"><%= link_to 'Find a Course', courses_path %></button></div>
-					<div class="col-md-6"><button class="btn btn-default"><%= link_to 'Enrol into a Course', new_enrollment_path %><br></button></div>
-					<br><br><br><br><br><br>
+					<h4>Welcome to the North York Senior Centre Online Services. Please select an option below to continue.</h4><br>
+					<div class="col-md-4"></div><div class="col-md-8"><%= link_to 'Find a Course', courses_path, :class => "btn btn-lg" %></div><br><br><br>
+          
+					<div class="col-md-12">
+            <h3><strong>Current Enrolled and Waitlisted Courses:</strong></h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Courseid</th>
+                    <th>Startdate</th>
+                  <th>Waitlist Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @course.each do |enrollment| %>
+                    <tr>
+                      <td><%= enrollment.courseID %></td>
+                      <td><%= enrollment.startDate %></td>
+                      <td><%= enrollment.waitlist_status %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <br><br><br><br><br><br>
+          </div>
 					<!-- Carousel -->
 		              <div class="col-md-9">
 		                <div id="myCarousel" class="carousel slide">
@@ -31,7 +52,7 @@
 		                      <%= image_tag("group.jpg", :alt => "rss feed") %>
 		                    </div>
 		                    <div class="item">
-		                      <%= image_tag("pic1.jpg", :alt => "rss feed") %>
+		                      <%= image_tag("pic4.jpg", :alt => "rss feed") %>
 		                    </div>
 		                    <div class="item">
 		                      <%= image_tag("pic2.jpg", :alt => "rss feed") %>
@@ -71,6 +92,12 @@
  * limitations under the License.
  * ========================================================== */
 
+
+$(document).ready(function() {
+         $('.carousel').carousel({
+             interval: 2000
+         })
+    }); 
 
 !function ($) {
 
@@ -225,7 +252,7 @@
   }
 
   $.fn.carousel.defaults = {
-    interval: 50000
+    interval: 2000
   , pause: 'hover'
   }
 
