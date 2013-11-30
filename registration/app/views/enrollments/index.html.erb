@@ -1,59 +1,56 @@
-<h1>Deleted Courses</h1>
-<small>Participants to be paid back</small>
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <h1 align="center">Refunds <small>:Participants to be paid back</small></h1>
+          <br/><br/>
+          <div class="col-md-3">
+            <p class="lead">Search</p>
+              <%= form_tag enrollments_path, :method => 'get' do %>
+              <p>
+                <%= text_field_tag :search, params[:search] %><br><br>
+                <%= submit_tag "Search Enrolled Members", :name => nil, :class => "btn btn-lg" %><br></br>
+                <small><strong>Search</strong> by Participant ID, Course ID. To check all participants that were removed from deleted courses, search a blank request</small>
+              </p>
+            <% end %> <br><br>
+            <%= link_to 'Back to Admin', static_pages_adminhome_path %>
+          </div>
+          <div class="col-md-9">
+            <!-- Create table to display search results. -->
+
+            <h2 id="enrollments">Enrollments</h2><br>
+            <table class="table" border="1">
+              <thead>
+                <tr>
+                  <th>Participant ID</th>
+                  <th>Course ID</th>
+                  <th>Refund</th>
+                  <th>Pay</th>
+                </tr>
+              </thead>
+
+            <tbody>
+                <% @payback.each do |enrollment| %>
+                  <tr>
+                    <td><%= link_to enrollment.participantID, enrollment %></td>
+                    <td><%= enrollment.courseID %></td>
+                    <td><%= enrollment.refund_back %></td>
+                    <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Please give back the participant the amount shown in the table' } %></td>
+                  </tr>
+                <%end%>
+              </tbody>
 
 
-<%= form_tag enrollments_path, :method => 'get' do %>
-  <p>
-    <p><b>Search</b> by Participant ID, Course ID</p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search Enrolled Members", :name => nil %>
-    <i>* To check all participants that were removed from deleted courses, search a blank request</i>
-  </p>
-<% end %>
-<br>
+            </table>
 
-
-<br><hr><br>
-
-
-<!-- Create table to display search results. -->
-
-<h2 id="enrollments">Enrollments</h2>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Participant ID</th>
-      <th>Course ID</th>
-      <th>Refund</th>
-      <th>Pay</th>
-    </tr>
-  </thead>
-
-
-<tbody>
-    <% @payback.each do |enrollment| %>
-      <tr>
-        <td><%= link_to enrollment.participantID, enrollment %></td>
-        <td><%= enrollment.courseID %></td>
-        <td><%= enrollment.refund_back %></td>
-        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Please give back the participant the amount shown in the table' } %></td>
-      </tr>
-    <%end%>
-  </tbody>
-
-
-</table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 
 
 
-<%= link_to 'Back', static_pages_adminhome_path %>
-
-
-
-
-
-
-
-</br>
-</br>
-</br>

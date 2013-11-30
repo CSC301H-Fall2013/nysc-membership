@@ -1,56 +1,74 @@
-<h1>Find Courses</h1>
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 align="center">Enroll into a Course</h1>
+        
+        <br/><br/>
+        <div class="col-md-3">
+          <p class="lead">Search</p>
+          <!-- Create a search bar that filters participants based on search criteria entered. -->
 
- <!-- Create a search bar that filters participants based on search criteria entered. -->
+          <%= form_tag({:controller => "courses", :action => "index"}, :method => "get", :id => "course_id") do %>
+              <p>
+                <p><strong>Search Courses</strong> by Course ID, Title, or Start Date</p>
+                <%= text_field_tag :search, params[:search], id: 'couse_text'%> 
+                <br> <br>
+                 <%= button_tag "Search Courses", :name => nil, id: 'course_submit',  :class => "btn btn-lg"%>
+              </p>
+          <% end %>
 
-  <%= form_tag({:controller => "courses", :action => "index"}, :method => "get", :id => "course_id") do %>
-      <p>
-        <p><b>Search Courses</b> by Course ID, Title, or Start Date</p>
-        <%= text_field_tag :search, params[:search], id: 'couse_text'%> 
-        <%= submit_tag "Search Courses", :name => nil, id: 'course_submit'  %>
-      </p>
-  <% end %>
-<br>
+          <br><br>
+          <%if current_participant.role? %> 
+            <%= link_to 'Back to Admin', static_pages_adminhome_path %>
+          <% else %>
+            <%= link_to 'Back to Home Page', static_pages_participanthome_path %>
+          <%end%>
 
+        </div>
+        <div class="col-md-9">
 
-<h2 id="availableCourses">Available Courses</h2>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Courseid</th>
-      <th>Course Name</th>
-      <th>Start Date</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th>Day of Week</th>
-      <th>Space</th>
-    </tr>
-  </thead>
+          <p class="lead">Available Courses</p>
+          <table class="table" border="1">
+            <thead>
+              <tr>
+                <th>Courseid</th>
+                <th>Course Name</th>
+                <th>Start Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Day of Week</th>
+                <th>Space</th>
+              </tr>
+            </thead>
 
-  <tbody>
-    <%if @courses%>
-    <% @courses.each do |course| %>
-      <tr>
-        <%if current_participant.role? %> 
-          <td><%= link_to course.courseID, course %></td>
-        <% else %>
-          <% @course = course %>
-          <td><%= link_to course.courseID, new_enrollment_path(@course.courseID) %></td>
-        <%end%>
-        <td><%= course.title %></td>
-        <td><%= course.startDate.to_time.strftime('%B %d, %Y') %></td>
-        <td><%= course.startTime.to_time.strftime('%l:%M %p') %></td>
-        <td><%= course.endTime.to_time.strftime('%l:%M %p') %></td>
-        <td><%= course.dayOfWeek %></td>
-        <td><%= space_left(course) %></td>
-      </tr>
-    <%end%>
-    <%end%>
-  </tbody>
-</table>
-<br>
-<hr>
-<%if current_participant.role? %> 
-  <%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
-<% else %>
-  <%= link_to 'Back to Member Home Page', static_pages_participanthome_path %>
-<%end%>
+            <tbody>
+              <%if @courses%>
+              <% @courses.each do |course| %>
+                <tr>
+                  <%if current_participant.role? %> 
+                    <td><%= link_to course.courseID, course %></td>
+                  <% else %>
+                    <% @course = course %>
+                    <td><%= link_to course.courseID, new_enrollment_path(@course.courseID) %></td>
+                  <%end%>
+                  <td><%= course.title %></td>
+                  <td><%= course.startDate.to_time.strftime('%B %d, %Y') %></td>
+                  <td><%= course.startTime.to_time.strftime('%l:%M %p') %></td>
+                  <td><%= course.endTime.to_time.strftime('%l:%M %p') %></td>
+                  <td><%= course.dayOfWeek %></td>
+                  <td><%= space_left(course) %></td>
+                </tr>
+              <%end%>
+              <%end%>
+            </tbody>
+          </table>
+        </div>
+        </div>
+        </div>
+        </div>
+      
+</body>
+</html>

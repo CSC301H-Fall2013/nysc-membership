@@ -1,8 +1,23 @@
-<h1>Editing participant</h1>
 
+
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 align="center">Edit <%= @participant.fname %> <%= @participant.lname %></h1>
+        
+        <br/><br/>
+        <div class="col-md-2">
+        	<%= link_to 'Show', @participant %> |
+			<%= link_to 'Back', participants_path %></div>
+        <div class="col-md-10">
 <%= render 'editform' %>
 
-<%= renew_link %><br><br><br>
-
-<%= link_to 'Show', @participant %> |
-<%= link_to 'Back', participants_path %>
+<%= renew_link %><br><br><br></div>
+      </div>
+      </div>
+     </div>
+   </body>
+</html>

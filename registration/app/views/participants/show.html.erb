@@ -1,80 +1,100 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<body>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <h1 align="center"><%= @participant.fname %> <%= @participant.lname %> Profile </h1>
+        <p id="notice"><%= notice %></p>
+        
+        <br/><br/>
+        <div class="col-md-3">
+          <p class="lead">Information</p>
+          <p>
+            <strong>Participantid:</strong>
+            <%= @participant.participantID %>
+          </p>
 
-<p>
-  <strong>Participantid:</strong>
-  <%= @participant.participantID %>
-</p>
+          <p>
+            <strong>Fname:</strong>
+            <%= @participant.fname %>
+          </p>
 
-<p>
-  <strong>Fname:</strong>
-  <%= @participant.fname %>
-</p>
+          <p>
+            <strong>Lname:</strong>
+            <%= @participant.lname %>
+          </p>
 
-<p>
-  <strong>Lname:</strong>
-  <%= @participant.lname %>
-</p>
+          <p>
+            <strong>Phone:</strong>
+            <%= @participant.phone %>
+          </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @participant.phone %>
-</p>
+          <p>
+            <strong>Expirydate:</strong>
+            <%= @participant.expirydate %>
+          </p>
 
-<p>
-  <strong>Expirydate:</strong>
-  <%= @participant.expirydate %>
-</p>
+          <p>
+            <strong>Dr note date:</strong>
+            <%= @participant.dr_note_date %>
+          </p>
 
-<p>
-  <strong>Dr note date:</strong>
-  <%= @participant.dr_note_date %>
-</p>
+          <p>
+            <strong>Password:</strong>
+            <%= @participant.password %>
+          </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @participant.password %>
-</p>
+          <p>
+            <strong>Email:</strong>
+            <%= @participant.email %>
+          </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @participant.email %>
-</p>
+          <p>
+            <strong>Birthday:</strong>
+            <%= @participant.birthday %>
+          </p>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @participant.birthday %>
-</p>
+          <p>
+            <strong>Admin Privileges:</strong>
+            <%= @participant.role %>
+          </p>
+          <br><br>
+                    
+          <%= link_to 'Edit', edit_participant_path(@participant) %> |
+          <%= link_to 'Back to Admin', static_pages_adminhome_path %>
 
-<p>
-  <strong>Admin Privileges:</strong>
-  <%= @participant.role %>
-</p>
 
-<h3>
-  <strong>Current Enrolled and Waitlisted Courses:</strong>
-</h3>
+        </div>
+        <div class="col-md-9">
+          <h3><strong>Current Enrolled and Waitlisted Courses:</strong></h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Courseid</th>
-      <th>Startdate</th>
-	  <th>Waitlist Status</th>
-      <th></th>
-    </tr>
-  </thead>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Courseid</th>
+                <th>Startdate</th>
+              <th>Waitlist Status</th>
+                <th></th>
+              </tr>
+            </thead>
 
-  <tbody>
-    <% @enrollments.each do |enrollment| %>
-      <tr>
-        <td><%= enrollment.courseID %></td>
-        <td><%= enrollment.startDate %></td>
-		    <td><%= enrollment.waitlist_status %></td>
-        <td><%= link_to 'Delete', participant_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <tbody>
+              <% @enrollments.each do |enrollment| %>
+                <tr>
+                  <td><%= enrollment.courseID %></td>
+                  <td><%= enrollment.startDate %></td>
+                  <td><%= enrollment.waitlist_status %></td>
+                  <td><%= link_to 'Delete', participant_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
 
-<%= link_to 'Edit', edit_participant_path(@participant) %> |
-<%= link_to 'Back to Admin Home', static_pages_adminhome_path %>
+

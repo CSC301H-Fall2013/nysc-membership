@@ -1,108 +1,103 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
 
-<p>
-  <strong>Courseid:</strong>
-  <%= @course.courseID %>
-</p>
+<html>
+  <body>
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <h1 align="center">Course</h1><br/>
+          <small><p id="notice"><%= notice %></p></small><br/>
+          <div class="col-md-3">
+            <p>
+              <strong>Courseid:</strong>
+              <%= @course.courseID %>
+            </p>
+            <p>
+              <strong>Startdate:</strong>
+              <%= @course.startDate %>
+            </p>
+            <p>
+              <strong>Title:</strong>
+              <%= @course.title %>
+            </p>
+            <p>
+              <strong>Instructor:</strong>
+              <%= @course.instructor %>
+            </p>
+            <p>
+              <strong>Description:</strong>
+              <%= @course.description %>
+            </p>
+            <p>
+              <strong>Intensity:</strong>
+              <%= @course.intensity %>
+            </p>
+            <p>
+              <strong>Additional:</strong>
+              <%= @course.additional %>
+            </p>
+            <p>
+              <strong>Duration:</strong>
+              <%= @course.duration %>
+            </p>
+            <p>
+              <strong>Start Time:</strong>
+              <%= @course.startTime.to_formatted_s(:time) + ' EST' %>
+            </p>
+            <p>
+              <strong>End Time:</strong>
+              <%= @course.endTime.to_formatted_s(:time) + ' EST' %>
+            </p>
+            <p>
+              <strong>Dayofweek:</strong>
+              <%= @course.dayOfWeek %>
+            </p>
+            <p>
+              <strong>Earlybirdprice:</strong>
+              <%= @course.earlybirdPrice %>
+            </p>
+            <p>
+              <strong>Memberprice:</strong>
+              <%= @course.memberPrice %>
+            </p>
+            <p>
+              <strong>Nonmemberprice:</strong>
+              <%= @course.nonmemberPrice %>
+            </p>
+            <p>
+              <strong>Size:</strong>
+              <%= @course.size %>
+            </p>
+            <p>
+              <%= link_to 'Waitlist', waitlist_path(@course) %> |
+              <%= link_to 'Edit', edit_course_path(@course) %> |
+              <%= link_to 'Delete', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
+              <%= link_to 'Back to Admin', static_pages_adminhome_path %>
+              </p>
+          </div>
+          <div class="col-md-9">
+            <h2 id="enrollments">Class List</h2>
+              <table class="table" border="1">
+                <thead>
+                  <tr>
+                    <th>Participant ID</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
 
-<p>
-  <strong>Startdate:</strong>
-  <%= @course.startDate %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
-
-<p>
-  <strong>Instructor:</strong>
-  <%= @course.instructor %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
-
-<p>
-  <strong>Intensity:</strong>
-  <%= @course.intensity %>
-</p>
-
-<p>
-  <strong>Additional:</strong>
-  <%= @course.additional %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @course.duration %>
-</p>
-
-<p>
-  <strong>Start Time:</strong>
-  <%= @course.startTime.to_formatted_s(:time) + ' EST' %>
-</p>
-
-<p>
-  <strong>End Time:</strong>
-  <%= @course.endTime.to_formatted_s(:time) + ' EST' %>
-</p>
-
-<p>
-  <strong>Dayofweek:</strong>
-  <%= @course.dayOfWeek %>
-</p>
-
-<p>
-  <strong>Earlybirdprice:</strong>
-  <%= @course.earlybirdPrice %>
-</p>
-
-<p>
-  <strong>Memberprice:</strong>
-  <%= @course.memberPrice %>
-</p>
-
-<p>
-  <strong>Nonmemberprice:</strong>
-  <%= @course.nonmemberPrice %>
-</p>
-
-<p>
-  <strong>Size:</strong>
-  <%= @course.size %>
-</p>
-
-
-<div>
-<h2 id="enrollments">Class List</h2>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Participant ID</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% class_list(@course).each do |enrollment| %>
-      <tr>
-        <td><%= link_to enrollment.participantID, enrollment %></td>
-        <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Please give back the participant the amount shown in the course description' } %></td>
-      </tr>
-    <%end%>
-  </tbody>
-</div>
-
-
-
-
-
-<%= link_to 'Waitlist', waitlist_path(@course) %> |
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Delete', @course, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', static_pages_adminhome_path %>
+                <tbody>
+                  <% class_list(@course).each do |enrollment| %>
+                    <tr>
+                      <td><%= link_to enrollment.participantID, enrollment %></td>
+                      <td><%= link_to 'Delete', enrollment, method: :delete, data: { confirm: 'Please give back the participant the amount shown in the course description' } %></td>
+                    </tr>
+                  <%end%>
+                </tbody>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 
  
