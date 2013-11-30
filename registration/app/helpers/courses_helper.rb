@@ -11,7 +11,7 @@ module CoursesHelper
 	def class_list(course)
 
 		list = Enrollment.where(:courseID => course.courseID)
-		return list.where("waitlist_status > ? ", 0)
+		return list.where("waitlist_status == ? ", 0)
 		
 	end
 
