@@ -15,9 +15,30 @@
 				</div>
 				<div class="col-md-9">
 					<h4>Welcome to the North York Senior Centre Online Services. Please select an option below to continue.</h4><br>
-					<div class="col-md-6"><%= link_to 'Find a Course', courses_path, :class => "btn btn-lg" %></div>
-					<div class="col-md-6"><%= link_to 'View Participant Agreement', new_enrollment_path, :class => "btn btn-lg" %><br></div>
-					<br><br><br><br><br><br>
+					<div class="col-md-4"></div><div class="col-md-8"><%= link_to 'Find a Course', courses_path, :class => "btn btn-lg" %></div><br><br><br>
+          
+					<div class="col-md-12">
+            <h3><strong>Current Enrolled and Waitlisted Courses:</strong></h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Courseid</th>
+                    <th>Startdate</th>
+                  <th>Waitlist Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @course.each do |enrollment| %>
+                    <tr>
+                      <td><%= enrollment.courseID %></td>
+                      <td><%= enrollment.startDate %></td>
+                      <td><%= enrollment.waitlist_status %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <br><br><br><br><br><br>
+          </div>
 					<!-- Carousel -->
 		              <div class="col-md-9">
 		                <div id="myCarousel" class="carousel slide">
