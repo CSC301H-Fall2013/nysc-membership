@@ -59,6 +59,7 @@ class EnrollmentsController < ApplicationController
           # save the enrollment object in the session, do not add it to database until payment notification is received
           session[:enroll_save] = @enrollment
           @enrollment.updatepayment
+          @enrollment.save
           # redirect to paypal website
           redirect_to paypal_url(static_pages_participanthome_url, @paymentnotification_create_url)
         end
@@ -107,7 +108,7 @@ class EnrollmentsController < ApplicationController
       if @enrollment.is_payment?
         render "new"
       end
-    else
+    elsif current_participant.role?
       session[:enrollment_step] = session[:enrollment_params] = nil
       flash[:notice] = "Enrollment saved!"
       redirect_to @enrollment
