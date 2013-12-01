@@ -64,6 +64,32 @@
             </ul></li>
           </ul>
           <h6>Developer Design Document</h6>
+          <p>Architecture of the software:<br>
+Ruby on Rails framework using Model/View/Controller in the backend, with Bootstrap on the front end.</p>
+
+<p>How is the code organized into modules:<br>
+ static page - main hub, models (Participants, Enrollments, Courses etc.) </p>
+
+<p>How it interfaces with existing libraries and support software:<br>
+The application uses the following Ruby gems: devise, cancan, sass-rails, bcrypt-ruby, bootstrap-sass, activerecord-session_store, yaml_db, pg</p>
+
+<p>Known bugs:<br>
+Several known bugs in our product include: being unable to add new participants properly, the membership renewal button does not work properly and the listener receiving instant payment notification (IPN) from PayPal is unable to receive notifications from PayPal. It was speculated that there was another component preventing the notifications from going through.</p>
+
+<p>Features included in current release:<br>
+    Add course, edit course, delete course, add member or non-member, edit member or non-member, add admin, delete admin, list of refunds that need to be processed in person, waitlist, exporting details of all members and admin.</p>
+
+<p>Features to include in future releases:<br>
+After the demo, our team was able to obtain numerous ideas for our product. It was discussed that the NYSC administrators may have difficulty manually adding multiple members to the database, so they would benefit if there was the ability to add multiple members at once by importing an Excel spreadsheet that follows a certain format. Furthermore, we could extend that functionality for the ability to add multiple classes at once by importing an Excel spreadsheet.
+<br><br>
+Auto-generating the participant ids and passwords should be included in future releases since we had already agreed to deliver the functionality, but were unable to complete it by the end of the final sprint in this initial release.
+<br><br>
+Adding the feature to add classes that were added in a previous semester could further increase the usability of the product for the administrator. Allowing for non-administrative accounts to renew and register for NYSC membership would also be on the table for future releases because that would lessen the burden of processing registrations for the staff at the NYSC.
+<br><br>
+Our team can also potentially look into using another online payment system, such as Stripe, that can be incorporated directly onto the NYSC website. The website currently links to a third party website, PayPal, to process the payments and returns back to the NYSC website after filling out the form and this is a bit tedious for the members. 
+<br><br>
+We can increase the usability of our product for the members by letting them enroll and pay for multiple courses at once by incorporating a shopping cart.</p>
+
           <h6>Reflection on development process</h6>
           <p>The development process for the North York Senior Centre's registration web application has been a long and eventful learning experience for all members in Team Superior.  There were both good and bad decisions that we made as a team and despite the shortened development cycle and small number of sprints, we continually made an effort to learn from our mistakes to improve as students and developers.</p>
 
@@ -83,7 +109,7 @@
           <h6>User Guide</h6>
           
           <h6>Troubleshooting Guide</h6>
-          <p><b>USERS FAQ</b></p>
+          <p>**USERS FAQ**</p>
 <p><i>What do I do if I forgot my password? </i><br>
 Click forgot your password? on the login page.</p>
 
@@ -93,7 +119,7 @@ Click forgot your password? on the login page.</p>
 <p><i>What should I do if my membership expired and I still want to sign up for courses?</i><br>
     You can visit the North York Senior Centre and renew your membership in person.</p>
 
-    <p><b>ADMIN FAQ</b></p>
+    <p>**ADMIN FAQ**</p>
 <p><i>What do I do if I forgot my password? </i><br>
 Click forgot your password? on the login page.</p>
       </section>
