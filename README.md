@@ -2,6 +2,7 @@ nysc-membership
 ===============
 
 North York Senior's Centre Membership app by Team Superior
+http://nysc.herokuapp.com/participants/sign_in
 
 *****************
 *TA INSTRUCTIONS*
